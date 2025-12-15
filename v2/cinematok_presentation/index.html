@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АНИМО MEDIA - AI Infrastructure Provider</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animo_logos.css">
+    <script src="animo_update.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/phosphor-icons@latest/dist/regular/style.css" rel="stylesheet">
+    <link href="https://unpkg.com/phosphor-icons@latest/dist/fill/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Progress Navigation -->
+    <nav class="progress-nav" id="progressNav">
+        <div class="progress-container">
+            <div class="progress-dots" id="progressDots"></div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="mobile-menu-toggle" id="mobileToggle">
+            <i class="ph ph-list"></i>
+        </button>
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-content">
+                <button class="close-mobile-menu" id="closeMobileMenu">
+                    <i class="ph ph-x"></i>
+                </button>
+                <div class="mobile-menu-items" id="mobileMenuItems"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Presentation Container -->
+    <main class="presentation-container" id="presentationContainer">
+        
+        <!-- Slide 1: Hero/Opening -->
+        <section class="slide slide-hero" data-slide="0">
+            <div class="hero-background">
+                <div class="floating-elements">
+                    <div class="floating-shape shape-1"></div>
+                    <div class="floating-shape shape-2"></div>
+                    <div class="floating-shape shape-3"></div>
+                    <div class="floating-shape shape-4"></div>
+                </div>
+            </div>
+            
+            <div class="slide-content">
+                <div class="logo-container">
+                    <div class="logo-glow"></div>
+                    <h1 class="logo-text animo-logo" id="logoText">
+                        <span class="cinematok">АНИМО</span>
+                        <span class="media">MEDIA</span>
+                    </h1>
+                </div>
+                
+                <div class="hero-subtitle" id="heroSubtitle">
+                    <h2>Революция в ИИ-инфраструктуре</h2>
+                    <p>Полная экосистема ИИ-сервисов</p>
+                </div>
+                
+                <div class="hero-cta" id="heroCta">
+                    <button class="neon-button" id="startPresentation">
+                        <span>Начать презентацию</span>
+                        <i class="ph ph-play"></i>
+                    </button>
+                </div>
+                
+                <div class="scroll-indicator" id="scrollIndicator">
+                    <span>Прокрутите вниз</span>
+                    <i class="ph ph-arrow-down"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 2: Problem vs Solution -->
+        <section class="slide slide-problem" data-slide="1">
+            <div class="slide-content">
+                <h2 class="slide-title">Проблема современных решений</h2>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-card aggregator">
+                        <div class="card-header">
+                            <h3>Агрегаторы</h3>
+                            <div class="card-icon">
+                                <i class="ph ph-cpu"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="problems-list">
+                            <div class="problem-item">
+                                <i class="ph ph-x-circle"></i>
+                                <span>Только один интерфейс</span>
+                            </div>
+                            <div class="problem-item">
+                                <i class="ph ph-x-circle"></i>
+                                <span>Последовательная обработка</span>
+                            </div>
+                            <div class="problem-item">
+                                <i class="ph ph-x-circle"></i>
+                                <span>Нет API доступа</span>
+                            </div>
+                            <div class="problem-item">
+                                <i class="ph ph-x-circle"></i>
+                                <span>Ручная работа</span>
+                            </div>
+                            <div class="problem-item">
+                                <i class="ph ph-x-circle"></i>
+                                <span>Ограниченная экосистема</span>
+                            </div>
+                        </div>
+                        
+                        <div class="time-loss">
+                            <div class="loss-animation">
+                                <i class="ph ph-timer"></i>
+                                <span>Потеря времени = Потеря денег</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="vs-separator">
+                        <span>VS</span>
+                    </div>
+                    
+                    <div class="comparison-card provider">
+                        <div class="card-header">
+                            <h3>АНИМО ПРОВАЙДЕР</h3>
+                            <div class="card-icon">
+                                <i class="ph ph-rocket"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="solutions-list">
+                            <div class="solution-item">
+                                <i class="ph ph-check-circle"></i>
+                                <span>3 интерфейса + API</span>
+                            </div>
+                            <div class="solution-item">
+                                <i class="ph ph-check-circle"></i>
+                                <span>Параллельная обработка</span>
+                            </div>
+                            <div class="solution-item">
+                                <i class="ph ph-check-circle"></i>
+                                <span>API ко всем нейросетям</span>
+                            </div>
+                            <div class="solution-item">
+                                <i class="ph ph-check-circle"></i>
+                                <span>Автоматизация + Контентзавод</span>
+                            </div>
+                            <div class="solution-item">
+                                <i class="ph ph-check-circle"></i>
+                                <span>Полная экосистема</span>
+                            </div>
+                        </div>
+                        
+                        <div class="time-saved">
+                            <div class="savings-counter">
+                                <span class="counter-number" data-target="300">0</span>
+                                <span class="counter-unit">%</span>
+                                <span class="counter-label">экономии времени</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: Ecosystem -->
+        <section class="slide slide-ecosystem" data-slide="2">
+            <div class="slide-content">
+                <h2 class="slide-title">СИНЕМАТОК</h2>
+                
+                <div class="ecosystem-container">
+                    <div class="ecosystem-center">
+                        <div class="provider-core">
+                            <div class="core-logo">
+                                <span>АНИМО</span>
+                            </div>
+                            <div class="core-label">AI PROVIDER</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ecosystem-orbit orbit-1">
+                        <div class="orbit-item" data-service="bot">
+                            <div class="service-icon">
+                                <i class="ph ph-telegram-logo"></i>
+                            </div>
+                            <span>Telegram Бот</span>
+                        </div>
+                        
+                        <div class="orbit-item" data-service="web">
+                            <div class="service-icon">
+                                <i class="ph ph-globe"></i>
+                            </div>
+                            <span>Веб-платформа</span>
+                        </div>
+                    </div>
+                    
+                    <div class="ecosystem-orbit orbit-2">
+                        <div class="orbit-item" data-service="mobile">
+                            <div class="service-icon">
+                                <i class="ph ph-device-mobile"></i>
+                            </div>
+                            <span>Мобильное приложение</span>
+                        </div>
+                        
+                        <div class="orbit-item" data-service="api">
+                            <div class="service-icon">
+                                <i class="ph ph-code"></i>
+                            </div>
+                            <span>API Hub</span>
+                        </div>
+                    </div>
+                    
+                    <div class="ecosystem-orbit orbit-3">
+                        <div class="orbit-item" data-service="automation">
+                            <div class="service-icon">
+                                <i class="ph ph-robot"></i>
+                            </div>
+                            <span>Контентзавод</span>
+                        </div>
+                        
+                        <div class="orbit-item" data-service="avatars">
+                            <div class="service-icon">
+                                <i class="ph ph-user-circle"></i>
+                            </div>
+                            <span>База аватаров</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ecosystem-description">
+                    <p>Единая экосистема для работы с ИИ-инструментами</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: Multi-threading -->
+        <section class="slide slide-threading" data-slide="3">
+            <div class="slide-content">
+                <h2 class="slide-title">Мультипоточная сила</h2>
+                
+                <div class="threading-comparison">
+                    <div class="threading-mode">
+                        <h3>Традиционный подход</h3>
+                        <div class="sequential-flow">
+                            <div class="flow-step">
+                                <div class="step-number">1</div>
+                                <span>Задача 1</span>
+                                <div class="step-duration">~5 мин</div>
+                            </div>
+                            <div class="flow-arrow">
+                                <i class="ph ph-arrow-right"></i>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">2</div>
+                                <span>Задача 2</span>
+                                <div class="step-duration">~5 мин</div>
+                            </div>
+                            <div class="flow-arrow">
+                                <i class="ph ph-arrow-right"></i>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">3</div>
+                                <span>Задача 3</span>
+                                <div class="step-duration">~5 мин</div>
+                            </div>
+                        </div>
+                        <div class="total-time">
+                            <span>Общее время: <strong>15 минут</strong></span>
+                        </div>
+                    </div>
+                    
+                    <div class="threading-mode">
+                        <h3>АНИМО</h3>
+                        <div class="parallel-flow">
+                            <div class="parallel-container">
+                                <div class="parallel-column">
+                                    <div class="flow-step">
+                                        <div class="step-number">1</div>
+                                        <span>Задача 1</span>
+                                        <div class="step-duration">~5 мин</div>
+                                    </div>
+                                </div>
+                                <div class="parallel-column">
+                                    <div class="flow-step">
+                                        <div class="step-number">2</div>
+                                        <span>Задача 2</span>
+                                        <div class="step-duration">~5 мин</div>
+                                    </div>
+                                </div>
+                                <div class="parallel-column">
+                                    <div class="flow-step">
+                                        <div class="step-number">3</div>
+                                        <span>Задача 3</span>
+                                        <div class="step-duration">~5 мин</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="parallel-arrow">
+                                <i class="ph ph-arrow-down"></i>
+                            </div>
+                            <div class="result-step">
+                                <div class="step-number">✓</div>
+                                <span>Все задачи готовы</span>
+                                <div class="step-duration">~5 минут</div>
+                            </div>
+                        </div>
+                        <div class="total-time">
+                            <span>Общее время: <strong>5 минут</strong></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="performance-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="10">0</div>
+                        <div class="stat-label">Задач одновременно</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="300">0</div>
+                        <div class="stat-label">% экономии времени</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="24">0</div>
+                        <div class="stat-label">Часов в день освобождается</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: API Revolution -->
+        <section class="slide slide-api" data-slide="4">
+            <div class="slide-content">
+                <h2 class="slide-title">API-революция</h2>
+                
+                <div class="api-comparison">
+                    <div class="traditional-api">
+                        <h3>Традиционно</h3>
+                        <div class="api-keys">
+                            <div class="api-key-item">
+                                <div class="key-label">ChatGPT API</div>
+                                <div class="key-visual"></div>
+                            </div>
+                            <div class="api-key-item">
+                                <div class="key-label">Midjourney API</div>
+                                <div class="key-visual"></div>
+                            </div>
+                            <div class="api-key-item">
+                                <div class="key-label">Suno API</div>
+                                <div class="key-visual"></div>
+                            </div>
+                            <div class="api-key-item">
+                                <div class="key-label">Claude API</div>
+                                <div class="key-visual"></div>
+                            </div>
+                            <div class="api-key-item">
+                                <div class="key-label">DALL-E API</div>
+                                <div class="key-visual"></div>
+                            </div>
+                            <div class="key-counter">Нужно 10+ API ключей</div>
+                        </div>
+                    </div>
+                    
+                        <div class="syntx-api">
+                        <div class="master-key-visualization">
+                            <div class="master-key">
+                                <div class="key-glow"></div>
+                                <span>MASTER KEY</span>
+                            </div>
+                            <div class="connected-services">
+                                <div class="service-node">
+                                    <i class="ph ph-chat-circle"></i>
+                                    <span>GPT</span>
+                                </div>
+                                <div class="service-node">
+                                    <i class="ph ph-image"></i>
+                                    <span>MIDJOURNEY</span>
+                                </div>
+                                <div class="service-node">
+                                    <i class="ph ph-music-notes"></i>
+                                    <span>SUNO</span>
+                                </div>
+                                <div class="service-node">
+                                    <i class="ph ph-robot"></i>
+                                    <span>CLAUDE</span>
+                                </div>
+                                <div class="service-node">
+                                    <i class="ph ph-image-square"></i>
+                                    <span>DALL-E</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="api-benefits">
+                            <div class="benefit-item">
+                                <i class="ph ph-check"></i>
+                                <span>1 ключ = доступ ко всем</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="ph ph-check"></i>
+                                <span>Простая интеграция</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="ph ph-check"></i>
+                                <span>Масштабируемость</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="ph ph-check"></i>
+                                <span>Единый биллинг</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="api-demo">
+                    <div class="demo-terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <span>API Demo</span>
+                        </div>
+                        <div class="terminal-content">
+                            <div class="code-line">
+                                <span class="code-prompt">$</span>
+                                <span class="code-command">curl -X POST https://api.animo.ai/v1/generate</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-comment">// Один запрос - все возможности</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-prompt">$</span>
+                                <span class="code-success">✓ Успешно: 5 задач выполнено параллельно</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: Automation Factory -->
+        <section class="slide slide-automation" data-slide="5">
+            <div class="slide-content">
+                <h2 class="slide-title">Контентзавод - Автоматизация</h2>
+                
+                <div class="automation-workflow">
+                    <div class="workflow-steps">
+                        <div class="workflow-step" data-step="1">
+                            <div class="step-icon">
+                                <i class="ph ph-repeat"></i>
+                            </div>
+                            <div class="step-content">
+                                <h3>Повторяете процесс?</h3>
+                                <p>Создаете одинаковый контент регулярно</p>
+                            </div>
+                        </div>
+                        
+                        <div class="workflow-arrow">
+                            <i class="ph ph-arrow-right"></i>
+                        </div>
+                        
+                        <div class="workflow-step" data-step="2">
+                            <div class="step-icon">
+                                <i class="ph ph-equals"></i>
+                            </div>
+                            <div class="step-content">
+                                <h3>Зафиксируйте его</h3>
+                                <p>Запишите алгоритм действий</p>
+                            </div>
+                        </div>
+                        
+                        <div class="workflow-arrow">
+                            <i class="ph ph-arrow-right"></i>
+                        </div>
+                        
+                        <div class="workflow-step" data-step="3">
+                            <div class="step-icon">
+                                <i class="ph ph-robot"></i>
+                            </div>
+                            <div class="step-content">
+                                <h3>Создайте автоматизацию</h3>
+                                <p>Настройте контентзавод</p>
+                            </div>
+                        </div>
+                        
+                        <div class="workflow-arrow">
+                            <i class="ph ph-arrow-right"></i>
+                        </div>
+                        
+                        <div class="workflow-step" data-step="4">
+                            <div class="step-icon">
+                                <i class="ph ph-rocket"></i>
+                            </div>
+                            <div class="step-content">
+                                <h3>Масштабируйте</h3>
+                                <p>Ускорьте производство в разы</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="automation-examples">
+                    <h3>Примеры автоматизации</h3>
+                    
+                    <div class="examples-grid">
+                        <div class="example-card">
+                            <div class="example-header">
+                                <i class="ph ph-video"></i>
+                                <h4>Видеопродакшн</h4>
+                            </div>
+                            <div class="example-flow">
+                                <span>План → Сценарий → Ролики → Публикация</span>
+                            </div>
+                            <div class="example-time">
+                                <span>Экономия: 8 часов/видео</span>
+                            </div>
+                        </div>
+                        
+                        <div class="example-card">
+                            <div class="example-header">
+                                <i class="ph ph-share-network"></i>
+                                <h4>SMM</h4>
+                            </div>
+                            <div class="example-flow">
+                                <span>Идея → Текст → Изображение → Постинг</span>
+                            </div>
+                            <div class="example-time">
+                                <span>Экономия: 4 часа/пост</span>
+                            </div>
+                        </div>
+                        
+                        <div class="example-card">
+                            <div class="example-header">
+                                <i class="ph ph-microphone"></i>
+                                <h4>Подкасты</h4>
+                            </div>
+                            <div class="example-flow">
+                                <span>Тема → Сценарий → Запись → Обработка → Публикация</span>
+                            </div>
+                            <div class="example-time">
+                                <span>Экономия: 12 часов/выпуск</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Avatars & Assets -->
+        <section class="slide slide-assets" data-slide="6">
+            <div class="slide-content">
+                <h2 class="slide-title">База аватаров и локаций</h2>
+                
+                <div class="assets-showcase">
+                    <div class="assets-category">
+                        <h3>Люди</h3>
+                        <div class="assets-grid">
+                            <div class="asset-item">
+                                <div class="asset-avatar">
+                                    <div class="avatar-placeholder professional"></div>
+                                </div>
+                                <span>Профессионалы</span>
+                            </div>
+                            <div class="asset-item">
+                                <div class="asset-avatar">
+                                    <div class="avatar-placeholder casual"></div>
+                                </div>
+                                <span>Повседневные</span>
+                            </div>
+                            <div class="asset-item">
+                                <div class="asset-avatar">
+                                    <div class="avatar-placeholder creative"></div>
+                                </div>
+                                <span>Творческие</span>
+                            </div>
+                            <div class="asset-item">
+                                <div class="asset-avatar">
+                                    <div class="avatar-placeholder business"></div>
+                                </div>
+                                <span>Бизнес</span>
+                            </div>
+                        </div>
+                        <div class="assets-counter">
+                            <span>1000+ аватаров</span>
+                        </div>
+                    </div>
+                    
+                    <div class="assets-category">
+                        <h3>Животные</h3>
+                        <div class="assets-grid">
+                            <div class="asset-item">
+                                <div class="asset-avatar">
+                                    <div class="avatar-placeholder dog"></div>
+                                </div>
+                                <span>Собаки</span>
+                            </div>
+                            <div class="asset-item">
+                                <div class="asset-avatar">
+                                    <div class="avatar-placeholder cat"></div>
+                                </div>
+                                <span>Кошки</span>
+                            </div>
+                            <div class="asset-item">
+                                <div class="asset-avatar">
+                                    <div class="avatar-placeholder exotic"></div>
+                                </div>
+                                <span>Экзотические</span>
+                            </div>
+                            <div class="asset-item">
+                                <div class="asset-avatar">
+                                    <div class="avatar-placeholder wild"></div>
+                                </div>
+                                <span>Дикие</span>
+                            </div>
+                        </div>
+                        <div class="assets-counter">
+                            <span>500+ аватаров</span>
+                        </div>
+                    </div>
+                    
+                    <div class="assets-category">
+                        <h3>Локации</h3>
+                        <div class="assets-grid">
+                            <div class="asset-item">
+                                <div class="asset-avatar">
+                                    <div class="avatar-placeholder building"></div>
+                                </div>
+                                <span>Здания</span>
+                            </div>
+                            <div class="asset-item">
+                                <div class="asset-avatar">
+                                    <div class="avatar-placeholder city"></div>
+                                </div>
+                                <span>Города</span>
+                            </div>
+                            <div class="asset-item">
+                                <div class="asset-avatar">
+                                    <div class="avatar-placeholder interior"></div>
+                                </div>
+                                <span>Интерьеры</span>
+                            </div>
+                            <div class="asset-item">
+                                <div class="asset-avatar">
+                                    <div class="avatar-placeholder nature"></div>
+                                </div>
+                                <span>Природа</span>
+                            </div>
+                        </div>
+                        <div class="assets-counter">
+                            <span>2000+ локаций</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="assets-cta">
+                    <p>Бесконечные возможности для создания контента</p>
+                    <button class="neon-button">
+                        <span>Исследовать базу</span>
+                        <i class="ph ph-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 8: ROI Calculator -->
+        <section class="slide slide-roi" data-slide="7">
+            <div class="slide-content">
+                <h2 class="slide-title">Калькулятор экономии</h2>
+                
+                <div class="roi-calculator">
+                    <div class="calculator-inputs">
+                        <div class="input-group">
+                            <label for="tasksPerDay">Задач в день</label>
+                            <div class="range-container">
+                                <input type="range" id="tasksPerDay" min="1" max="50" value="10" class="range-input">
+                                <span class="range-value" id="tasksValue">10</span>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="timePerTask">Время на задачу (минуты)</label>
+                            <div class="range-container">
+                                <input type="range" id="timePerTask" min="1" max="60" value="15" class="range-input">
+                                <span class="range-value" id="timeValue">15</span>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="workDays">Рабочих дней в неделю</label>
+                            <div class="range-container">
+                                <input type="range" id="workDays" min="1" max="7" value="5" class="range-input">
+                                <span class="range-value" id="daysValue">5</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-results">
+                        <div class="result-item">
+                            <div class="result-label">Традиционно</div>
+                            <div class="result-value" id="traditionalTime">
+                                <span class="result-number" data-target="125">0</span>
+                                <span class="result-unit">мин/день</span>
+                            </div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-label">С АНИМО</div>
+                            <div class="result-value" id="syntxTime">
+                                <span class="result-number" data-target="42">0</span>
+                                <span class="result-unit">мин/день</span>
+                            </div>
+                        </div>
+                        
+                        <div class="result-item saved">
+                            <div class="result-label">Экономия</div>
+                            <div class="result-value">
+                                <span class="result-number" data-target="83">0</span>
+                                <span class="result-unit">мин/день</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="time-saved-visual">
+                        <div class="time-circle">
+                            <svg class="progress-ring" width="200" height="200">
+                                <circle class="progress-ring-circle" stroke="rgba(255,255,255,0.1)" stroke-width="8" fill="transparent" r="90" cx="100" cy="100"/>
+                                <circle class="progress-ring-progress" stroke="#00FF94" stroke-width="8" fill="transparent" r="90" cx="100" cy="100" stroke-dasharray="565.48" stroke-dashoffset="565.48"/>
+                            </svg>
+                            <div class="circle-content">
+                                <div class="percentage" id="timePercentage">0%</div>
+                                <div class="percentage-label">экономии</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 9: Roadmap -->
+        <section class="slide slide-roadmap" data-slide="8">
+            <div class="slide-content">
+                <h2 class="slide-title">Дорожная карта</h2>
+                
+                <div class="roadmap-timeline">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="timeline-item" data-timeline="today">
+                        <div class="timeline-dot completed">
+                            <i class="ph ph-check"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Сегодня</div>
+                            <h3>Полная экосистема AI-провайдера</h3>
+                            <ul>
+                                <li>3 интерфейса доступа</li>
+                                <li>API ко всем нейросетям</li>
+                                <li>Мультипоточность</li>
+                                <li>База аватаров и локаций</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-timeline="tomorrow">
+                        <div class="timeline-dot in-progress">
+                            <i class="ph ph-clock"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Уже сегодня</div>
+                            <h3>Расширение контентзавода</h3>
+                            <ul>
+                                <li>Шаблоны автоматизации</li>
+                                <li>Workflow Builder</li>
+                                <li>Преднастроенные процессы</li>
+                                <li>API для интеграций</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-timeline="future">
+                        <div class="timeline-dot planned">
+                            <i class="ph ph-star"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2026</div>
+                            <h3>Агентство аватаров</h3>
+                            <ul>
+                                <li>Трудоустройство виртуальных персонажей</li>
+                                <li>Маркетплейс аватаров</li>
+                                <li>Кастомизация персонажей</li>
+                                <li>Интеграция с метавселенными</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-timeline="vision">
+                        <div class="timeline-dot vision">
+                            <i class="ph ph-rocket"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2026</div>
+                            <h3>Экосистема будущего</h3>
+                            <ul>
+                                <li>Amazon для ИИ-инструментов</li>
+                                <li>Глобальная платформа</li>
+                                <li>ИИ-ассистенты для бизнеса</li>
+                                <li>Автономные ИИ-воркфлоу</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 10: Call to Action -->
+        <section class="slide slide-cta" data-slide="9">
+            <div class="slide-content">
+                <h2 class="slide-title">Присоединяйтесь к революции</h2>
+                
+                <div class="cta-content">
+                    <div class="cta-main">
+                        <h3>Станьте частью будущего уже сегодня</h3>
+                        <p>Получите доступ к самой мощной ИИ-инфраструктуре</p>
+                    </div>
+                    
+                    <div class="countdown-timer" id="countdownTimer">
+                        <div class="timer-label">Специальное предложение истекает через:</div>
+                        <div class="timer-display">
+                            <div class="timer-unit">
+                                <span class="timer-number" id="hours">23</span>
+                                <span class="timer-text">часов</span>
+                            </div>
+                            <div class="timer-separator">:</div>
+                            <div class="timer-unit">
+                                <span class="timer-number" id="minutes">45</span>
+                                <span class="timer-text">минут</span>
+                            </div>
+                            <div class="timer-separator">:</div>
+                            <div class="timer-unit">
+                                <span class="timer-number" id="seconds">30</span>
+                                <span class="timer-text">секунд</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cta-buttons">
+                        <button class="neon-button primary">
+                            <span>Получить доступ</span>
+                            <i class="ph ph-rocket"></i>
+                        </button>
+                        
+                        <button class="neon-button secondary">
+                            <span>Демо-версия</span>
+                            <i class="ph ph-play"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="cta-benefits">
+                        <div class="benefit-item">
+                            <i class="ph ph-check-circle"></i>
+                            <span>Бесплатный тестовый период</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="ph ph-check-circle"></i>
+                            <span>Техническая поддержка 24/7</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="ph ph-check-circle"></i>
+                            <span>Безлимитные API вызовы</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 11: For Investors -->
+        <section class="slide slide-investors" data-slide="10">
+            <div class="slide-content">
+                <h2 class="slide-title">Для инвесторов</h2>
+                
+                <div class="investors-content">
+                    <div class="market-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="ph ph-trending-up"></i>
+                            </div>
+                            <div class="stat-value">$1.8T</div>
+                            <div class="stat-label">Рынок ИИ к 2030</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="ph ph-target"></i>
+                            </div>
+                            <div class="stat-value">B2B</div>
+                            <div class="stat-label">Наша ниша</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="ph ph-crown"></i>
+                            </div>
+                            <div class="stat-value">#1</div>
+                            <div class="stat-label">Единственный true AI-провайдер</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="ph ph-globe"></i>
+                            </div>
+                            <div class="stat-value">∞</div>
+                            <div class="stat-label">Потенциал экспансии</div>
+                        </div>
+                    </div>
+                    
+                    <div class="investment-opportunity">
+                        <h3>Уникальные преимущества</h3>
+                        
+                        <div class="advantages-grid">
+                            <div class="advantage-item">
+                                <div class="advantage-icon">
+                                    <i class="ph ph-shield-check"></i>
+                                </div>
+                                <div class="advantage-content">
+                                    <h4>Защищенная позиция</h4>
+                                    <p>Единственный полноценный AI-провайдер на рынке</p>
+                                </div>
+                            </div>
+                            
+                            <div class="advantage-item">
+                                <div class="advantage-icon">
+                                    <i class="ph ph-network"></i>
+                                </div>
+                                <div class="advantage-content">
+                                    <h4>Сетевой эффект</h4>
+                                    <p>Каждый новый пользователь увеличивает ценность платформы</p>
+                                </div>
+                            </div>
+                            
+                            <div class="advantage-item">
+                                <div class="advantage-icon">
+                                    <i class="ph ph-repeat"></i>
+                                </div>
+                                <div class="advantage-content">
+                                    <h4>Подписная модель</h4>
+                                    <p>Предсказуемые доходы и высокая маржинальность</p>
+                                </div>
+                            </div>
+                            
+                            <div class="advantage-item">
+                                <div class="advantage-icon">
+                                    <i class="ph ph-trend-up"></i>
+                                </div>
+                                <div class="advantage-content">
+                                    <h4>Быстрый рост</h4>
+                                    <p>Минимальные переменные издержки при масштабировании</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="financial-projections">
+                        <h3>Финансовые прогнозы</h3>
+                        
+                        <div class="projections-chart">
+                            <div class="chart-bar" data-year="2025" data-value="2.5">
+                                <div class="bar-label">2025</div>
+                                <div class="bar-value">$2.5M</div>
+                            </div>
+                            <div class="chart-bar" data-year="2026" data-value="8.2">
+                                <div class="bar-label">2026</div>
+                                <div class="bar-value">$8.2M</div>
+                            </div>
+                            <div class="chart-bar" data-year="2027" data-value="25.1">
+                                <div class="bar-label">2027</div>
+                                <div class="bar-value">$25.1M</div>
+                            </div>
+                            <div class="chart-bar" data-year="2028" data-value="67.8">
+                                <div class="bar-label">2028</div>
+                                <div class="bar-value">$67.8M</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 12: Contacts -->
+        <section class="slide slide-contacts" data-slide="11">
+            <div class="slide-content">
+                <h2 class="slide-title">Связаться с нами</h2>
+                
+                <div class="contacts-content">
+                    <div class="contacts-main">
+                        <div class="contact-card">
+                            <div class="contact-header">
+                                <div class="contact-logo">
+                                    <span>АНИМО</span>
+                                    <span class="logo-subtitle">MEDIA</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="ph ph-envelope"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <span class="contact-label">Email</span>
+                                        <span class="contact-value">hello@animo.ai</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="ph ph-telegram-logo"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <span class="contact-label">Telegram</span>
+                                        <span class="contact-value">@animo_ai</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="ph ph-globe"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <span class="contact-label">Веб-сайт</span>
+                                        <span class="contact-value">animo.ai</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="ph ph-phone"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <span class="contact-label">Телефон</span>
+                                        <span class="contact-value">+7 (999) 123-45-67</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <h3>Мы в социальных сетях</h3>
+                        
+                        <div class="social-grid">
+                            <a href="#" class="social-link">
+                                <i class="ph ph-telegram-logo"></i>
+                                <span>Telegram</span>
+                            </a>
+                            
+                            <a href="#" class="social-link">
+                                <i class="ph ph-youtube-logo"></i>
+                                <span>YouTube</span>
+                            </a>
+                            
+                            <a href="#" class="social-link">
+                                <i class="ph ph-linkedin-logo"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            
+                            <a href="#" class="social-link">
+                                <i class="ph ph-github-logo"></i>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-cta">
+                    <h3>Готовы изменить будущее ИИ?</h3>
+                    <button class="neon-button">
+                        <span>Начать прямо сейчас</span>
+                        <i class="ph ph-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

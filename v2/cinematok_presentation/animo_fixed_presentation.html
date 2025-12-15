@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АНИМО - Исправленная презентация</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-bg: #050508;
+            --color-surface: #0F0F16;
+            --color-primary: #2563EB;
+            --color-secondary: #7C3AED;
+            --color-accent: #EC4899;
+            --color-text: #F9FAFB;
+            --color-text-secondary: #9CA3AF;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            overflow-x: hidden;
+        }
+
+        /* Мобильный формат 9:16 */
+        .slide {
+            width: 100vw;
+            height: 177.77vw; /* 9:16 */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            scroll-snap-align: start;
+            position: relative;
+            /* Убираем лишнее пространство */
+            min-height: auto;
+        }
+
+        .slide-content {
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            padding: 0;
+        }
+
+        /* Логотип АНИМО с буквой А */
+        .animo-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #7C3AED 0%, #2563EB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .animo-logo .letter-a {
+            width: 48px;
+            height: 48px;
+            border: 2px solid var(--color-accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-accent);
+            background: rgba(236, 72, 153, 0.1);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .logo-subtitle {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+
+        .slide-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slide-text {
+            font-size: 16px;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .card {
+            background: rgba(15, 15, 22, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--color-primary);
+        }
+
+        .card-list {
+            text-align: left;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .card-list li {
+            margin-bottom: 8px;
+            list-style: none;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .card-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00FF94;
+            font-weight: bold;
+        }
+
+        .problem-list li::before {
+            content: '✗';
+            color: #EF4444;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .feature-item {
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .feature-text {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+        }
+
+        /* Центральный вращающийся логотип */
+        .center-logo {
+            width: 120px;
+            height: 120px;
+            margin: 20px auto;
+            border: 3px solid var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--color-accent);
+            background: rgba(236, 72, 153, 0.1);
+            animation: rotate 4s linear infinite, pulse 2s ease-in-out infinite alternate;
+        }
+
+        .center-logo-text {
+            font-size: 16px;
+            color: var(--color-text-secondary);
+            margin-top: 12px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Сравнение с улучшенными цифрами */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .comparison-item {
+            background: rgba(15, 15, 22, 0.8);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .comparison-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .comparison-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+
+        .neural-networks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin: 16px 0;
+        }
+
+        .network-tag {
+            background: rgba(124, 58, 237, 0.2);
+            color: #7C3AED;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        /* API демо с визуализацией */
+        .api-demo {
+            background: rgba(15, 15, 22, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .api-demo-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .api-visual {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 16px 0;
+        }
+
+        .api-key {
+            background: linear-gradient(135deg, #00FF94, #10B981);
+            color: #000;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 12px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .api-arrow {
+            color: var(--color-primary);
+            font-size: 24px;
+        }
+
+        .api-services {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 16px;
+        }
+
+        .api-service {
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .api-service-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--color-secondary);
+            border-radius: 8px;
+            margin: 0 auto 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+        }
+
+        .nav-dot.active {
+            background: var(--color-accent);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--color-accent), #F97316);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 20px;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(236, 72, 153, 0.3);
+        }
+
+        /* Слайд с картинками для контентзавода */
+        .content-factory {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .factory-item {
+            background: rgba(15, 15, 22, 0.8);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .factory-image {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border-radius: 12px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .factory-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .factory-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .factory-desc {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+        }
+
+        /* Агентство аватаров */
+        .avatar-agency {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .agency-card {
+            background: rgba(15, 15, 22, 0.8);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .agency-card .factory-image {
+            height: 80px;
+            margin-bottom: 12px;
+        }
+
+        .avatar-showcase {
+            display: flex;
+            justify-content: space-around;
+            margin: 16px 0;
+        }
+
+        .avatar-sample {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--color-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .avatar-sample img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .avatar-sample.professional { background: #2563EB; }
+        .avatar-sample.casual { background: #7C3AED; }
+        .avatar-sample.creative { background: #EC4899; }
+
+        .agency-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .stat-small {
+            text-align: center;
+            padding: 8px;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 8px;
+        }
+
+        .stat-number-small {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+
+        .stat-label-small {
+            font-size: 10px;
+            color: var(--color-text-secondary);
+        }
+
+        /* Улучшенный финал */
+        .final-cta {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(37, 99, 235, 0.1));
+            border: 2px solid var(--color-accent);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .final-benefits {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 12px;
+            background: rgba(15, 15, 22, 0.8);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .benefit-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .benefit-text {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+        }
+
+        /* Анимации */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            from { 
+                box-shadow: 0 0 0 rgba(236, 72, 153, 0.4);
+                transform: scale(1);
+            }
+            to { 
+                box-shadow: 0 0 20px rgba(236, 72, 153, 0.6);
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes glow {
+            from { 
+                box-shadow: 0 0 10px rgba(0, 255, 148, 0.5);
+            }
+            to { 
+                box-shadow: 0 0 20px rgba(0, 255, 148, 0.8);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide {
+                padding: 16px;
+            }
+            
+            .animo-logo {
+                font-size: 36px;
+            }
+            
+            .slide-title {
+                font-size: 24px;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- СЛАЙД 1: HERO -->
+    <section class="slide" id="slide1">
+        <div class="slide-content">
+            <div class="animo-logo">
+                <span class="letter-a">А</span>
+                НИМО
+                <div class="logo-subtitle">MEDIA</div>
+            </div>
+            <h1 class="slide-title">AI Infrastructure Provider</h1>
+            <p class="slide-text">Революция в ИИ-инфраструктуре</p>
+            <p class="slide-text" style="font-size: 14px;">Мощная экосистема для работы с ИИ</p>
+        </div>
+    </section>
+
+    <!-- СЛАЙД 2: ПРОБЛЕМА vs РЕШЕНИЕ -->
+    <section class="slide" id="slide2">
+        <div class="slide-content">
+            <h2 class="slide-title">АНИМО vs Агрегаторы</h2>
+            
+            <div class="comparison">
+                <div class="comparison-item">
+                    <div class="comparison-title" style="color: #EF4444;">Агрегаторы</div>
+                    <div class="card-list problem-list">
+                        <li>Один интерфейс</li>
+                        <li>Последовательная обработка</li>
+                        <li>Нет API</li>
+                        <li>Ручная работа</li>
+                        <li>Ограниченная экосистема</li>
+                    </div>
+                </div>
+                
+                <div class="comparison-item">
+                    <div class="comparison-title" style="color: #00FF94;">АНИМО</div>
+                    <div class="card-list">
+                        <li>3 интерфейса</li>
+                        <li>Параллельная обработка</li>
+                        <li>API ко всем</li>
+                        <li>Автоматизация</li>
+                        <li>Полная экосистема</li>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">3x</div>
+                    <div class="stat-label">больше интерфейсов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">задач одновременно</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">возможностей</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЛАЙД 3: ЭКОСИСТЕМА С ЦЕНТРАЛЬНЫМ ЛОГО -->
+    <section class="slide" id="slide3">
+        <div class="slide-content">
+            <h2 class="slide-title">Экосистема АНИМО</h2>
+            
+            <div class="center-logo">А</div>
+            <div class="center-logo-text">AI Provider</div>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🤖</div>
+                    <div class="feature-text">Telegram Бот</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌐</div>
+                    <div class="feature-text">Веб-платформа</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-text">Мобильное</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔌</div>
+                    <div class="feature-text">API Hub</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚙️</div>
+                    <div class="feature-text">Контентзавод</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎭</div>
+                    <div class="feature-text">База аватаров</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЛАЙД 4: МУЛЬТИПОТОЧНОСТЬ -->
+    <section class="slide" id="slide4">
+        <div class="slide-content">
+            <h2 class="slide-title">Мультипоточная обработка</h2>
+            
+            <div class="comparison">
+                <div class="comparison-item">
+                    <div class="comparison-title">Традиционно</div>
+                    <div class="slide-text">Задача 1 → Задача 2 → Задача 3</div>
+                    <div class="comparison-value">15 мин</div>
+                </div>
+                
+                <div class="comparison-item">
+                    <div class="comparison-title">АНИМО</div>
+                    <div class="slide-text">Задача 1 + Задача 2 + Задача 3</div>
+                    <div class="comparison-value" style="color: #00FF94;">5 мин</div>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">67%</div>
+                    <div class="stat-label">быстрее</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">мин экономии</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3x</div>
+                    <div class="stat-label">продуктивность</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЛАЙД 5: НЕЙРОСЕТИ И API -->
+    <section class="slide" id="slide5">
+        <div class="slide-content">
+            <h2 class="slide-title">Нейросети + Настраиваемый API</h2>
+            
+            <div class="neural-networks">
+                <div class="network-tag">ChatGPT</div>
+                <div class="network-tag">Claude</div>
+                <div class="network-tag">Midjourney</div>
+                <div class="network-tag">Нана Банау</div>
+                <div class="network-tag">Сидрим</div>
+                <div class="network-tag">Клинг</div>
+                <div class="network-tag">Runway</div>
+                <div class="network-tag">Suno</div>
+                <div class="network-tag">Flux</div>
+            </div>
+            
+            <div class="api-demo">
+                <div class="api-demo-title">🎯 Настраиваемый Master Key</div>
+                
+                <div class="api-visual">
+                    <div class="api-key">MASTER KEY<br>Настраиваемый</div>
+                    <div class="api-arrow">→</div>
+                    <div class="api-key">Ваши нейросети</div>
+                </div>
+                
+                <div class="slide-text" style="text-align: center; margin-top: 16px;">
+                    Подключайте только те нейросети, которые нужны вашему бизнесу
+                </div>
+                
+                <div class="api-services">
+                    <div class="api-service">
+                        <div class="api-service-icon">🎨</div>
+                        <div>Генерация</div>
+                    </div>
+                    <div class="api-service">
+                        <div class="api-service-icon">💬</div>
+                        <div>Диалоги</div>
+                    </div>
+                    <div class="api-service">
+                        <div class="api-service-icon">🎬</div>
+                        <div>Видео</div>
+                    </div>
+                    <div class="api-service">
+                        <div class="api-service-icon">🎵</div>
+                        <div>Аудио</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЛАЙД 6: КОНТЕНТЗАВОД -->
+    <section class="slide" id="slide6">
+        <div class="slide-content">
+            <h2 class="slide-title">Контентзавод - Автоматизация</h2>
+            
+            <div class="card">
+                <div class="card-title">4 простых шага</div>
+                <div class="card-list">
+                    <li>Повторяете процесс?</li>
+                    <li>Зафиксируйте его</li>
+                    <li>Создайте автоматизацию</li>
+                    <li>Масштабируйте</li>
+                </div>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🎬</div>
+                    <div class="feature-text">Видеопродакшн<br>Экономия: 8ч/видео</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-text">SMM<br>Экономия: 4ч/пост</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎙️</div>
+                    <div class="feature-text">Подкасты<br>Экономия: 12ч/выпуск</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎨</div>
+                    <div class="feature-text">Контент<br>Экономия: 6ч/день</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЛАЙД 7: АВАТАРЫ И ЛОКАЦИИ -->
+    <section class="slide" id="slide7">
+        <div class="slide-content">
+            <h2 class="slide-title">База аватаров и локаций</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">👥</div>
+                    <div class="feature-text">Люди<br>1000+ аватаров</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🐾</div>
+                    <div class="feature-text">Животные<br>500+ аватаров</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🏢</div>
+                    <div class="feature-text">Здания<br>1000+ локаций</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌆</div>
+                    <div class="feature-text">Города<br>1000+ локаций</div>
+                </div>
+            </div>
+            
+            <div class="slide-text" style="margin-top: 20px; color: #00FF94; font-weight: 600;">
+                Бесконечные возможности для создания контента
+            </div>
+        </div>
+    </section>
+
+    <!-- СЛАЙД 8: ROI -->
+    <section class="slide" id="slide8">
+        <div class="slide-content">
+            <h2 class="slide-title">Экономия времени</h2>
+            
+            <div class="card">
+                <div class="card-title">Пример: 10 задач по 15 минут</div>
+                
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-title">Традиционно</div>
+                        <div class="comparison-value">150 мин</div>
+                        <div class="slide-text">2.5 часа в день</div>
+                    </div>
+                    
+                    <div class="comparison-item">
+                        <div class="comparison-title">С АНИМО</div>
+                        <div class="comparison-value" style="color: #00FF94;">50 мин</div>
+                        <div class="slide-text">50 минут в день</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slide-text" style="color: #00FF94; font-weight: 600; margin-top: 20px;">
+                Экономия: 100 минут в день = 8+ часов в неделю!
+            </div>
+        </div>
+    </section>
+
+    <!-- СЛАЙД 9: ROADMAP -->
+    <section class="slide" id="slide9">
+        <div class="slide-content">
+            <h2 class="slide-title">Дорожная карта</h2>
+            
+            <div class="card">
+                <div class="card-title">Развитие АНИМО</div>
+                <div class="card-list">
+                    <li><strong>Сегодня:</strong> Полная экосистема AI-провайдера</li>
+                    <li><strong>Уже сегодня:</strong> Расширение контентзавода</li>
+                    <li><strong>2026:</strong> Агентство аватаров</li>
+                    <li><strong>2026:</strong> Глобальная платформа</li>
+                </div>
+            </div>
+            
+            <div class="slide-text" style="margin-top: 20px;">
+                Будущее AI-инфраструктуры уже здесь
+            </div>
+        </div>
+    </section>
+
+    <!-- СЛАЙД 10: CTA -->
+    <section class="slide" id="slide10">
+        <div class="slide-content">
+            <h2 class="slide-title">Присоединяйтесь к революции</h2>
+            
+            <div class="card">
+                <p class="slide-text">Станьте частью будущего уже сегодня</p>
+                <p class="slide-text">Получите доступ к самой мощной ИИ-инфраструктуре</p>
+            </div>
+            
+            <button class="cta-button">Получить доступ</button>
+            
+            <div class="feature-grid" style="margin-top: 20px;">
+                <div class="feature-item">
+                    <div class="feature-icon">🎁</div>
+                    <div class="feature-text">Бесплатный тест</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🛠️</div>
+                    <div class="feature-text">Поддержка 24/7</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЛАЙД 12: КОНТЕНТЗАВОД -->
+    <section class="slide" id="slide12">
+        <div class="slide-content">
+            <h2 class="slide-title">Контентзавод - Ваш ИИ-помощник</h2>
+            
+            <div class="content-factory">
+                <div class="factory-item">
+                    <div class="factory-image">
+                        <div class="feature-icon">🎬</div>
+                    </div>
+                    <div class="factory-title">Видеопродакшн</div>
+                    <div class="factory-desc">От идеи до готового ролика за 30 минут</div>
+                </div>
+                
+                <div class="factory-item">
+                    <div class="factory-image">
+                        <div class="feature-icon">📱</div>
+                    </div>
+                    <div class="factory-title">SMM</div>
+                    <div class="factory-desc">Автоматическое создание постов и сторис</div>
+                </div>
+                
+                <div class="factory-item">
+                    <div class="factory-image">
+                        <div class="feature-icon">🎙️</div>
+                    </div>
+                    <div class="factory-title">Подкасты</div>
+                    <div class="factory-desc">Полный цикл: от сценария до монтажа</div>
+                </div>
+                
+                <div class="factory-item">
+                    <div class="factory-image">
+                        <div class="feature-icon">🎨</div>
+                    </div>
+                    <div class="factory-title">Контент</div>
+                    <div class="factory-desc">Тексты, изображения, инфографика</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">⚡ Результат</div>
+                <div class="slide-text" style="color: #00FF94; font-weight: 600;">
+                    Экономьте 15+ часов в неделю на рутинных задачах
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЛАЙД 13: АГЕНТСТВО АВАТАРОВ -->
+    <section class="slide" id="slide13">
+        <div class="slide-content">
+            <h2 class="slide-title">Агентство аватаров</h2>
+            
+            <div class="card">
+                <div class="card-title">Виртуальные персонажи для вашего бизнеса</div>
+                
+                <div class="avatar-showcase">
+                    <div class="avatar-sample professional">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 24px;">👔</div>
+                    </div>
+                    <div class="avatar-sample casual">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--color-secondary); display: flex; align-items: center; justify-content: center; font-size: 24px;">😊</div>
+                    </div>
+                    <div class="avatar-sample creative">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--color-accent); display: flex; align-items: center; justify-content: center; font-size: 24px;">🎨</div>
+                    </div>
+                </div>
+                
+                <div class="slide-text" style="text-align: center;">
+                    1000+ готовых персонажей + возможность кастомизации
+                </div>
+            </div>
+            
+            <div class="avatar-agency">
+                <div class="agency-card">
+                    <div class="factory-image">
+                        <div class="feature-icon">💼</div>
+                    </div>
+                    <div class="factory-title">Бизнес</div>
+                    <div class="factory-desc">Презентации, обучение, вебинары</div>
+                </div>
+                
+                <div class="agency-card">
+                    <div class="factory-image">
+                        <div class="feature-icon">🎮</div>
+                    </div>
+                    <div class="factory-title">Игры</div>
+                    <div class="factory-desc">NPC, персонажи, анимация</div>
+                </div>
+                
+                <div class="agency-card">
+                    <div class="factory-image">
+                        <img src="imgs/virtual_influencer_0.jpg" alt="Advertising" style="width: 100%; height: 80px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="factory-title">Реклама</div>
+                    <div class="factory-desc">Инфлюенсеры, бренд-амбассадоры</div>
+                </div>
+                
+                <div class="agency-card">
+                    <div class="factory-image">
+                        <img src="imgs/business_avatar_9.jpg" alt="Corporate" style="width: 100%; height: 80px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="factory-title">Корпоративы</div>
+                    <div class="factory-desc">HR, обучение, внутренние процессы</div>
+                </div>
+            </div>
+            
+            <div class="agency-stats">
+                <div class="stat-small">
+                    <div class="stat-number-small">1000+</div>
+                    <div class="stat-label-small">Аватаров</div>
+                </div>
+                <div class="stat-small">
+                    <div class="stat-number-small">50+</div>
+                    <div class="stat-label-small">Сценариев</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЛАЙД 14: ФИНАЛ -->
+    <section class="slide" id="slide14">
+        <div class="slide-content">
+            <div class="animo-logo">
+                <span class="letter-a">А</span>
+                НИМО
+                <div class="logo-subtitle">MEDIA</div>
+            </div>
+            
+            <div class="final-cta">
+                <h2 class="slide-title">Готовы к революции в ИИ?</h2>
+                <p class="slide-text">Получите доступ к самой мощной экосистеме</p>
+                
+                <div class="final-benefits">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🚀</div>
+                        <div class="benefit-text">Мгновенный старт</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💎</div>
+                        <div class="benefit-text">Премиум функции</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🎯</div>
+                        <div class="benefit-text">Точные результаты</div>
+                    </div>
+                </div>
+                
+                <button class="cta-button" style="font-size: 18px; padding: 20px 40px;">
+                    Начать сейчас
+                </button>
+            </div>
+            
+            <div class="card" style="margin-top: 16px;">
+                <div class="card-title">Связаться с нами</div>
+                <p class="slide-text">hello@animo.ai • @animo_ai • animo.ai</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Навигация -->
+    <div class="navigation">
+        <div class="nav-dot active" onclick="scrollToSlide(1)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(2)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(3)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(4)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(5)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(6)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(7)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(8)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(9)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(10)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(11)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(12)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(13)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(14)"></div>
+    </div>
+
+    <script>
+        // Навигация между слайдами
+        function scrollToSlide(slideNum) {
+            const slide = document.getElementById('slide' + slideNum);
+            slide.scrollIntoView({ behavior: 'smooth' });
+            
+            // Обновляем навигацию
+            document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === slideNum - 1);
+            });
+        }
+
+        // Свайп навигация
+        let startY = 0;
+        let currentSlide = 1;
+
+        document.addEventListener('touchstart', e => {
+            startY = e.touches[0].clientY;
+        });
+
+        document.addEventListener('touchend', e => {
+            const endY = e.changedTouches[0].clientY;
+            const diff = startY - endY;
+
+            if (Math.abs(diff) > 50) {
+                if (diff > 0 && currentSlide < 11) {
+                    currentSlide++;
+                } else if (diff < 0 && currentSlide > 1) {
+                    currentSlide--;
+                }
+                scrollToSlide(currentSlide);
+            }
+        });
+
+        // Автообновление навигации
+        const slides = document.querySelectorAll('.slide');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const slideId = entry.target.id;
+                    const slideNum = parseInt(slideId.replace('slide', ''));
+                    currentSlide = slideNum;
+                    
+                    document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+                        dot.classList.toggle('active', index === slideNum - 1);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        slides.forEach(slide => observer.observe(slide));
+    </script>
+</body>
+</html>

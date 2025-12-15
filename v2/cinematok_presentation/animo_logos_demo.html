@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АНИМО - Варианты логотипов</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #2563EB;
+            --color-secondary: #7C3AED;
+            --color-accent: #EC4899;
+            --color-highlight: #00FF94;
+            --color-text: #F9FAFB;
+            --color-text-secondary: #9CA3AF;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: linear-gradient(135deg, #050508 0%, #0F0F16 100%);
+            color: var(--color-text);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: var(--color-text-secondary);
+        }
+
+        .logos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .logo-card {
+            background: rgba(15, 15, 22, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+        }
+
+        .logo-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-primary);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+        }
+
+        .logo-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--color-text);
+        }
+
+        .logo-demo {
+            background: #000;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 20px;
+            position: relative;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Вариант 1: Техно-стиль с play-элементом */
+        .logo-variant1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #2563EB 0%, #7C3AED 50%, #EC4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+
+        .logo-variant1::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #EC4899, #F97316);
+            clip-path: polygon(0% 0%, 75% 50%, 0% 100%);
+            filter: drop-shadow(0 0 10px rgba(236, 72, 153, 0.8));
+        }
+
+        /* Вариант 2: Анимационные символы */
+        .logo-variant2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #7C3AED 0%, #2563EB 50%, #EC4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(124, 58, 237, 0.6);
+            position: relative;
+            animation: pulse 2s ease-in-out infinite alternate;
+        }
+
+        .logo-variant2 .letter-A {
+            position: relative;
+            display: inline-block;
+        }
+
+        .logo-variant2 .letter-A::before {
+            content: '◈';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            color: #00FF94;
+            animation: spin 3s linear infinite;
+        }
+
+        .logo-variant2 .letter-M {
+            position: relative;
+            display: inline-block;
+        }
+
+        .logo-variant2 .letter-M::after {
+            content: '▶';
+            position: absolute;
+            top: 0;
+            right: -12px;
+            font-size: 12px;
+            color: #F59E0B;
+            animation: bounce 1.5s ease-in-out infinite;
+        }
+
+        /* Вариант 3: Минималистичный */
+        .logo-variant3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 40px;
+            font-weight: 600;
+            color: #F9FAFB;
+            letter-spacing: -0.03em;
+            position: relative;
+            text-align: center;
+        }
+
+        .logo-variant3 .text-gradient {
+            background: linear-gradient(135deg, #2563EB 0%, #EC4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-variant3 .subtitle {
+            font-size: 12px;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            color: #9CA3AF;
+            margin-top: 8px;
+            text-transform: uppercase;
+        }
+
+        .logo-variant3::after {
+            content: '●◐◆■';
+            position: absolute;
+            top: 50%;
+            right: -40px;
+            transform: translateY(-50%);
+            font-size: 10px;
+            color: #00FF94;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .logo-description {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .logo-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .feature-tag {
+            background: rgba(37, 99, 235, 0.2);
+            color: var(--color-primary);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .features-section {
+            background: rgba(15, 15, 22, 0.5);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .features-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-align: center;
+            color: var(--color-text);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+        }
+
+        .feature-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .feature-text {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .color-palette {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .color-palette h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--color-text);
+        }
+
+        .colors-row {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .color-item {
+            text-align: center;
+        }
+
+        .color-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 0 auto 8px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .color-primary { background: #2563EB; }
+        .color-secondary { background: #7C3AED; }
+        .color-accent { background: #EC4899; }
+        .color-highlight { background: #00FF94; }
+
+        .color-name {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            font-weight: 500;
+        }
+
+        /* Анимации */
+        @keyframes pulse {
+            from {
+                text-shadow: 0 0 40px rgba(124, 58, 237, 0.6);
+            }
+            to {
+                text-shadow: 0 0 60px rgba(124, 58, 237, 0.9);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: translateX(-50%) rotate(0deg);
+            }
+            to {
+                transform: translateX(-50%) rotate(360deg);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                opacity: 0.5;
+                text-shadow: 0 0 10px rgba(0, 255, 148, 0.5);
+            }
+            to {
+                opacity: 1;
+                text-shadow: 0 0 20px rgba(0, 255, 148, 0.8);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .logos-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .logo-card {
+                padding: 24px;
+            }
+
+            .logo-variant1 {
+                font-size: 32px;
+            }
+
+            .logo-variant2 {
+                font-size: 28px;
+            }
+
+            .logo-variant3 {
+                font-size: 24px;
+            }
+
+            .logo-variant3::after {
+                display: none;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>АНИМО - Варианты логотипов</h1>
+            <p>Современные концепции в стиле киберпанк для компании АНИМО</p>
+        </header>
+
+        <div class="logos-grid">
+            <!-- Вариант 1 -->
+            <div class="logo-card">
+                <h3 class="logo-title">Вариант 1: Техно-стиль</h3>
+                <div class="logo-demo">
+                    <div class="logo-variant1">АНИМО</div>
+                </div>
+                <p class="logo-description">
+                    Геометрический дизайн с встроенным play-символом. 
+                    Идеально подходит для видео-контента и медиа-платформ.
+                </p>
+                <div class="logo-features">
+                    <span class="feature-tag">Play-символ</span>
+                    <span class="feature-tag">Неон-эффект</span>
+                    <span class="feature-tag">Градиент</span>
+                </div>
+            </div>
+
+            <!-- Вариант 2 -->
+            <div class="logo-card">
+                <h3 class="logo-title">Вариант 2: Анимационный</h3>
+                <div class="logo-demo">
+                    <div class="logo-variant2">
+                        <span class="letter-A">А</span>НИ<span class="letter-M">М</span>О
+                    </div>
+                </div>
+                <p class="logo-description">
+                    Динамичный дизайн с анимационными символами. 
+                    Символизирует движение и творчество.
+                </p>
+                <div class="logo-features">
+                    <span class="feature-tag">Анимация</span>
+                    <span class="feature-tag">Символы</span>
+                    <span class="feature-tag">Пульсация</span>
+                </div>
+            </div>
+
+            <!-- Вариант 3 -->
+            <div class="logo-card">
+                <h3 class="logo-title">Вариант 3: Минималистичный</h3>
+                <div class="logo-demo">
+                    <div class="logo-variant3">
+                        <div class="text-gradient">АНИМО</div>
+                        <div class="subtitle">MEDIA</div>
+                    </div>
+                </div>
+                <p class="logo-description">
+                    Читаемый и универсальный дизайн. 
+                    Подходит для всех видов применения.
+                </p>
+                <div class="logo-features">
+                    <span class="feature-tag">Читаемость</span>
+                    <span class="feature-tag">Универсальность</span>
+                    <span class="feature-tag">Классика</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-section">
+            <h2>Особенности дизайна</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🎨</div>
+                    <div class="feature-text">Современная типографика Space Grotesk</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌈</div>
+                    <div class="feature-text">Градиенты в стиле киберпанк</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✨</div>
+                    <div class="feature-text">Неоновые эффекты и свечение</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-text">Адаптивный дизайн для всех устройств</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎬</div>
+                    <div class="feature-text">Подходит для медиа и анимации</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-text">Высокая производительность и читаемость</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="color-palette">
+            <h3>Цветовая палитра</h3>
+            <div class="colors-row">
+                <div class="color-item">
+                    <div class="color-circle color-primary"></div>
+                    <div class="color-name">Primary<br>#2563EB</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-circle color-secondary"></div>
+                    <div class="color-name">Secondary<br>#7C3AED</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-circle color-accent"></div>
+                    <div class="color-name">Accent<br>#EC4899</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-circle color-highlight"></div>
+                    <div class="color-name">Highlight<br>#00FF94</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Добавим интерактивность
+        document.querySelectorAll('.logo-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Плавная анимация появления
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.logo-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease-out';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
