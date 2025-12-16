@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animо - Присутствие, которое остаётся</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Literata:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        :root {
+            /* Animо Brand Colors - сиренево-розовый градиент как в логотипе */
+            --brand-purple: #581c87;
+            --brand-pink: #e91e63;
+            --brand-light-purple: #7c3aed;
+            --brand-light-pink: #ec4899;
+            --brand-dark: #1a1a1a;
+            
+            /* Дополнительные цвета для кодирования участников */
+            --suppliers-color: #059669; /* Зеленый для создателей */
+            --producers-color: #7c3aed; /* Фиолетовый для производителей */
+            --users-color: #e91e63; /* Розовый для пользователей */
+            
+            /* Общие цвета */
+            --bg-gradient: linear-gradient(135deg, var(--brand-dark) 0%, #2d1b69 50%, var(--brand-purple) 100%);
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --bg-card-dark: rgba(255, 255, 255, 0.1);
+            --text-white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-gray: #6b7280;
+            --text-light: #9ca3af;
+            
+            /* Typography */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Montserrat', sans-serif;
+            --font-quote: 'Literata', serif;
+            
+            /* Spacing */
+            --xs: 8px;
+            --sm: 16px;
+            --md: 24px;
+            --lg: 32px;
+            --xl: 48px;
+            --xxl: 64px;
+            --section: 80px;
+            
+            /* Border Radius */
+            --radius-card: 20px;
+            --radius-button: 50px;
+            --radius-small: 12px;
+            
+            /* Shadows */
+            --shadow-soft: 0 4px 20px rgba(124, 58, 237, 0.1);
+            --shadow-medium: 0 8px 32px rgba(124, 58, 237, 0.15);
+            --shadow-strong: 0 16px 48px rgba(124, 58, 237, 0.25);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-gradient);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0 var(--md);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--bg-gradient);
+            color: var(--text-white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: var(--section) var(--md);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 12s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-30px) rotate(2deg); }
+            50% { transform: translateY(-15px) rotate(-2deg); }
+            75% { transform: translateY(-25px) rotate(1deg); }
+        }
+        
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: var(--md);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            animation: slideUp 1s ease-out;
+        }
+        
+        .hero-tagline {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: var(--xl);
+            opacity: 0.95;
+            animation: slideUp 1s ease-out 0.3s both;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.125rem;
+            margin-bottom: var(--xl);
+            opacity: 0.9;
+            animation: slideUp 1s ease-out 0.6s both;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--xl);
+            margin-top: var(--xl);
+            animation: slideUp 1s ease-out 0.9s both;
+        }
+        
+        .hero-stat {
+            text-align: center;
+        }
+        
+        .hero-stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: var(--xs);
+            color: var(--brand-light-pink);
+        }
+        
+        .hero-stat-text {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: var(--section) 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.25rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: var(--lg);
+            line-height: 1.2;
+            color: var(--text-white);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: var(--xl);
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+        
+        /* Problem Section */
+        .problem-section {
+            background: var(--bg-card-dark);
+            border-radius: var(--radius-card);
+            backdrop-filter: blur(10px);
+        }
+        
+        .problem-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: var(--xl);
+            margin-bottom: var(--lg);
+            box-shadow: var(--shadow-soft);
+            border-left: 6px solid var(--brand-pink);
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .problem-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--brand-pink);
+            margin-bottom: var(--sm);
+            display: flex;
+            align-items: center;
+            gap: var(--sm);
+        }
+        
+        .problem-text {
+            color: var(--text-dark);
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+        
+        /* Three Paths Navigation */
+        .paths-nav {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: var(--xl);
+            margin-bottom: var(--xl);
+            box-shadow: var(--shadow-medium);
+            text-align: center;
+            color: var(--text-dark);
+        }
+        
+        .paths-title {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--brand-purple);
+            margin-bottom: var(--md);
+        }
+        
+        .paths-subtitle {
+            color: var(--text-gray);
+            font-size: 1.125rem;
+            margin-bottom: var(--xl);
+        }
+        
+        .path-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: var(--md);
+        }
+        
+        .path-button {
+            padding: var(--md) var(--lg);
+            border: none;
+            border-radius: var(--radius-button);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+        }
+        
+        .path-button.suppliers {
+            background: linear-gradient(135deg, var(--suppliers-color) 0%, #10b981 100%);
+        }
+        
+        .path-button.producers {
+            background: linear-gradient(135deg, var(--producers-color) 0%, #8b5cf6 100%);
+        }
+        
+        .path-button.users {
+            background: linear-gradient(135deg, var(--users-color) 0%, #f472b6 100%);
+        }
+        
+        .path-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-strong);
+        }
+        
+        /* Individual Path Sections */
+        .path-section {
+            margin-bottom: var(--xl);
+        }
+        
+        .path-header {
+            color: white;
+            padding: var(--lg);
+            border-radius: var(--radius-card);
+            margin-bottom: var(--lg);
+            text-align: center;
+        }
+        
+        .path-header.suppliers {
+            background: linear-gradient(135deg, var(--suppliers-color) 0%, #10b981 100%);
+        }
+        
+        .path-header.producers {
+            background: linear-gradient(135deg, var(--producers-color) 0%, #8b5cf6 100%);
+        }
+        
+        .path-header.users {
+            background: linear-gradient(135deg, var(--users-color) 0%, #f472b6 100%);
+        }
+        
+        .path-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: var(--sm);
+        }
+        
+        .path-description {
+            font-size: 1.125rem;
+            opacity: 0.9;
+        }
+        
+        /* Benefits Cards */
+        .benefits-grid {
+            display: grid;
+            gap: var(--md);
+            margin-bottom: var(--xl);
+        }
+        
+        .benefit-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: var(--lg);
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            color: var(--text-dark);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .benefit-card.suppliers:hover {
+            border-color: var(--suppliers-color);
+        }
+        
+        .benefit-card.producers:hover {
+            border-color: var(--producers-color);
+        }
+        
+        .benefit-card.users:hover {
+            border-color: var(--users-color);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--md);
+            display: block;
+        }
+        
+        .benefit-card.suppliers .benefit-icon {
+            color: var(--suppliers-color);
+        }
+        
+        .benefit-card.producers .benefit-icon {
+            color: var(--producers-color);
+        }
+        
+        .benefit-card.users .benefit-icon {
+            color: var(--users-color);
+        }
+        
+        .benefit-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--sm);
+            color: var(--text-dark);
+        }
+        
+        .benefit-description {
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* How It Works Section */
+        .how-it-works {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: var(--xl);
+            margin: var(--xl) 0;
+            box-shadow: var(--shadow-medium);
+            color: var(--text-dark);
+        }
+        
+        .how-title {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: var(--lg);
+            color: var(--brand-purple);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: var(--xxl);
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: var(--lg);
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #e5e7eb;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: var(--lg);
+            top: 0;
+            width: 4px;
+            background: linear-gradient(135deg, var(--brand-purple) 0%, var(--brand-pink) 100%);
+            height: 0;
+            transition: height 1.5s ease;
+        }
+        
+        .timeline-step {
+            position: relative;
+            margin-bottom: var(--xl);
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s ease;
+        }
+        
+        .timeline-step.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: calc(-1 * var(--lg) - 28px);
+            top: var(--sm);
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--brand-purple) 0%, var(--brand-pink) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: white;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content {
+            background: var(--bg-white);
+            padding: var(--lg);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-soft);
+            border-left: 4px solid var(--brand-pink);
+        }
+        
+        .timeline-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: var(--sm);
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
+        
+        .timeline-description {
+            color: var(--text-gray);
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+        
+        /* Statistics */
+        .stats-showcase {
+            background: var(--bg-card);
+            color: var(--text-dark);
+            border-radius: var(--radius-card);
+            padding: var(--xl);
+            margin: var(--xl) 0;
+            text-align: center;
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .stats-title {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: var(--lg);
+            color: var(--brand-purple);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--lg);
+        }
+        
+        .stat-card {
+            background: var(--bg-card-dark);
+            border-radius: var(--radius-card);
+            padding: var(--lg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--brand-pink);
+            display: block;
+            margin-bottom: var(--sm);
+        }
+        
+        .stat-description {
+            color: var(--text-light);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        /* Examples Section */
+        .examples-section {
+            background: var(--bg-card-dark);
+            border-radius: var(--radius-card);
+            padding: var(--xl);
+            margin: var(--xl) 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .examples-title {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: var(--lg);
+            color: var(--text-white);
+        }
+        
+        .example-item {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: var(--lg);
+            margin-bottom: var(--md);
+            box-shadow: var(--shadow-soft);
+            border-left: 4px solid var(--brand-pink);
+            color: var(--text-dark);
+        }
+        
+        .example-title {
+            font-family: var(--font-heading);
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: var(--sm);
+            color: var(--text-dark);
+        }
+        
+        .example-description {
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* Avatar Types */
+        .avatar-types {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: var(--xl);
+            margin: var(--xl) 0;
+            box-shadow: var(--shadow-medium);
+            color: var(--text-dark);
+        }
+        
+        .avatar-types-title {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: var(--lg);
+            color: var(--brand-purple);
+        }
+        
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--md);
+        }
+        
+        .type-item {
+            text-align: center;
+            padding: var(--lg);
+            background: var(--bg-light);
+            border-radius: var(--radius-card);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .type-item:hover {
+            transform: translateY(-4px);
+            background: var(--brand-purple);
+            color: white;
+            border-color: var(--brand-pink);
+        }
+        
+        .type-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--sm);
+            display: block;
+            color: var(--brand-purple);
+            transition: color 0.3s ease;
+        }
+        
+        .type-item:hover .type-icon {
+            color: white;
+        }
+        
+        .type-title {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: color 0.3s ease;
+        }
+        
+        .type-item:hover .type-title {
+            color: white;
+        }
+        
+        .type-description {
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            margin-top: var(--xs);
+            transition: color 0.3s ease;
+        }
+        
+        .type-item:hover .type-description {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Unified Vision */
+        .unified-vision {
+            background: var(--bg-card);
+            color: var(--text-dark);
+            padding: var(--section) var(--lg);
+            border-radius: var(--radius-card);
+            margin: var(--xl) 0;
+            text-align: center;
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .vision-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: var(--lg);
+            line-height: 1.2;
+            color: var(--brand-purple);
+        }
+        
+        .vision-text {
+            font-size: 1.25rem;
+            margin-bottom: var(--xl);
+            opacity: 0.95;
+            line-height: 1.7;
+            color: var(--text-dark);
+        }
+        
+        .vision-quote {
+            font-family: var(--font-quote);
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: var(--xl);
+            padding: var(--lg);
+            background: var(--bg-light);
+            border-radius: var(--radius-card);
+            border-left: 4px solid var(--brand-purple);
+            color: var(--text-dark);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--bg-card);
+            color: var(--text-dark);
+            padding: var(--xl);
+            border-radius: var(--radius-card);
+            text-align: center;
+            margin: var(--xl) 0;
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .cta-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: var(--md);
+            color: var(--brand-purple);
+        }
+        
+        .cta-text {
+            font-size: 1.25rem;
+            margin-bottom: var(--xl);
+            line-height: 1.7;
+            color: var(--text-dark);
+        }
+        
+        .cta-emphasis {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--brand-pink);
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        /* Responsive */
+        @media (max-width: 767px) {
+            .container {
+                padding: 0 var(--sm);
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: var(--md);
+            }
+            
+            .types-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline {
+                padding-left: var(--xl);
+            }
+            
+            .timeline-marker {
+                left: calc(-1 * var(--sm) - 28px);
+                width: 48px;
+                height: 48px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-title">Animо</h1>
+        <p class="hero-tagline">Присутствие, которое остаётся</p>
+        <p class="hero-subtitle">Рынок невидимого труда — где мудрость, опыт и харизма становятся товаром</p>
+        
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span class="hero-stat-number">13М</span>
+                <span class="hero-stat-text">людей 65+ в РФ</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-number">92%</span>
+                <span class="hero-stat-text">хотят оставить наследие</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-number">70%</span>
+                <span class="hero-stat-text">EdTech ищут живые голоса</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Problem Section -->
+        <section class="section problem-section" id="problem">
+            <h2 class="section-title">Что мы теряем каждый день?</h2>
+            
+            <div class="problem-card fade-in">
+                <h3 class="problem-title">
+                    <i class="ph ph-clock"></i>
+                    Знания исчезают
+                </h3>
+                <p class="problem-text">
+                    Ветераны завода ВАЗ уходят на пенсию — их опыт сборки "Жигулей" никто не записал. 
+                    Мастера ремёсел умирают — искусство умирает с ними.
+                </p>
+            </div>
+            
+            <div class="problem-card fade-in">
+                <h3 class="problem-title">
+                    <i class="ph ph-video-camera"></i>
+                    Контент становится безликим
+                </h3>
+                <p class="problem-text">
+                    Студии платят за "лицо" актёра, но теряют контроль при отмене съёмок. 
+                    Голоса в обучении — роботизированные и скучные.
+                </p>
+            </div>
+            
+            <div class="problem-card fade-in">
+                <h3 class="problem-title">
+                    <i class="ph ph-user-minus"></i>
+                    Лица забываются
+                </h3>
+                <p class="problem-text">
+                    Дети хотят учиться у "настоящих" бабушек и дедушек, а не у безликих персонажей. 
+                    Связь поколений рвётся.
+                </p>
+            </div>
+        </section>
+
+        <!-- Three Paths Navigation -->
+        <section class="section" id="paths">
+            <div class="paths-nav fade-in">
+                <h2 class="paths-title">Три пути к решению</h2>
+                <p class="paths-subtitle">Каждая сторона получает то, что ей нужно</p>
+                
+                <div class="path-buttons">
+                    <button class="path-button suppliers" onclick="scrollToSection('suppliers')">
+                        <i class="ph ph-user-plus"></i>
+                        Создатели аватаров
+                    </button>
+                    <button class="path-button producers" onclick="scrollToSection('producers')">
+                        <i class="ph ph-video-camera"></i>
+                        Производители контента
+                    </button>
+                    <button class="path-button users" onclick="scrollToSection('users')">
+                        <i class="ph ph-users"></i>
+                        Пользователи
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Path 1: Suppliers -->
+        <section class="section path-section" id="suppliers">
+            <div class="path-header suppliers fade-in">
+                <h2 class="path-title">Создатели аватаров</h2>
+                <p class="path-description">Превратите свой опыт в постоянный доход и наследие</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card suppliers fade-in">
+                    <i class="ph ph-currency-dollar benefit-icon"></i>
+                    <h3 class="benefit-title">Дополнительный доход</h3>
+                    <p class="benefit-description">
+                        Ваш цифровой "вы" работает днём, ночью, в отпуске. 
+                        Получаете 93% от каждой аренды аватара.
+                    </p>
+                </div>
+                
+                <div class="benefit-card suppliers fade-in">
+                    <i class="ph ph-inheritance benefit-icon"></i>
+                    <h3 class="benefit-title">Наследие навсегда</h3>
+                    <p class="benefit-description">
+                        Ваши знания, голос и манера говорить остаются в цифровом виде 
+                        и приносят пользу будущим поколениям.
+                    </p>
+                </div>
+                
+                <div class="benefit-card suppliers fade-in">
+                    <i class="ph ph-control benefit-icon"></i>
+                    <h3 class="benefit-title">Полный контроль</h3>
+                    <p class="benefit-description">
+                        Выбираете: кто, где, как и сколько платит. 
+                        Никакого использования без вашего разрешения.
+                    </p>
+                </div>
+                
+                <div class="benefit-card suppliers fade-in">
+                    <i class="ph ph-heart benefit-icon"></i>
+                    <h3 class="benefit-title">Помощь семье</h3>
+                    <p class="benefit-description">
+                        Роялти продолжают поступать семье даже после вашего ухода. 
+                        Цифровое завещание — реальность.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="examples-section fade-in">
+                <h3 class="examples-title">Кто может создать аватар</h3>
+                
+                <div class="example-item">
+                    <h4 class="example-title">Ветераны с опытом</h4>
+                    <p class="example-description">
+                        "Я 40 лет собирал 'Жигули'. Мой аватар расскажет об этом в VR-экскурсиях музея АвтоВАЗ."
+                    </p>
+                </div>
+                
+                <div class="example-item">
+                    <h4 class="example-title">Учителя и мастера</h4>
+                    <p class="example-description">
+                        "Преподавала этикет 30 лет. Теперь мои знания живут в онлайн-курсах для детей."
+                    </p>
+                </div>
+                
+                <div class="example-item">
+                    <h4 class="example-title">Актёры и блогеры</h4>
+                    <p class="example-description">
+                        "Мой аватар играет второстепенные роли в мультсериалах, пока я занимаюсь другими проектами."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Path 2: Producers -->
+        <section class="section path-section" id="producers">
+            <div class="path-header producers fade-in">
+                <h2 class="path-title">Производители контента</h2>
+                <p class="path-description">Доступ к живым голосам без рисков и ограничений</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card producers fade-in">
+                    <i class="ph ph-check-circle benefit-icon"></i>
+                    <h3 class="benefit-title">Этичная альтернатива</h3>
+                    <p class="benefit-description">
+                        Живые голоса вместо безликих дикторов. 
+                        Этичная замена deepfake с юридической прозрачностью.
+                    </p>
+                </div>
+                
+                <div class="benefit-card producers fade-in">
+                    <i class="ph ph-clock benefit-icon"></i>
+                    <h3 class="benefit-title">Доступность 24/7</h3>
+                    <p class="benefit-description">
+                        Аватар работает в любое время, не болеет, не устаёт. 
+                        Съёмки по расписанию, а не по настроению.
+                    </p>
+                </div>
+                
+                <div class="benefit-card producers fade-in">
+                    <i class="ph ph-currency-dollar benefit-icon"></i>
+                    <h3 class="benefit-title">Экономия бюджета</h3>
+                    <p class="benefit-description">
+                        Аренда дешевле кастинга и пересъёмок. 
+                        Один аватар — множество ролей и проектов.
+                    </p>
+                </div>
+                
+                <div class="benefit-card producers fade-in">
+                    <i class="ph ph-code benefit-icon"></i>
+                    <h3 class="benefit-title">Экосистема для интеграции</h3>
+                    <p class="benefit-description">
+                        Готовые решения для анимации и озвучки. 
+                        Экосистема для интеграции сложных решений.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="examples-section fade-in">
+                <h3 class="examples-title">Примеры использования</h3>
+                
+                <div class="example-item">
+                    <h4 class="example-title">Мультсериал "Ксюша"</h4>
+                    <p class="example-description">
+                        Создатель ищет пожилого актёра для роли дедушки-наставника. 
+                        Арендует аватар ветерана на 10 эпизодов.
+                    </p>
+                </div>
+                
+                <div class="example-item">
+                    <h4 class="example-title">VR-экскурсии по музею</h4>
+                    <p class="example-description">
+                        Музей берёт в аренду аватар ветерана АвтоВАЗ. 
+                        В VR-очках он рассказывает, как собирали "Жигули".
+                    </p>
+                </div>
+                
+                <div class="example-item">
+                    <h4 class="example-title">EdTech-платформа</h4>
+                    <p class="example-description">
+                        50+ аватаров учителей, мастеров, экспертов. 
+                        Интерактивные курсы по истории, этикету, ремёслам.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Path 3: Users -->
+        <section class="section path-section" id="users">
+            <div class="path-header users fade-in">
+                <h2 class="path-title">Пользователи</h2>
+                <p class="path-description">Обучение и развлечение с настоящими голосами</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card users fade-in">
+                    <i class="ph ph-user benefit-icon"></i>
+                    <h3 class="benefit-title">Живое обучение</h3>
+                    <p class="benefit-description">
+                        Учитесь у настоящих мастеров, а не у безликих персонажей. 
+                        Голоса с опытом, мудростью и характером.
+                    </p>
+                </div>
+                
+                <div class="benefit-card users fade-in">
+                    <i class="ph ph-heart-straight benefit-icon"></i>
+                    <h3 class="benefit-title">Эмоциональная связь</h3>
+                    <p class="benefit-description">
+                        Дети слушают "бабушку", которая рассказывает сказки. 
+                        Связь поколений через цифровое присутствие.
+                    </p>
+                </div>
+                
+                <div class="benefit-card users fade-in">
+                    <i class="ph ph-graduation-cap benefit-icon"></i>
+                    <h3 class="benefit-title">Качественный контент</h3>
+                    <p class="benefit-description">
+                        Экспертные знания из первых рук. 
+                        История от очевидцев, рецепты от бабушек, опыт от профессионалов.
+                    </p>
+                </div>
+                
+                <div class="benefit-card users fade-in">
+                    <i class="ph ph-shield-check benefit-icon"></i>
+                    <h3 class="benefit-title">Безопасность</h3>
+                    <p class="benefit-description">
+                        Всё легально и этично. Никаких deepfake, 
+                        только настоящие люди с их разрешения.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="examples-section fade-in">
+                <h3 class="examples-title">Что получают пользователи</h3>
+                
+                <div class="example-item">
+                    <h4 class="example-title">VR-курсы истории</h4>
+                    <p class="example-description">
+                        "Учусь истории у ветерана войны, который рассказывает 
+                        о событиях своими словами, как очевидец."
+                    </p>
+                </div>
+                
+                <div class="example-item">
+                    <h4 class="example-title">Семейные истории</h4>
+                    <p class="example-description">
+                        "Мой дедушка записал 100 историй из детства. 
+                        Теперь мои дети слушают его голос всю жизнь."
+                    </p>
+                </div>
+                
+                <div class="example-item">
+                    <h4 class="example-title">Музейные экскурсии</h4>
+                    <p class="example-description">
+                        "Экскурсовод — это реальный мастер, который работал 
+                        на заводе 40 лет. Он рассказывает с душой."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="section" id="how-it-works">
+            <div class="how-it-works fade-in">
+                <h2 class="how-title">Как это работает</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="timeline-step fade-in">
+                        <div class="timeline-marker">1</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Создание цифрового двойника</h3>
+                            <p class="timeline-description">3D-копия внешности, голос, жесты, манера говорить. Для знаменитостей и обычных людей.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-step fade-in">
+                        <div class="timeline-marker">2</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Выставление на биржу</h3>
+                            <p class="timeline-description">Как резюме. Указываете навыки: «уроки этикета», «рассказы о ВАЗе», «математика детям».</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-step fade-in">
+                        <div class="timeline-marker">3</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Аренда аватара</h3>
+                            <p class="timeline-description">Студии, школы, музеи «нанимают» аватар. Мультсериалы, VR-экскурсии, образование.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-step fade-in">
+                        <div class="timeline-marker">4</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Доход параллельно</h3>
+                            <p class="timeline-description">Ваш цифровой «вы» работает днём, ночью, в отпуске. Как фриланс без ограничений.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Avatar Types -->
+        <section class="section" id="avatar-types">
+            <div class="avatar-types fade-in">
+                <h2 class="avatar-types-title">Типы аватаров</h2>
+                <p class="section-subtitle">Не только люди — но и животные, и места</p>
+                
+                <div class="types-grid">
+                    <div class="type-item">
+                        <i class="ph ph-user type-icon"></i>
+                        <h3 class="type-title">Люди</h3>
+                        <p class="type-description">Актёры, учителя, ветераны</p>
+                    </div>
+                    <div class="type-item">
+                        <i class="ph ph-paw-print type-icon"></i>
+                        <h3 class="type-title">Животные</h3>
+                        <p class="type-description">Знаменитые питомцы, герои мультфильмов</p>
+                    </div>
+                    <div class="type-item">
+                        <i class="ph ph-tree type-icon"></i>
+                        <h3 class="type-title">Локации</h3>
+                        <p class="type-description">Города, скверы, парки, помещения</p>
+                    </div>
+                    <div class="type-item">
+                        <i class="ph ph-buildings type-icon"></i>
+                        <h3 class="type-title">Здания</h3>
+                        <p class="type-description">Конкретные исторические места</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics -->
+        <section class="section" id="stats">
+            <div class="stats-showcase fade-in">
+                <h2 class="stats-title">Рынок с человеческим лицом</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number counter" data-target="13">0</span>
+                        <div class="stat-description">млн человек в РФ — старше 65</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number counter" data-target="92">0</span>
+                        <div class="stat-description">% из них хотели бы «оставить что-то после себя» (ВЦИОМ)</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number counter" data-target="70">0</span>
+                        <div class="stat-description">% EdTech-стартапов ищут «человечные» голоса для контента</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Unified Vision -->
+        <section class="section" id="vision">
+            <div class="unified-vision fade-in">
+                <h2 class="vision-title">Единая миссия Animо</h2>
+                <p class="vision-text">
+                    Мы строим рынок, где личность — это не только биография, 
+                    но и возобновляемый ресурс. Где каждый может внести свой вклад 
+                    в культуру, образование, развлечения... и быть услышанным — 
+                    даже когда уже не сможет говорить.
+                </p>
+                
+                <blockquote class="vision-quote">
+                    "Мы не строим «цифровых людей». 
+                    Мы помогаем людям остаться — в голосе, жесте, улыбке."
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section">
+            <div class="cta-section fade-in">
+                <h2 class="cta-title">Призыв к действию</h2>
+                <p class="cta-text">
+                    Инвестируйте в рынок не аватаров — а уважения к личности.<br>
+                    Сохраним культурное наследие вместе.
+                </p>
+                <p class="cta-emphasis">
+                    Присоединяйтесь к революции "Присутствия, которое остаётся"
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scroll function
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Timeline animation
+                    if (entry.target.classList.contains('timeline')) {
+                        const timelineLine = entry.target.querySelector('.timeline-line');
+                        const timelineSteps = entry.target.querySelectorAll('.timeline-step');
+                        
+                        let height = 0;
+                        const totalHeight = entry.target.offsetHeight - 100;
+                        
+                        const animateLine = () => {
+                            height += totalHeight / (timelineSteps.length * 25);
+                            timelineLine.style.height = Math.min(height, totalHeight) + 'px';
+                            
+                            timelineSteps.forEach((step, index) => {
+                                const stepTop = step.offsetTop;
+                                if (height > stepTop - 50) {
+                                    setTimeout(() => {
+                                        step.classList.add('visible', 'active');
+                                    }, index * 200);
+                                }
+                            });
+                            
+                            if (height < totalHeight) {
+                                requestAnimationFrame(animateLine);
+                            }
+                        };
+                        
+                        setTimeout(animateLine, 500);
+                    }
+                    
+                    // Counter animation
+                    if (entry.target.querySelector('.counter')) {
+                        const counters = entry.target.querySelectorAll('.counter');
+                        counters.forEach((counter, index) => {
+                            const target = parseInt(counter.dataset.target);
+                            const duration = 2000;
+                            const start = performance.now();
+                            
+                            const updateCounter = (currentTime) => {
+                                const elapsed = currentTime - start;
+                                const progress = Math.min(elapsed / duration, 1);
+                                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                                const current = Math.floor(target * easeProgress);
+                                
+                                counter.textContent = current;
+                                
+                                if (progress < 1) {
+                                    requestAnimationFrame(updateCounter);
+                                } else {
+                                    counter.textContent = target;
+                                }
+                            };
+                            
+                            setTimeout(() => {
+                                requestAnimationFrame(updateCounter);
+                            }, index * 300);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all sections
+        document.querySelectorAll('.section, .fade-in').forEach((el, index) => {
+            setTimeout(() => {
+                observer.observe(el);
+            }, index * 100);
+        });
+        
+        // Enhanced hover effects
+        document.querySelectorAll('.benefit-card, .stat-card, .example-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-4px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            // Touch support
+            item.addEventListener('touchstart', function() {
+                this.style.transform = 'translateY(-2px) scale(1.01)';
+            });
+            
+            item.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    this.style.transform = 'translateY(0) scale(1)';
+                }, 150);
+            });
+        });
+        
+        // Page load animations
+        window.addEventListener('load', () => {
+            const heroElements = document.querySelectorAll('.hero *');
+            heroElements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 150);
+            });
+        });
+        
+        // Parallax effect for hero
+        let ticking = false;
+        
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            
+            if (hero && scrolled < window.innerHeight) {
+                const rate = scrolled * -0.3;
+                hero.style.transform = `translateY(${rate}px)`;
+            }
+            
+            ticking = false;
+        }
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestTick);
+    </script>
+</body>
+</html>
