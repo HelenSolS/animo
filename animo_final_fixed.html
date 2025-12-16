@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animо - Присутствие, которое остаётся</title>
+    <title>Animо - Присутствия, которое остаётся</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -605,6 +605,107 @@
             line-height: 1.6;
         }
         
+        /* Investor Section */
+        .investor-section {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: var(--xl);
+            margin: var(--xl) 0;
+            box-shadow: var(--shadow-medium);
+            color: var(--text-dark);
+        }
+        
+        .investor-title {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: var(--lg);
+            color: var(--brand-purple);
+        }
+        
+        .revenue-sources {
+            display: grid;
+            gap: var(--md);
+            margin-bottom: var(--xl);
+        }
+        
+        .revenue-item {
+            background: var(--bg-card-dark);
+            border-radius: var(--radius-card);
+            padding: var(--lg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .revenue-item:hover {
+            transform: translateY(-4px);
+            background: rgba(124, 58, 237, 0.1);
+        }
+        
+        .revenue-source {
+            font-family: var(--font-heading);
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: var(--xs);
+            color: var(--brand-purple);
+        }
+        
+        .revenue-model {
+            color: var(--text-gray);
+            margin-bottom: var(--sm);
+        }
+        
+        .revenue-percentage {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--brand-pink);
+        }
+        
+        .business-metrics {
+            background: var(--bg-light);
+            border-radius: var(--radius-card);
+            padding: var(--lg);
+            margin-top: var(--xl);
+        }
+        
+        .metrics-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: var(--md);
+            color: var(--text-dark);
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--md);
+        }
+        
+        .metric-item {
+            text-align: center;
+            padding: var(--md);
+            background: white;
+            border-radius: var(--radius-small);
+        }
+        
+        .metric-value {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--brand-purple);
+            display: block;
+            margin-bottom: var(--xs);
+        }
+        
+        .metric-label {
+            font-size: 0.875rem;
+            color: var(--text-gray);
+        }
+        
         /* Avatar Types */
         .avatar-types {
             background: var(--bg-card);
@@ -822,7 +923,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <h1 class="hero-title">Animо</h1>
-        <p class="hero-tagline">Присутствие, которое остаётся</p>
+        <p class="hero-tagline">Присутствия, которое остаётся</p>
         <p class="hero-subtitle">Рынок невидимого труда — где мудрость, опыт и харизма становятся товаром</p>
         
         <div class="hero-stats">
@@ -1165,6 +1266,61 @@
             </div>
         </section>
 
+        <!-- Investor Section -->
+        <section class="section" id="investor">
+            <div class="investor-section fade-in">
+                <h2 class="investor-title">Доходы и бизнес-модель</h2>
+                
+                <div class="revenue-sources">
+                    <div class="revenue-item fade-in">
+                        <h3 class="revenue-source">Комиссия с транзакций</h3>
+                        <p class="revenue-model">7% от каждой аренды / роялти / выкупа аватара</p>
+                        <div class="revenue-percentage">65% выручки</div>
+                    </div>
+                    
+                    <div class="revenue-item fade-in">
+                        <h3 class="revenue-source">Премиум-сканирование</h3>
+                        <p class="revenue-model">Сессия в партнёрской студии (₽15–45 тыс.)</p>
+                        <div class="revenue-percentage">15% выручки</div>
+                    </div>
+                    
+                    <div class="revenue-item fade-in">
+                        <h3 class="revenue-source">B2B-подписки</h3>
+                        <p class="revenue-model">Доступ к «библиотеке аватаров» (от ₽90 тыс./мес)</p>
+                        <div class="revenue-percentage">12% выручки</div>
+                    </div>
+                    
+                    <div class="revenue-item fade-in">
+                        <h3 class="revenue-source">Юридическое сопровождение</h3>
+                        <p class="revenue-model">Оформление лицензий, «цифрового завещания»</p>
+                        <div class="revenue-percentage">5% выручки</div>
+                    </div>
+                </div>
+                
+                <div class="business-metrics">
+                    <h3 class="metrics-title">Ключевые показатели</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <span class="metric-value">₽5 000</span>
+                            <span class="metric-label">Средний доход с аватара/мес</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">9 мес</span>
+                            <span class="metric-label">ROI при тарифе "Анима"</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">93%</span>
+                            <span class="metric-label">Получает владелец аватара</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">5-10 лет</span>
+                            <span class="metric-label">Срок жизни аватара</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Avatar Types -->
         <section class="section" id="avatar-types">
             <div class="avatar-types fade-in">
@@ -1245,7 +1401,7 @@
                     Сохраним культурное наследие вместе.
                 </p>
                 <p class="cta-emphasis">
-                    Присоединяйтесь к революции "Присутствие, которое остаётся"
+                    Присоединяйтесь к революции "Присутствия, которое остаётся"
                 </p>
             </div>
         </section>
