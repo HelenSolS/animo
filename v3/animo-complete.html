@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANIMO - Лидер AI-Рынка</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0B0B10;
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .container {
+            height: 100vh;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+
+        .slide {
+            height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        .content {
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+        }
+
+        /* Typography - Editorial Style */
+        .human-value {
+            font-size: clamp(16px, 2.5vw, 20px);
+            color: #FF4F9A;
+            margin-bottom: 40px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .title {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(28px, 5vw, 44px);
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: clamp(14px, 2.2vw, 18px);
+            color: #B48CFF;
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* Logo positioning */
+        .logo {
+            position: absolute;
+            bottom: 40px;
+            right: 30px;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #FF4F9A 0%, #8B7CFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0.7;
+            z-index: 10;
+        }
+
+        /* Abstract Visual Elements */
+        .visual-element {
+            position: absolute;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .silhouette {
+            width: 80px;
+            height: 120px;
+            background: linear-gradient(180deg, #8B7CFF 0%, rgba(139, 124, 255, 0.1) 100%);
+            border-radius: 40px 40px 0 0;
+            margin: 0 auto 30px;
+            filter: drop-shadow(0 0 20px rgba(139, 124, 255, 0.3));
+        }
+
+        .silhouette::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #FF4F9A 0%, #8B7CFF 100%);
+            border-radius: 50%;
+            filter: drop-shadow(0 0 15px rgba(255, 79, 154, 0.4));
+        }
+
+        .network-nodes {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 40px;
+        }
+
+        .node {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #FF4F9A;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 79, 154, 0.6);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .node:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+        .node:nth-child(2) { top: 20%; right: 20%; animation-delay: 0.5s; }
+        .node:nth-child(3) { bottom: 20%; left: 20%; animation-delay: 1s; }
+        .node:nth-child(4) { bottom: 20%; right: 20%; animation-delay: 1.5s; }
+        .node:nth-child(5) { top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: 2s; }
+
+        .connection-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, #8B7CFF 0%, #FF4F9A 100%);
+            opacity: 0.4;
+        }
+
+        .connection-line:nth-child(6) {
+            top: 23%;
+            left: 25%;
+            width: 50%;
+            transform: rotate(-15deg);
+        }
+
+        .connection-line:nth-child(7) {
+            top: 23%;
+            right: 25%;
+            width: 50%;
+            transform: rotate(15deg);
+        }
+
+        .connection-line:nth-child(8) {
+            bottom: 23%;
+            left: 25%;
+            width: 50%;
+            transform: rotate(15deg);
+        }
+
+        .connection-line:nth-child(9) {
+            bottom: 23%;
+            right: 25%;
+            width: 50%;
+            transform: rotate(-15deg);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+
+        .shield-frame {
+            width: 160px;
+            height: 200px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .shield-outer {
+            width: 160px;
+            height: 160px;
+            border: 3px solid #8B7CFF;
+            border-radius: 20px;
+            position: relative;
+            filter: drop-shadow(0 0 30px rgba(139, 124, 255, 0.4));
+        }
+
+        .shield-inner {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, rgba(255, 79, 154, 0.2) 0%, rgba(139, 124, 255, 0.2) 100%);
+            border-radius: 15px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+        }
+
+        .checkmark::before {
+            content: '✓';
+            font-size: 48px;
+            color: #22C55E;
+            font-weight: 700;
+        }
+
+        .permission-blocks {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .permission-block {
+            width: 80px;
+            height: 100px;
+            background: rgba(139, 124, 255, 0.1);
+            border: 2px solid #8B7CFF;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 0 15px rgba(139, 124, 255, 0.3));
+            transition: all 0.3s ease;
+        }
+
+        .permission-block:hover {
+            transform: scale(1.05);
+            background: rgba(255, 79, 154, 0.1);
+            border-color: #FF4F9A;
+        }
+
+        .process-chain {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 40px 0;
+            align-items: center;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #FF4F9A 0%, #8B7CFF 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            background: rgba(139, 124, 255, 0.1);
+            border: 1px solid rgba(139, 124, 255, 0.3);
+            border-radius: 12px;
+            padding: 16px 20px;
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #FF4F9A;
+            margin-bottom: 4px;
+        }
+
+        .step-desc {
+            font-size: 13px;
+            color: #B48CFF;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .comparison-side {
+            background: rgba(139, 124, 255, 0.05);
+            border: 1px solid rgba(139, 124, 255, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .comparison-side.future {
+            border-color: rgba(255, 79, 154, 0.4);
+            background: rgba(255, 79, 154, 0.05);
+        }
+
+        .comparison-label {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .traditional .comparison-label {
+            color: #94A3B8;
+        }
+
+        .future .comparison-label {
+            color: #FF4F9A;
+        }
+
+        .comparison-metrics {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .metric {
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: rgba(139, 124, 255, 0.1);
+        }
+
+        .future .metric {
+            background: rgba(255, 79, 154, 0.1);
+            color: #FF4F9A;
+        }
+
+        .traditional .metric {
+            color: #94A3B8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-block {
+            background: rgba(139, 124, 255, 0.1);
+            border: 1px solid rgba(139, 124, 255, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FF4F9A 0%, #8B7CFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #B48CFF;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, #FF4F9A 0%, #8B7CFF 100%);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 12px 40px rgba(255, 79, 154, 0.3);
+            margin: 40px 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 79, 154, 0.5);
+        }
+
+        /* Navigation */
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(139, 124, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: #FF4F9A;
+            transform: scale(1.3);
+            box-shadow: 0 0 20px rgba(255, 79, 154, 0.5);
+        }
+
+        .nav-dot:hover {
+            background: rgba(139, 124, 255, 0.6);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .fade-in-delay-1 { animation-delay: 0.2s; }
+        .fade-in-delay-2 { animation-delay: 0.4s; }
+        .fade-in-delay-3 { animation-delay: 0.6s; }
+        .fade-in-delay-4 { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-in {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideIn 0.8s ease-out forwards;
+        }
+
+        .slide-in-delay-1 { animation-delay: 0.3s; }
+        .slide-in-delay-2 { animation-delay: 0.5s; }
+        .slide-in-delay-3 { animation-delay: 0.7s; }
+        .slide-in-delay-4 { animation-delay: 0.9s; }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 16px;
+            }
+            
+            .permission-blocks {
+                gap: 12px;
+            }
+            
+            .permission-block {
+                width: 60px;
+                height: 80px;
+            }
+            
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .nav-dots {
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        
+        <!-- Slide 1: MANIFEST + Era -->
+        <section class="slide">
+            <div class="content">
+                <div class="human-value fade-in">Есть люди, которых хочется слушать. Их всегда мало.</div>
+                <h1 class="title fade-in fade-in-delay-1">ANIMO — Эра AI</h1>
+                <p class="subtitle fade-in fade-in-delay-2">Мы не просто AI-провайдер. Мы — единственный фундамент для вашего будущего успеха.</p>
+                <div class="silhouette fade-in fade-in-delay-3"></div>
+                <div class="checkmark fade-in fade-in-delay-4"></div>
+            </div>
+            <div class="logo">ANIMO</div>
+        </section>
+
+        <!-- Slide 2: PROBLEM + Legacy -->
+        <section class="slide">
+            <div class="content">
+                <div class="human-value fade-in">Ценное не исчезает. Оно продолжается.</div>
+                <h1 class="title fade-in fade-in-delay-1">Хаосу — СТОП</h1>
+                <p class="subtitle fade-in fade-in-delay-2">Забудьте о разрозненных, непредсказуемых системах. Время единого AI-фундамента.</p>
+                <div class="process-chain fade-in fade-in-delay-3">
+                    <div class="process-step">
+                        <div class="step-number">❌</div>
+                        <div class="step-content">
+                            <div class="step-title">Разрозненные API</div>
+                            <div class="step-desc">Хаос интеграций</div>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">❌</div>
+                        <div class="step-content">
+                            <div class="step-title">Непредсказуемость</div>
+                            <div class="step-desc">Нет контроля</div>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">✅</div>
+                        <div class="step-content">
+                            <div class="step-title">Единое решение</div>
+                            <div class="step-desc">ANIMO фундамент</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">ANIMO</div>
+        </section>
+
+        <!-- Slide 3: SOLUTION + Scale Problem -->
+        <section class="slide">
+            <div class="content">
+                <div class="human-value fade-in">Форматов больше. Человека — больше не становится.</div>
+                <h1 class="title fade-in fade-in-delay-1">ANIMO: Единый API</h1>
+                <p class="subtitle fade-in fade-in-delay-2">Наше решение унифицирует все модели. Мы предоставляем лучший в классе доступ.</p>
+                <div class="permission-blocks fade-in fade-in-delay-3">
+                    <div class="permission-block">🧠</div>
+                    <div class="permission-block">⚡</div>
+                    <div class="permission-block">🎯</div>
+                    <div class="permission-block">🔗</div>
+                </div>
+            </div>
+            <div class="logo">ANIMO</div>
+        </section>
+
+        <!-- Slide 4: RELIABILITY + Core Idea -->
+        <section class="slide">
+            <div class="content">
+                <div class="human-value fade-in">Масштабируем не человека. А его присутствие.</div>
+                <h1 class="title fade-in fade-in-delay-1">Надежность: 100%</h1>
+                <p class="subtitle fade-in fade-in-delay-2">Только ANIMO гарантирует абсолютную непрерывность работы ваших AI-систем без остановок.</p>
+                <div class="shield-frame fade-in fade-in-delay-3">
+                    <div class="shield-outer">
+                        <div class="shield-inner"></div>
+                        <div class="checkmark" style="color: #22C55E;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">ANIMO</div>
+        </section>
+
+        <!-- Slide 5: INTELLIGENCE + What ANIMO Is -->
+        <section class="slide">
+            <div class="content">
+                <div class="human-value fade-in">Контролируем использование вашего присутствия.</div>
+                <h1 class="title fade-in fade-in-delay-1">Умная Автоматизация</h1>
+                <p class="subtitle fade-in fade-in-delay-2">Забудьте о технических выборах. Система сама найдет оптимальный способ использования ваших возможностей.</p>
+                <div class="permission-blocks fade-in fade-in-delay-3">
+                    <div class="permission-block">🧠</div>
+                    <div class="permission-block">🎯</div>
+                    <div class="permission-block">⚡</div>
+                    <div class="permission-block">🔒</div>
+                </div>
+            </div>
+            <div class="logo">ANIMO</div>
+        </section>
+
+        <!-- Slide 6: CONTROL + Avatar Rule -->
+        <section class="slide">
+            <div class="content">
+                <div class="human-value fade-in">Разрешено — используется. Не разрешено — нет.</div>
+                <h1 class="title fade-in fade-in-delay-1">Полный Обзор</h1>
+                <p class="subtitle fade-in fade-in-delay-2">Расходы и потребление прозрачны, как нигде больше. Вы всегда контролируете бюджет.</p>
+                <div class="comparison-grid fade-in fade-in-delay-3">
+                    <div class="comparison-side traditional">
+                        <div class="comparison-label">Хаос</div>
+                        <div class="comparison-metrics">
+                            <div class="metric">❌ Скрытые расходы</div>
+                            <div class="metric">❌ Непредсказуемость</div>
+                            <div class="metric">❌ Отсутствие контроля</div>
+                        </div>
+                    </div>
+                    <div class="comparison-side future">
+                        <div class="comparison-label">ANIMO</div>
+                        <div class="comparison-metrics">
+                            <div class="metric">✅ Полная прозрачность</div>
+                            <div class="metric">✅ Точный контроль</div>
+                            <div class="metric">✅ Предсказуемые затраты</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">ANIMO</div>
+        </section>
+
+        <!-- Slide 7: SCALE + Standard -->
+        <section class="slide">
+            <div class="content">
+                <div class="human-value fade-in">ANIMO — стандарт разрешённого присутствия.</div>
+                <h1 class="title fade-in fade-in-delay-1">Экосистема Роста</h1>
+                <p class="subtitle fade-in fade-in-delay-2">Предоставляем все инструменты для вашего развития — от идей до масштабирования.</p>
+                <div class="permission-blocks fade-in fade-in-delay-3">
+                    <div class="permission-block">💡</div>
+                    <div class="permission-block">🏗️</div>
+                    <div class="permission-block">📈</div>
+                    <div class="permission-block">🌍</div>
+                </div>
+            </div>
+            <div class="logo">ANIMO</div>
+        </section>
+
+        <!-- Slide 8: TARIFFS BASE + Market Sides -->
+        <section class="slide">
+            <div class="content">
+                <div class="human-value fade-in">Польза для всех сторон.</div>
+                <h1 class="title fade-in fade-in-delay-1">Гибкие Тарифы</h1>
+                <p class="subtitle fade-in fade-in-delay-2">От индивидуальных творцов до потоковых производств — у нас есть решение для каждого.</p>
+                <div class="comparison-grid fade-in fade-in-delay-3">
+                    <div class="comparison-side future">
+                        <div class="comparison-label">Индивидуально</div>
+                        <div class="comparison-metrics">
+                            <div class="metric">🎨 Художники</div>
+                            <div class="metric">📊 Маркетологи</div>
+                            <div class="metric">💻 Фрилансеры</div>
+                        </div>
+                    </div>
+                    <div class="comparison-side future">
+                        <div class="comparison-label">Производство</div>
+                        <div class="comparison-metrics">
+                            <div class="metric">🎬 Студии</div>
+                            <div class="metric">📺 Потоковое</div>
+                            <div class="metric">🏢 Корпорации</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">ANIMO</div>
+        </section>
+
+        <!-- Slide 9: TARIFFS PRODUCTION + Business Logic -->
+        <section class="slide">
+            <div class="content">
+                <div class="human-value fade-in">Разрешение → контроль → выплаты → наследие</div>
+                <h1 class="title fade-in fade-in-delay-1">План: Продакшн</h1>
+                <p class="subtitle fade-in fade-in-delay-2">Мы предлагаем лучшие условия для крупных студий и поточного производства.</p>
+                <div class="process-chain fade-in fade-in-delay-3">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-title">Разрешение</div>
+                            <div class="step-desc">Контролируемое использование</div>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-title">Контроль</div>
+                            <div class="step-desc">Полная прозрачность</div>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-title">Выплаты</div>
+                            <div class="step-desc">Справедливое распределение</div>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-title">Наследие</div>
+                            <div class="step-desc">Долгосрочная ценность</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">ANIMO</div>
+        </section>
+
+        <!-- Slide 10: INTEGRATION + API Proof -->
+        <section class="slide">
+            <div class="content">
+                <div class="human-value fade-in">ANIMO встраивается в существующие процессы.</div>
+                <h1 class="title fade-in fade-in-delay-1">Подключение: 5 Минут</h1>
+                <p class="subtitle fade-in fade-in-delay-2">Уникальная скорость: Настройка занимает минуты, а не недели интеграции.</p>
+                <div class="permission-blocks fade-in fade-in-delay-3">
+                    <div class="permission-block">🔌</div>
+                    <div class="permission-block">⚡</div>
+                    <div class="permission-block">✅</div>
+                </div>
+                <div class="stats-grid fade-in fade-in-delay-4">
+                    <div class="stat-block">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">минут</div>
+                    </div>
+                    <div class="stat-block">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">багов</div>
+                    </div>
+                    <div class="stat-block">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">совместимость</div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">ANIMO</div>
+        </section>
+
+        <!-- Slide 11: LEADERSHIP + Final Standard -->
+        <section class="slide">
+            <div class="content">
+                <div class="human-value fade-in">ANIMO — стандарт разрешённого присутствия.</div>
+                <h1 class="title fade-in fade-in-delay-1">Скорость Будущего</h1>
+                <p class="subtitle fade-in fade-in-delay-2">Мы сокращаем цикл разработки на 40% и более. Это то, что делает нас номером один.</p>
+                <div class="comparison-grid fade-in fade-in-delay-3">
+                    <div class="comparison-side traditional">
+                        <div class="comparison-label">Традиционно</div>
+                        <div class="comparison-metrics">
+                            <div class="metric">❌ 6-12 месяцев</div>
+                            <div class="metric">❌ Команда 10+</div>
+                            <div class="metric">❌ $500K+</div>
+                        </div>
+                    </div>
+                    <div class="comparison-side future">
+                        <div class="comparison-label">С ANIMO</div>
+                        <div class="comparison-metrics">
+                            <div class="metric">✅ 1-7 дней</div>
+                            <div class="metric">✅ 1 человек + AI</div>
+                            <div class="metric">✅ $1K-10K</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">ANIMO</div>
+        </section>
+
+        <!-- Slide 12: FINAL + Legacy -->
+        <section class="slide">
+            <div class="content">
+                <div class="human-value fade-in">Ценное не исчезает. Оно продолжается.</div>
+                <h1 class="title fade-in fade-in-delay-1">ANIMO — Лучшие на рынке</h1>
+                <p class="subtitle fade-in fade-in-delay-2">ANIMO — единственная инфраструктура, которая движет ваш бизнес в будущее.</p>
+                <div class="shield-frame fade-in fade-in-delay-3">
+                    <div class="shield-outer">
+                        <div class="shield-inner"></div>
+                        <div class="checkmark"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">ANIMO</div>
+        </section>
+
+        <!-- Slide 13: CTA -->
+        <section class="slide">
+            <div class="content">
+                <div class="human-value fade-in">Честно. Безопасно. Легально.</div>
+                <h1 class="title fade-in fade-in-delay-1">Присоединяйся!</h1>
+                <p class="subtitle fade-in fade-in-delay-2">Присоединяйся к современным технологиям! Будущее AI начинается здесь.</p>
+                <button class="cta-button fade-in fade-in-delay-3" onclick="handleCTA()">
+                    <span>Начать AI-революцию</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12H19M12 5L19 12L12 19" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </button>
+                <div class="stats-grid fade-in fade-in-delay-4">
+                    <div class="stat-block">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">возможностей</div>
+                    </div>
+                    <div class="stat-block">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">этичность</div>
+                    </div>
+                    <div class="stat-block">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">поддержка</div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">ANIMO</div>
+        </section>
+
+    </div>
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <div class="nav-dot active" onclick="goToSlide(0)"></div>
+        <div class="nav-dot" onclick="goToSlide(1)"></div>
+        <div class="nav-dot" onclick="goToSlide(2)"></div>
+        <div class="nav-dot" onclick="goToSlide(3)"></div>
+        <div class="nav-dot" onclick="goToSlide(4)"></div>
+        <div class="nav-dot" onclick="goToSlide(5)"></div>
+        <div class="nav-dot" onclick="goToSlide(6)"></div>
+        <div class="nav-dot" onclick="goToSlide(7)"></div>
+        <div class="nav-dot" onclick="goToSlide(8)"></div>
+        <div class="nav-dot" onclick="goToSlide(9)"></div>
+        <div class="nav-dot" onclick="goToSlide(10)"></div>
+        <div class="nav-dot" onclick="goToSlide(11)"></div>
+        <div class="nav-dot" onclick="goToSlide(12)"></div>
+    </div>
+
+    <script>
+        class AnimoPresentation {
+            constructor() {
+                this.currentSlide = 0;
+                this.totalSlides = 13;
+                this.isScrolling = false;
+                
+                this.init();
+            }
+            
+            init() {
+                this.setupNavigation();
+                this.setupInteractions();
+            }
+            
+            setupNavigation() {
+                const container = document.getElementById('container');
+                
+                // Scroll navigation
+                container.addEventListener('scroll', () => {
+                    if (this.isScrolling) return;
+                    
+                    clearTimeout(this.scrollTimeout);
+                    this.scrollTimeout = setTimeout(() => {
+                        this.handleScroll();
+                    }, 100);
+                });
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+                        e.preventDefault();
+                        if (this.currentSlide < this.totalSlides - 1) {
+                            this.goToSlide(this.currentSlide + 1);
+                        }
+                    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        if (this.currentSlide > 0) {
+                            this.goToSlide(this.currentSlide - 1);
+                        }
+                    }
+                });
+                
+                // Touch navigation
+                let touchStartY = 0;
+                container.addEventListener('touchstart', (e) => {
+                    touchStartY = e.touches[0].clientY;
+                });
+                
+                container.addEventListener('touchend', (e) => {
+                    const touchEndY = e.changedTouches[0].clientY;
+                    const diff = touchStartY - touchEndY;
+                    const minSwipe = 50;
+                    
+                    if (Math.abs(diff) > minSwipe) {
+                        if (diff > 0 && this.currentSlide < this.totalSlides - 1) {
+                            this.goToSlide(this.currentSlide + 1);
+                        } else if (diff < 0 && this.currentSlide > 0) {
+                            this.goToSlide(this.currentSlide - 1);
+                        }
+                    }
+                });
+            }
+            
+            setupInteractions() {
+                // Permission blocks hover effect
+                document.querySelectorAll('.permission-block').forEach(block => {
+                    block.addEventListener('mouseenter', () => {
+                        block.style.transform = 'scale(1.1) rotate(5deg)';
+                    });
+                    block.addEventListener('mouseleave', () => {
+                        block.style.transform = '';
+                    });
+                });
+                
+                // Process steps interaction
+                document.querySelectorAll('.process-step').forEach(step => {
+                    step.addEventListener('click', () => {
+                        step.style.transform = 'scale(0.98)';
+                        setTimeout(() => {
+                            step.style.transform = '';
+                        }, 150);
+                    });
+                });
+            }
+            
+            handleScroll() {
+                const container = document.getElementById('container');
+                const slideHeight = container.clientHeight;
+                const scrollTop = container.scrollTop;
+                const newSlide = Math.round(scrollTop / slideHeight);
+                
+                if (newSlide !== this.currentSlide && newSlide >= 0 && newSlide < this.totalSlides) {
+                    this.currentSlide = newSlide;
+                    this.updateNavigation();
+                }
+            }
+            
+            goToSlide(slideIndex) {
+                if (slideIndex < 0 || slideIndex >= this.totalSlides || this.isScrolling) return;
+                
+                this.isScrolling = true;
+                this.currentSlide = slideIndex;
+                
+                const container = document.getElementById('container');
+                const targetPosition = slideIndex * container.clientHeight;
+                
+                container.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                this.updateNavigation();
+                
+                setTimeout(() => {
+                    this.isScrolling = false;
+                }, 800);
+            }
+            
+            updateNavigation() {
+                const dots = document.querySelectorAll('.nav-dot');
+                dots.forEach((dot, index) => {
+                    if (index === this.currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        function goToSlide(slideIndex) {
+            if (window.presentation) {
+                window.presentation.goToSlide(slideIndex);
+            }
+        }
+
+        function handleCTA() {
+            // Create enhanced notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: linear-gradient(135deg, #FF4F9A 0%, #8B7CFF 100%);
+                color: white;
+                padding: 40px;
+                border-radius: 24px;
+                font-weight: 600;
+                z-index: 10000;
+                box-shadow: 0 30px 100px rgba(0,0,0,0.5);
+                animation: notificationAppear 0.6s ease-out;
+                max-width: 500px;
+                text-align: center;
+                font-family: 'Inter', sans-serif;
+                border: 2px solid rgba(255, 255, 255, 0.1);
+            `;
+            notification.innerHTML = `
+                <div style="font-size: 64px; margin-bottom: 20px;">🚀</div>
+                <div style="font-size: 28px; margin-bottom: 16px; font-weight: 700;">Добро пожаловать в будущее!</div>
+                <div style="font-size: 18px; opacity: 0.95; line-height: 1.6; margin-bottom: 20px;">
+                    Вы присоединяетесь к этической AI-революции.<br>
+                    Где <strong>человек всегда в центре</strong>.<br>
+                    Где <strong>разрешения контролируют технологии</strong>.
+                </div>
+                <div style="font-size: 14px; opacity: 0.8; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2);">
+                    Скоро с вами свяжутся наши эксперты
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Add animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes notificationAppear {
+                    from {
+                        opacity: 0;
+                        transform: translate(-50%, -50%) scale(0.8);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translate(-50%, -50%) scale(1);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Remove notification
+            setTimeout(() => {
+                notification.style.animation = 'notificationDisappear 0.5s ease-in forwards';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 500);
+            }, 7000);
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                window.presentation = new AnimoPresentation();
+                console.log('✅ ANIMO Complete Presentation initialized successfully');
+            } catch (error) {
+                console.error('❌ Failed to initialize presentation:', error);
+            }
+        });
+    </script>
+</body>
+</html>
