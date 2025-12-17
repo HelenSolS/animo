@@ -7,23 +7,25 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg0:#0b0d14;
       --bg1:#0f1220;
-      --glass: rgba(255,255,255,.08);
-      --glass2: rgba(255,255,255,.12);
       --stroke: rgba(255,255,255,.14);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
-      --soft: rgba(255,255,255,.55);
+      --text: rgba(255,255,255,.95);
+      --muted: rgba(255,255,255,.75);
+      --soft: rgba(255,255,255,.60);
 
-      --a:#6366F1; /* Soul Blue-ish */
-      --b:#8B5CF6;
-      --c:#EC4899; /* Breath Pink */
+      /* ANIMO Brand Colors */
+      --a:#581c87; /* Soul Purple */
+      --b:#8b5cf6;
+      --c:#e91e63; /* Breath Pink */
       --g:#4AC9A5; /* Legacy Green */
+      --blue:#6366F1; /* Content Blue */
+      --orange:#ff6b35; /* Question Orange */
+      --red:#f44336; /* Legal Red */
 
       --shadow: 0 20px 60px rgba(0,0,0,.45);
       --radius: 24px;
@@ -37,11 +39,11 @@
       margin:0;
       font-family: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text);
-      background: radial-gradient(1200px 900px at 20% 10%, rgba(99,102,241,.18), transparent 60%),
-                  radial-gradient(900px 700px at 80% 30%, rgba(236,72,153,.12), transparent 55%),
+      background: radial-gradient(1200px 900px at 20% 10%, rgba(88,28,135,.18), transparent 60%),
+                  radial-gradient(900px 700px at 80% 30%, rgba(233,30,99,.12), transparent 55%),
                   radial-gradient(900px 700px at 50% 90%, rgba(74,201,165,.10), transparent 55%),
                   linear-gradient(180deg, var(--bg0), var(--bg1));
-      overflow: hidden; /* container handles scroll */
+      overflow: hidden;
     }
 
     /* Top Progress */
@@ -57,7 +59,7 @@
       max-width: var(--maxw);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(14, 1fr);
+      grid-template-columns: repeat(16, 1fr);
       gap: 6px;
       opacity: .95;
     }
@@ -71,7 +73,7 @@
     .seg::after{
       content:"";
       position:absolute; inset:0;
-      background: linear-gradient(90deg, rgba(99,102,241,.95), rgba(236,72,153,.95));
+      background: linear-gradient(90deg, var(--a), var(--b), var(--c));
       transform: translateX(-110%);
       transition: transform .45s ease;
     }
@@ -85,7 +87,7 @@
       scroll-snap-type: y mandatory;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
-      padding: 56px 16px 24px; /* top space for progress */
+      padding: 56px 16px 24px;
     }
 
     section.slide{
@@ -115,8 +117,8 @@
       position:absolute;
       width: 520px; height: 520px;
       left: -220px; top: -260px;
-      background: radial-gradient(circle at 30% 30%, rgba(99,102,241,.22), transparent 55%),
-                  radial-gradient(circle at 70% 60%, rgba(236,72,153,.14), transparent 55%);
+      background: radial-gradient(circle at 30% 30%, rgba(88,28,135,.22), transparent 55%),
+                  radial-gradient(circle at 70% 60%, rgba(233,30,99,.14), transparent 55%);
       filter: blur(2px);
       opacity:.9;
       transform: translate3d(0,0,0);
@@ -128,27 +130,31 @@
       to   { transform: translate(40px,28px) scale(1.05); }
     }
 
-    /* Typography */
+    /* Typography - УВЕЛИЧЕНЫ ШРИФТЫ */
     .kicker{
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-size: 12px;
+      font-size: 14px;
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--soft);
-      margin: 0 0 10px;
+      margin: 0 0 14px;
+      font-weight: 700;
     }
     h1,h2{
-      margin: 0 0 10px;
+      margin: 0 0 14px;
       line-height: 1.04;
       letter-spacing: -0.02em;
+      font-weight: 900;
     }
-    h1{ font-size: 40px; font-weight: 800; }
-    h2{ font-size: 28px; font-weight: 800; }
+    h1{ font-size: 44px; }
+    h2{ font-size: 32px; }
+    h3{ font-size: 24px; font-weight: 800; }
     p{
-      margin: 0 0 14px;
+      margin: 0 0 16px;
       color: var(--muted);
-      font-size: 16px;
+      font-size: 18px;
       line-height: 1.45;
+      font-weight: 500;
     }
 
     .muted{ color: var(--muted); }
@@ -163,49 +169,48 @@
 
     /* Logo placeholder */
     .logoRow{
-      display:flex; align-items:center; gap:12px;
-      margin-bottom: 14px;
+      display:flex; align-items:center; gap:16px;
+      margin-bottom: 18px;
     }
     .logo{
-      width: 54px; height: 54px;
-      border-radius: 16px;
+      width: 64px; height: 64px;
+      border-radius: 20px;
       border: 1px solid rgba(255,255,255,.16);
-      background: radial-gradient(circle at 30% 30%, rgba(99,102,241,.28), transparent 60%),
-                  radial-gradient(circle at 70% 60%, rgba(236,72,153,.22), transparent 60%),
-                  rgba(255,255,255,.06);
+      background: linear-gradient(180deg, rgba(88,28,135,.3), rgba(233,30,99,.3));
       display:grid; place-items:center;
       box-shadow: 0 12px 30px rgba(0,0,0,.35);
     }
-    .logo svg{ width: 38px; height: 38px; opacity:.95; }
+    .logo svg{ width: 48px; height: 48px; }
 
     /* Lists */
     .bullets{
-      display:flex; flex-direction:column; gap:10px;
-      margin-top: 14px;
+      display:flex; flex-direction:column; gap:12px;
+      margin-top: 18px;
     }
     .bullet{
-      display:flex; gap:10px; align-items:flex-start;
-      padding: 12px 12px;
+      display:flex; gap:12px; align-items:flex-start;
+      padding: 14px 14px;
       border: 1px solid rgba(255,255,255,.14);
-      border-radius: 18px;
+      border-radius: 20px;
       background: rgba(0,0,0,.12);
     }
     .dot{
-      width: 10px; height: 10px; border-radius: 999px;
+      width: 12px; height: 12px; border-radius: 999px;
       background: linear-gradient(135deg, var(--a), var(--c));
-      margin-top: 6px;
+      margin-top: 8px;
       flex: 0 0 auto;
     }
     .bullet span{
-      font-size: 16px;
+      font-size: 18px;
       line-height: 1.35;
-      color: rgba(255,255,255,.86);
+      color: rgba(255,255,255,.90);
+      font-weight: 600;
     }
 
-    /* “Epic” reveal */
+    /* "Epic" reveal */
     .reveal .line{
       opacity: 0;
-      transform: translateY(14px);
+      transform: translateY(16px);
       filter: blur(3px);
       transition: opacity .6s ease, transform .6s ease, filter .8s ease;
     }
@@ -217,175 +222,265 @@
     .reveal .line{ transition-delay: calc(var(--d) * 1ms); }
 
     .quote{
-      margin-top: 14px;
-      padding: 14px 14px;
-      border-left: 3px solid rgba(74,201,165,.7);
-      background: rgba(74,201,165,.08);
-      border-radius: 14px;
-      color: rgba(255,255,255,.88);
-      font-size: 16px;
+      margin-top: 18px;
+      padding: 18px 18px;
+      border-left: 4px solid rgba(74,201,165,.8);
+      background: rgba(74,201,165,.12);
+      border-radius: 16px;
+      color: rgba(255,255,255,.92);
+      font-size: 20px;
       line-height: 1.45;
+      font-weight: 600;
+    }
+
+    /* Question blocks with colors */
+    .questionBlock{
+      margin-top: 16px;
+      border-radius: 20px;
+      border: 2px solid;
+      padding: 16px 16px;
+      background: rgba(0,0,0,.12);
+    }
+    .questionBlock.people{
+      border-color: var(--orange);
+      background: rgba(255,107,53,.08);
+    }
+    .questionBlock.legal{
+      border-color: var(--red);
+      background: rgba(244,67,54,.08);
+    }
+    .questionBlock.content{
+      border-color: var(--blue);
+      background: rgba(99,102,241,.08);
+    }
+    .questionBlock h3{
+      margin: 0 0 12px;
+      font-size: 20px;
+      font-weight: 800;
+    }
+    .questionBlock.people h3{ color: var(--orange); }
+    .questionBlock.legal h3{ color: var(--red); }
+    .questionBlock.content h3{ color: var(--blue); }
+    .questionBlock p{
+      margin: 8px 0;
+      font-size: 16px;
+      color: rgba(255,255,255,.85);
+      font-weight: 500;
     }
 
     /* Yes card */
     .yesCard{
-      margin-top: 12px;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: radial-gradient(circle at 30% 20%, rgba(99,102,241,.22), transparent 55%),
-                  radial-gradient(circle at 70% 60%, rgba(236,72,153,.18), transparent 60%),
-                  rgba(0,0,0,.12);
-      padding: 16px 14px;
+      margin-top: 16px;
+      border-radius: 24px;
+      border: 2px solid rgba(74,201,165,.6);
+      background: radial-gradient(circle at 30% 20%, rgba(88,28,135,.25), transparent 55%),
+                  radial-gradient(circle at 70% 60%, rgba(233,30,99,.20), transparent 60%),
+                  rgba(0,0,0,.15);
+      padding: 20px 18px;
       display:flex;
       flex-direction:column;
-      gap:10px;
+      gap:12px;
     }
     .yesBig{
-      font-size: 30px;
+      font-size: 32px;
       font-weight: 900;
       letter-spacing: -0.03em;
+      text-align: center;
     }
 
-    .pillRow{ display:flex; gap:8px; flex-wrap:wrap; margin-top: 8px; }
+    .pillRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
     .pill{
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-size: 12px;
-      padding: 7px 10px;
+      font-size: 14px;
+      padding: 8px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color: rgba(255,255,255,.80);
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.85);
+      font-weight: 600;
     }
-    .pill.green{ border-color: rgba(74,201,165,.35); background: rgba(74,201,165,.10); }
+    .pill.green{ border-color: rgba(74,201,165,.4); background: rgba(74,201,165,.12); color: rgba(255,255,255,.90); }
 
-    /* “Who benefits” cards */
+    /* Cards */
     .grid2{
       display:grid;
       grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 14px;
+      gap: 14px;
+      margin-top: 18px;
     }
     .card{
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 22px;
+      border: 2px solid rgba(255,255,255,.14);
       background: rgba(0,0,0,.12);
-      padding: 14px 14px;
+      padding: 18px 18px;
     }
     .card h3{
-      margin: 0 0 8px;
-      font-size: 16px;
+      margin: 0 0 12px;
+      font-size: 20px;
       letter-spacing: -0.01em;
+      font-weight: 800;
     }
-    .card p{ margin:0; font-size: 14px; color: rgba(255,255,255,.72); }
+    .card p{ margin:0; font-size: 16px; color: rgba(255,255,255,.78); font-weight: 500; }
 
-    /* Accordion FAQ */
-    .faq{
-      margin-top: 12px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-    }
-    details{
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.12);
-      overflow:hidden;
-    }
-    summary{
-      cursor: pointer;
-      padding: 14px 14px;
-      list-style:none;
-      font-weight: 700;
-      color: rgba(255,255,255,.86);
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    summary::-webkit-details-marker{ display:none; }
-    .chev{
-      width: 18px; height: 18px;
-      opacity: .75;
-      transition: transform .25s ease;
-      flex:0 0 auto;
-    }
-    details[open] .chev{ transform: rotate(180deg); }
-    .ans{
-      padding: 0 14px 14px;
-      color: rgba(255,255,255,.72);
-      font-size: 14px;
-      line-height: 1.45;
-    }
-
-    /* Calculator slide */
+    /* Calculator */
     .calc{
-      margin-top: 14px;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,.14);
+      margin-top: 18px;
+      border-radius: 24px;
+      border: 2px solid rgba(255,255,255,.14);
       background: rgba(0,0,0,.14);
       overflow:hidden;
     }
     .calc__top{
-      padding: 14px 14px;
-      border-bottom: 1px solid rgba(255,255,255,.10);
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding: 16px 16px;
+      border-bottom: 2px solid rgba(255,255,255,.12);
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
     }
     .badge{
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-size: 12px;
-      padding: 6px 10px;
+      font-size: 14px;
+      padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(99,102,241,.14);
-      border: 1px solid rgba(99,102,241,.28);
-      color: rgba(255,255,255,.82);
+      background: rgba(88,28,135,.16);
+      border: 1px solid rgba(88,28,135,.32);
+      color: rgba(255,255,255,.88);
       white-space:nowrap;
+      font-weight: 600;
     }
-    .calc__body{ padding: 14px 14px; display:flex; flex-direction:column; gap:10px; }
+    .calc__body{ padding: 16px 16px; display:flex; flex-direction:column; gap:12px; }
     .row{
-      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
-      padding: 10px 10px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:14px;
+      padding: 12px 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
     }
-    .row b{ color: rgba(255,255,255,.86); }
-    .row small{ color: rgba(255,255,255,.62); display:block; margin-top:4px; line-height:1.35; }
+    .row b{ color: rgba(255,255,255,.92); font-size: 16px; }
+    .row small{ color: rgba(255,255,255,.70); display:block; margin-top:6px; line-height:1.35; font-size: 14px; }
     .right{
       text-align:right;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: rgba(255,255,255,.84);
+      color: rgba(255,255,255,.90);
       white-space:nowrap;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    /* Avatar types */
+    .avatarTypes{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .type{
+      padding: 12px 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.12);
+      font-size: 16px;
+      text-align: center;
+      color: rgba(255,255,255,.90);
+      font-weight: 600;
+    }
+
+    /* Revenue styling */
+    .revenue-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .revenue-card{
+      border-radius: 22px;
+      border: 2px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.12);
+      padding: 18px;
+      text-align: center;
+    }
+    .revenue-amount{
+      font-size: 28px;
+      font-weight: 900;
+      color: rgba(255,255,255,.95);
+      margin-bottom: 6px;
+    }
+    .revenue-desc{
+      font-size: 14px;
+      color: rgba(255,255,255,.70);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-weight: 600;
     }
 
     /* Footer hint */
     .hint{
-      margin-top: 14px;
+      margin-top: 18px;
       display:flex;
       align-items:center;
       justify-content: space-between;
       gap: 12px;
-      color: rgba(255,255,255,.55);
-      font-size: 12px;
+      color: rgba(255,255,255,.60);
+      font-size: 14px;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-weight: 600;
     }
     .btn{
       pointer-events:auto;
       cursor:pointer;
       border:none;
-      padding: 10px 12px;
+      padding: 12px 16px;
       border-radius: 999px;
       font-weight: 700;
       color: rgba(255,255,255,.90);
-      background: linear-gradient(135deg, rgba(99,102,241,.85), rgba(236,72,153,.85));
+      background: linear-gradient(135deg, var(--a), var(--c));
       box-shadow: 0 14px 26px rgba(0,0,0,.35);
+      font-size: 14px;
     }
     .btn:active{ transform: translateY(1px); }
 
+    /* Interactive calculator */
+    .interactiveCalc{
+      margin-top: 16px;
+      border-radius: 24px;
+      border: 2px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.14);
+      overflow:hidden;
+    }
+    .calcControls{
+      padding: 16px;
+      border-bottom: 2px solid rgba(255,255,255,.12);
+    }
+    .calcControls input{
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.20);
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.95);
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .calcResult{
+      padding: 20px 16px;
+      text-align: center;
+      background: rgba(88,28,135,.08);
+    }
+    .calcResult h3{
+      font-size: 24px;
+      font-weight: 900;
+      color: rgba(255,255,255,.95);
+      margin: 0 0 8px;
+    }
+    .calcResult p{
+      font-size: 16px;
+      color: rgba(255,255,255,.78);
+      margin: 0;
+    }
+
     /* small screens */
     @media (max-height: 720px){
-      h1{ font-size: 36px; }
-      .frame{ padding: 18px 16px; }
-      .bullet span{ font-size: 15px; }
+      h1{ font-size: 40px; }
+      .frame{ padding: 20px 18px; }
+      .bullet span{ font-size: 16px; }
     }
   </style>
 </head>
@@ -394,7 +489,7 @@
   <!-- PROGRESS -->
   <div class="progress">
     <div class="progress__bar" id="progressBar" aria-label="Progress">
-      <!-- 14 segments injected by JS -->
+      <!-- 16 segments injected by JS -->
     </div>
   </div>
 
@@ -405,16 +500,28 @@
     <section class="slide" data-index="1">
       <div class="frame">
         <div class="logoRow">
-          <div class="logo" aria-label="ANIMO logo placeholder">
-            <!-- minimal mark placeholder -->
+          <div class="logo" aria-label="ANIMO logo">
+            <!-- Правильный логотип ANIMO -->
             <svg viewBox="0 0 64 64" fill="none">
-              <path d="M16 48 L32 16 L48 48 M26 34 H38" stroke="url(#g)" stroke-width="4" stroke-linecap="round"/>
-              <path d="M12 52 Q32 36 52 20" stroke="url(#g)" stroke-width="3" stroke-linecap="round"/>
+              <!-- Основа буквы A -->
+              <path d="M32 8 L16 48 L24 48 L28 36 L36 36 L40 48 L48 48 L32 8 Z" stroke="url(#grad)" stroke-width="2" fill="url(#grad)"/>
+              <!-- Стрелка-паттерн -->
+              <path d="M28 28 Q32 20 36 22" stroke="url(#grad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+              <!-- Технологический паттерн внутри A -->
+              <g opacity="0.3">
+                <circle cx="20" cy="35" r="1" fill="white"/>
+                <circle cx="24" cy="32" r="1" fill="white"/>
+                <circle cx="28" cy="30" r="1" fill="white"/>
+                <line x1="20" y1="35" x2="24" y2="32" stroke="white" stroke-width="0.5"/>
+                <line x1="24" y1="32" x2="28" y2="30" stroke="white" stroke-width="0.5"/>
+                <circle cx="34" cy="26" r="1" fill="white"/>
+                <line x1="28" y1="30" x2="34" y2="26" stroke="white" stroke-width="0.5"/>
+              </g>
               <defs>
-                <linearGradient id="g" x1="12" y1="52" x2="52" y2="20">
-                  <stop offset="0" stop-color="#6366F1"/>
+                <linearGradient id="grad" x1="0" y1="48" x2="0" y2="8">
+                  <stop offset="0" stop-color="#581c87"/>
                   <stop offset="0.5" stop-color="#8B5CF6"/>
-                  <stop offset="1" stop-color="#EC4899"/>
+                  <stop offset="1" stop-color="#e91e63"/>
                 </linearGradient>
               </defs>
             </svg>
@@ -440,13 +547,23 @@
       <div class="frame">
         <div class="kicker">Суть</div>
         <h2>Что такое ANIMO</h2>
-        <p>ANIMO — платформа, где люди создают цифровые аватары своего голоса, образа и опыта и используют их законно, этично и под контролем.</p>
+        <p>ANIMO — платформа, где люди создают цифровые аватары своего образа и голоса и используют их законно, этично и под контролем.</p>
 
         <div class="bullets">
+          <div class="bullet"><div class="dot"></div><span>Образы — внешность, движения, привычки</span></div>
+          <div class="bullet"><div class="dot"></div><span>Голоса — манера речи, интонации</span></div>
           <div class="bullet"><div class="dot"></div><span>Для работы и монетизации</span></div>
           <div class="bullet"><div class="dot"></div><span>Для контента и студийных задач</span></div>
           <div class="bullet"><div class="dot"></div><span>Для семьи и сохранения памяти</span></div>
           <div class="bullet"><div class="dot"></div><span>Для будущих поколений</span></div>
+           <div class="bullet"><div class="dot"></div><span>Доступные типы аватаров: </span></div>
+        </div>
+
+        <div class="avatarTypes">
+          <div class="type"><div class="dot"></div>Люди</div>
+          <div class="type"><div class="dot"></div>Животные</div>
+          <div class="type"><div class="dot"></div>Локации</div>
+          <div class="type"><div class="dot"></div>Здания</div>
         </div>
       </div>
     </section>
@@ -458,12 +575,12 @@
         <h2>Зачем мы это делаем</h2>
 
         <div class="reveal">
-          <div class="line" style="--d:0"><p style="margin:0 0 10px;">Мы сохраняем то, что обычно исчезает:</p></div>
-          <div class="line" style="--d:140"><p style="margin:0 0 6px;">— опыт</p></div>
-          <div class="line" style="--d:240"><p style="margin:0 0 6px;">— голос</p></div>
-          <div class="line" style="--d:340"><p style="margin:0 0 6px;">— путь</p></div>
-          <div class="line" style="--d:440"><p style="margin:0 0 12px;">— присутствие</p></div>
-          <div class="line" style="--d:620"><p style="margin:0;">И передаём это дальше — не как архив, а как живое продолжение.</p></div>
+          <div class="line" style="--d:0"><p style="margin:0 0 14px; font-size:20px;">Мы сохраняем то, что обычно исчезает:</p></div>
+          <div class="line" style="--d:160"><p style="margin:0 0 8px; font-size:18px;">— опыт</p></div>
+          <div class="line" style="--d:280"><p style="margin:0 0 8px; font-size:18px;">— голос</p></div>
+          <div class="line" style="--d:400"><p style="margin:0 0 8px; font-size:18px;">— путь</p></div>
+          <div class="line" style="--d:520"><p style="margin:0 0 16px; font-size:18px;">— присутствие</p></div>
+          <div class="line" style="--d:720"><p style="margin:0; font-size:18px;">И передаём это дальше — не как архив, а как живое продолжение.</p></div>
         </div>
       </div>
     </section>
@@ -471,19 +588,18 @@
     <!-- 4 PEOPLE QUESTIONS -->
     <section class="slide" data-index="4">
       <div class="frame">
-        <div class="kicker">Вопросы</div>
+        <div class="kicker">Вопросы от людей</div>
         <h2>Нас часто спрашивают…</h2>
 
-        <div class="reveal">
-          <div class="line" style="--d:0"><p>А это вообще законно?</p></div>
-          <div class="line" style="--d:140"><p>Можно ли использовать голос и образ близкого человека?</p></div>
-          <div class="line" style="--d:240"><p>А если человека уже нет?</p></div>
-          <div class="line" style="--d:340"><p>Это не подделка?</p></div>
-          <div class="line" style="--d:440"><p>Кто контролирует, где используется аватар?</p></div>
-
-          <div class="line" style="--d:720"><p style="margin-top:10px;">А можно, чтобы мамин голос рассказывал внукам, как она пекла пироги?</p></div>
-          <div class="line" style="--d:880"><p>А если я всегда хотел петь, но боюсь выходить на сцену — может ли петь мой аватар?</p></div>
+        <div class="questionBlock people">
+          <p>А это вообще законно?</p>
+          <p>Можно ли использовать голос и образ близкого человека?</p>
+          <p>А если человека уже нет?</p>
+          <p>Можно, чтобы мамин голос рассказал моей жене рецеп любимого пирога?</p>
+          <p>А если я боюсь петь со сцены — может ли там спеть мой аватар?</p>
+          <p>А можно создать аватар собаки из моего детства — но её образ только у меня в памяти?</p>
         </div>
+
       </div>
     </section>
 
@@ -494,10 +610,9 @@
         <h2>О том, что дорого</h2>
 
         <div class="reveal">
-          <div class="line" style="--d:0"><p>Когда я был маленьким, у нас была собака.</p></div>
-          <div class="line" style="--d:160"><p>Она была очень важна для меня.</p></div>
-          <div class="line" style="--d:320"><p>У меня не осталось ни фото.</p></div>
-          <div class="line" style="--d:520"><p>Можно ли воссоздать её хотя бы так, как я её помню?</p></div>
+          <div class="line" style="--d:0"><p style="font-size:20px;">Мы все храним в памяти что-то очень личное</p></div>
+          <div class="line" style="--d:200"><p style="font-size:20px;">И хотели бы до него дотронуться </p></div>
+          <div class="line" style="--d:200"><p style="font-size:20px;">но не знаем  - как ? ..</p></div>
         </div>
 
         <div class="quote">Мы слышим эти вопросы и относимся к ним бережно.</div>
@@ -511,8 +626,8 @@
         <h2>Да. Можно. Законно.</h2>
 
         <div class="yesCard">
-          <div class="yesBig grad" id="yesPulse">Да. Можно. Законно.</div>
-          <p style="margin:0;">Можно создавать аватары на основе голоса, образа и материалов. Законно — с согласием, защитой прав и контролем использования.</p>
+          <div class="yesBig grad" id="yesPulse">Анимо</div>
+          <p style="margin:0; font-size:18px;">Можно создавать аватары на основе голоса, образа и материалов. Законно — с согласием, защитой прав и контролем использования.</p>
           <div class="pillRow">
             <div class="pill green">Согласие</div>
             <div class="pill green">Контроль</div>
@@ -520,42 +635,49 @@
             <div class="pill">Проверяем копии</div>
           </div>
         </div>
-
-        <div class="faq" aria-label="Mini FAQ">
-          <details>
-            <summary>ANIMO — это дипфейк? <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-            <div class="ans">Нет. Мы не про подделки. Мы про разрешённое использование: согласие, лицензии, контроль и защита прав владельца.</div>
-          </details>
-          <details>
-            <summary>Кто решает, где используется аватар? <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-            <div class="ans">Владелец. ANIMO фиксирует условия и помогает следить за использованием. При спорных случаях — быстрый юридический контур.</div>
-          </details>
-        </div>
       </div>
     </section>
 
-    <!-- 7 STUDIOS QUESTIONS -->
+    <!-- 7 LEGAL QUESTIONS -->
     <section class="slide" data-index="7">
       <div class="frame">
-        <div class="kicker">Студии</div>
-        <h2>Нас спрашивают создатели контента</h2>
+        <div class="kicker">Вопросы о защите прав</div>
+        <h2>Юридические вопросы</h2>
 
-        <div class="reveal">
-          <div class="line" style="--d:0"><p>Где искать живые голоса и образы, а не безликие модели?</p></div>
-          <div class="line" style="--d:160"><p>Что делать, если актёр недоступен?</p></div>
-          <div class="line" style="--d:320"><p>Как избежать пересъёмок и срывов графика?</p></div>
-          <div class="line" style="--d:480"><p>Можно ли легально использовать образ и голос — без рисков?</p></div>
-          <div class="line" style="--d:700"><p>Мы хотим снимать в некоторых зданиях и локациях, но не можем. Если они доступны как аватары — это решит вопрос?</p></div>
+        <div class="questionBlock legal">
+          <h3>Законно ли это?</h3>
+          <p>Кто решает, где используется аватар?</p>
+          <p>Как обеспечить контроль копий?</p>
+          <p>Что делать при нарушении условий использования?</p>
+          <p>Как работает механизм наследования прав?</p>
         </div>
       </div>
     </section>
 
-    <!-- 8 STUDIOS ANSWER -->
+    <!-- 8 STUDIOS QUESTIONS -->
     <section class="slide" data-index="8">
+      <div class="frame">
+        <div class="kicker">Вопросы использования</div>
+        <h2>Нас спрашивают создатели контента</h2>
+
+        <div class="questionBlock content">
+          <h3>Сложно найти нужный образ и законно его использовать! </h3>
+          <p>Где искать живые голоса и образы, их правообладателей?</p>
+          <p>Что делать, если актёр недоступен?</p>
+          <p>Как избежать пересъёмок и срывов графика?</p>
+          <p>Можно ли легально использовать образ и голос — без рисков?</p>          
+          <p>Можно ли легально использовать образ и голос — без рисков?</p>
+          <p>Мы хотим снимать в некоторых зданиях и локациях, но не можем туда попасть. Можно использовать их аватары?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 STUDIOS ANSWER -->
+    <section class="slide" data-index="9">
       <div class="frame">
         <div class="kicker">Решение для студий</div>
         <h2>Это решается</h2>
-        <p>ANIMO даёт доступ к голосам, образам и локациям в формате аватаров — на законных основаниях.</p>
+        <p>ANIMO даёт доступ к образам людей людей - их внешности и голосу, к образам животных и персонажей, к зданиям и локациям в формате аватаров — на законных основаниях.</p>
 
         <div class="grid2">
           <div class="card">
@@ -574,65 +696,65 @@
       </div>
     </section>
 
-    <!-- 9 LEGACY QUESTIONS (UPDATED STRONG) -->
-    <section class="slide" data-index="9">
+    <!-- 10 LEGACY QUESTIONS -->
+    <section class="slide" data-index="10">
       <div class="frame">
         <div class="kicker">Наследие</div>
         <h2>Нас спрашивают те, кто хочет оставить знание</h2>
 
         <div class="reveal">
-          <div class="line" style="--d:0"><p>Я прожил жизнь. Что из неё останется после меня?</p></div>
-          <div class="line" style="--d:180"><p>Как сохранить не факты, а то, как я думал, как принимал решения, как выбирал путь?</p></div>
-          <div class="line" style="--d:380"><p>Можно ли передать опыт так, чтобы его почувствовали, а не просто прочитали?</p></div>
-          <div class="line" style="--d:620"><p>Я хочу, чтобы мои потомки могли услышать мой голос и увидеть моё лицо.</p></div>
-          <div class="line" style="--d:860"><p style="font-size:17px;">Чтобы однажды мой праправнук удивился: «Как же я на него похож…»</p></div>
+          <div class="line" style="--d:0"><p style="font-size:18px;">Я прожил жизнь. Что из неё останется после меня?</p></div>
+          <div class="line" style="--d:200"><p style="font-size:18px;">Как сохранить не факты, а то, как я думал, как принимал решения, как выбирал путь?</p></div>
+          <div class="line" style="--d:400"><p style="font-size:18px;">Можно ли передать опыт так, чтобы его почувствовали, а не просто прочитали?</p></div>
+          <div class="line" style="--d:600"><p style="font-size:18px;">Я хочу, чтобы мои потомки могли услышать мой голос и увидеть моё лицо.</p></div>
+          <div class="line" style="--d:800"><p style="font-size:20px; font-weight:700;">Чтобы однажды мой правнук удивился: «Это мой дед?! Как же мы похожи!»</p></div>
         </div>
       </div>
     </section>
 
-    <!-- 10 LEGACY ANSWER -->
-    <section class="slide" data-index="10">
+    <!-- 11 LEGACY ANSWER -->
+    <section class="slide" data-index="11">
       <div class="frame">
         <div class="kicker">Ответ</div>
         <h2>Присутствие, которое остаётся</h2>
 
         <div class="bullets">
           <div class="bullet"><div class="dot"></div><span>Аватар остаётся в базе навсегда</span></div>
-          <div class="bullet"><div class="dot"></div><span>Срок действия не ограничен</span></div>
-          <div class="bullet"><div class="dot"></div><span>Вы решаете: что доступно, кому и когда</span></div>
+          <div class="bullet"><div class="dot"></div><span>Срок действия и участие в кастингах - не ограничены</span></div>
+          <div class="bullet"><div class="dot"></div><span>Владелец решает: что может делать аватар</span></div>
+          <div class="bullet"><div class="dot"></div><span>Владелец может опередать своего Аватара по наследству</span></div>
         </div>
 
         <div class="quote">Иногда важен не доступ к прошлому. А возможность сохранить настоящее.</div>
       </div>
     </section>
 
-    <!-- 11 HOW IT WORKS -->
-    <section class="slide" data-index="11">
+    <!-- 12 HOW IT WORKS -->
+    <section class="slide" data-index="12">
       <div class="frame">
         <div class="kicker">Процесс</div>
         <h2>Как это работает</h2>
 
         <div class="bullets reveal">
           <div class="line" style="--d:0">
-            <div class="bullet"><div class="dot"></div><span><b>Создание аватара</b><br/><span class="soft">Фото, видео, голос, образ</span></span></div>
+            <div class="bullet"><div class="dot"></div><span><b>Создание аватара</b><br/><span class="soft">Фото, видео, голос, образ - отснять в качестве или взять все то, что сохранилось</span></span></div>
           </div>
-          <div class="line" style="--d:220">
+          <div class="line" style="--d:300">
             <div class="bullet"><div class="dot"></div><span><b>Лицензирование и индексирование</b><br/><span class="soft">Юридическая защита, уникальность, контроль копий</span></span></div>
           </div>
-          <div class="line" style="--d:440">
-            <div class="bullet"><div class="dot"></div><span><b>Размещение и использование</b><br/><span class="soft">Проекты, аренда, работа, доход</span></span></div>
+          <div class="line" style="--d:600">
+            <div class="bullet"><div class="dot"></div><span><b>Размещение, Участие в кастингах и Использование</b><br/><span class="soft">Проекты, аренда, работа, доход</span></span></div>
           </div>
         </div>
 
-        <div class="hint" style="margin-top:12px;">
-          <span>Все шаги — на одном экране</span>
-          <button class="btn" data-action="peekIndex">Что значит индексирование</button>
+        <div class="quote" style="margin-top:16px;">
+          <b>Индексирование:</b> Мы фиксируем каждую сущность как уникальную единицу: сопровождаем лицензиями и условями использования. Это все помогает отличать легальные версии от лишних копий, отслеживать применения и наводить порядок при нарушениях.
         </div>
       </div>
     </section>
 
-    <!-- 12 CONTROL -->
-    <section class="slide" data-index="12">
+    <!-- 13 CONTROL -->
+    <section class="slide" data-index="13">
       <div class="frame">
         <div class="kicker">Контроль</div>
         <h2>Защита и прозрачность</h2>
@@ -644,7 +766,7 @@
           </div>
           <div class="card">
             <h3 class="grad">Порядок копий</h3>
-            <p>Если появляется “лишнее” использование — это видно, и есть механизм наведения порядка.</p>
+            <p>Если появляется "лишнее" использование — это видно, и есть механизм наведения порядка.</p>
           </div>
           <div class="card">
             <h3 class="grad">Юридическая кнопка</h3>
@@ -658,14 +780,14 @@
       </div>
     </section>
 
-    <!-- 13 CALC -->
-    <section class="slide" data-index="13">
+    <!-- 14 CALCULATOR -->
+    <section class="slide" data-index="14">
       <div class="frame">
         <div class="kicker">Калькулятор</div>
         <h2>Экономика одного аватара</h2>
         <p>ANIMO зарабатывает не на создании аватара, а на его долгой и легальной жизни в проектах.</p>
 
-        <div class="calc" aria-label="Economics card">
+        <div class="calc" style="margin-top:16px;">
           <div class="calc__top">
             <b>1 аватар</b>
             <span class="badge">многократное использование</span>
@@ -674,15 +796,15 @@
             <div class="row">
               <div>
                 <b>Параллельные применения</b>
-                <small>EdTech, сериал/видео, музей/VR, семейные истории</small>
+                <small>Анимации и рисунки, сериалы и кинофильмы, документальные и обучающие видео, музей/VR, семейные истории</small>
               </div>
               <div class="right">24/7</div>
             </div>
 
             <div class="row">
               <div>
-                <b>Доход</b>
-                <small>Основная часть — владельцу аватара<br/>Комиссия — ANIMO</small>
+                <b>Монетизация</b>
+                <small>93% владельцу аватара<br/>7% комиссия ANIMO</small>
               </div>
               <div class="right">повторяемо</div>
             </div>
@@ -690,28 +812,56 @@
             <div class="row">
               <div>
                 <b>Срок жизни</b>
-                <small>Аватар не “расходуется”, срок действия не ограничен, возможна передача по наследству</small>
+                <small>Аватар не "расходуется", срок действия не ограничен, можно оставить в наследство</small>
               </div>
               <div class="right">годами</div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="hint">
-          <span>Понятная формула LTV без обещаний</span>
-          <button class="btn" data-action="next">Дальше</button>
+    <!-- 15 REVENUE FOR INVESTORS -->
+    <section class="slide" data-index="15">
+      <div class="frame">
+        <div class="kicker">Доходы</div>
+        <h2>Модель монетизации</h2>
+        <p>Повторяемые доходы от жизненного цикла аватаров</p>
+
+        <div class="revenue-grid">
+          <div class="revenue-card">
+            <div class="revenue-amount">93%</div>
+            <div class="revenue-desc">владельцу аватара</div>
+          </div>
+          <div class="revenue-card">
+            <div class="revenue-amount">7%</div>
+            <div class="revenue-desc">комиссия ANIMO</div>
+          </div>
+          <div class="revenue-card">
+            <div class="revenue-amount">∞</div>
+            <div class="revenue-desc">время использования</div
+          </div>
+          <div class="revenue-card">
+            <div class="revenue-amount">КАСТИНГИ</div>
+            <div class="revenue-desc">на роли - постоянно</div>
+          </div>
+        </div>
+
+        <div class="quote" style="margin-top:16px;">
+          Каждый аватар — это актив с пожизненным доходом
         </div>
       </div>
     </section>
 
-    <!-- 14 FINAL -->
-    <section class="slide" data-index="14">
+
+    <!-- 16 FINAL -->
+    <section class="slide" data-index="17">
       <div class="frame">
         <div class="kicker">Финал</div>
-        <h2 class="grad">Присутствие, которое остаётся</h2>
-        <p>Мы сохраняем опыт, голос и путь — вместе с вами.</p>
+        <h2 class="grad" style="font-size:36px;">Присутствие, которое остаётся</h2>
+        <p style="font-size:22px;">Мы сохраняем опыт, голос и путь — вместе с вами.</p>
 
-        <div class="quote">Сохраним вместе.</div>
+        <div class="quote" style="font-size:24px; font-weight:800; margin-top:18px;">Сохраним вместе.</div>
 
         <div class="hint">
           <span>Готово к дизайну / motion / верстке</span>
@@ -773,14 +923,6 @@
 
       if(action === 'next') scrollToIndex(Math.min(total, idx+1));
       if(action === 'toStart') scrollToIndex(1);
-
-      if(action === 'peekIndex'){
-        // micro-modal without external libs: use alert-like overlay
-        showOverlay(
-          'Индексирование для уникальности',
-          'Мы фиксируем каждую сущность как уникальную единицу: связка образа, голоса, лицензии и условий использования. Это помогает отличать легальные версии от лишних копий, отслеживать применения и наводить порядок при нарушениях.'
-        );
-      }
     });
 
     // Subtle pulse on "Yes"
@@ -794,68 +936,27 @@
       }, 900);
     }
 
-    // Overlay
-    function showOverlay(title, text){
-      const overlay = document.createElement('div');
-      overlay.style.position = 'fixed';
-      overlay.style.inset = '0';
-      overlay.style.background = 'rgba(0,0,0,.55)';
-      overlay.style.backdropFilter = 'blur(6px)';
-      overlay.style.zIndex = '80';
-      overlay.style.display = 'grid';
-      overlay.style.placeItems = 'center';
-      overlay.style.padding = '18px';
-      overlay.style.cursor = 'pointer';
+    // Interactive Calculator
+    const usageInput = document.getElementById('avatarUsage');
+    const calcResult = document.getElementById('calcResult');
 
-      const box = document.createElement('div');
-      box.style.width = 'min(520px, 100%)';
-      box.style.borderRadius = '22px';
-      box.style.border = '1px solid rgba(255,255,255,.14)';
-      box.style.background = 'rgba(20,22,34,.85)';
-      box.style.boxShadow = '0 20px 60px rgba(0,0,0,.55)';
-      box.style.padding = '16px 14px';
-      box.style.cursor = 'default';
+    if (usageInput && calcResult) {
+      function updateCalc() {
+        const usage = parseInt(usageInput.value) || 10;
+        const ownerShare = Math.round(usage * 0.97);
+        const animoShare = Math.round(usage * 0.03);
+        
+        calcResult.innerHTML = `
+          <h3>${ownerShare}% владельцу / ${animoShare}% ANIMO</h3>
+          <p>При ${usage} использованиях в месяц доход владельца составляет ${ownerShare}%, ANIMO получает ${animoShare}% комиссии</p>
+        `;
+      }
 
-      const h = document.createElement('div');
-      h.style.fontWeight = '900';
-      h.style.fontSize = '18px';
-      h.style.letterSpacing = '-0.01em';
-      h.style.marginBottom = '8px';
-      h.textContent = title;
-
-      const p = document.createElement('div');
-      p.style.color = 'rgba(255,255,255,.75)';
-      p.style.fontFamily = 'Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif';
-      p.style.fontSize = '14px';
-      p.style.lineHeight = '1.45';
-      p.textContent = text;
-
-      const hint = document.createElement('div');
-      hint.style.marginTop = '12px';
-      hint.style.color = 'rgba(255,255,255,.55)';
-      hint.style.fontSize = '12px';
-      hint.style.fontFamily = 'Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif';
-      hint.textContent = 'Нажмите вне окна, чтобы закрыть';
-
-      box.appendChild(h);
-      box.appendChild(p);
-      box.appendChild(hint);
-      overlay.appendChild(box);
-      document.body.appendChild(overlay);
-
-      overlay.addEventListener('click', (e)=>{
-        if(e.target === overlay) overlay.remove();
-      });
-      document.addEventListener('keydown', function esc(e){
-        if(e.key === 'Escape'){
-          overlay.remove();
-          document.removeEventListener('keydown', esc);
-        }
-      });
+      usageInput.addEventListener('input', updateCalc);
+      updateCalc(); // Initial calculation
     }
 
     // Initial state
-    // Ensure first slide is marked current if observer hasn't fired yet
     setTimeout(()=>{
       slides[0].classList.add('is-current');
       segs[0].classList.add('is-active');
