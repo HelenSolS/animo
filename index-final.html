@@ -7,26 +7,35 @@
 
   <style>
     :root{
-      --bg:#050506;
-      --text:#ffffff;
+      --bg:#000;
+      --text:#fff;
       --muted:rgba(255,255,255,.7);
       --card:rgba(255,255,255,.06);
-      --card2:rgba(255,255,255,.1);
+      --card2:rgba(255,255,255,.10);
       --border:rgba(255,255,255,.14);
       --accent:#a88bff;
     }
+
     *{box-sizing:border-box}
+
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 50% -200px, rgba(168,139,255,.12), transparent),
-                  var(--bg);
+      background: var(--bg);
       color: var(--text);
     }
+
     .wrap{
-      max-width: 980px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 32px 20px 60px;
+      padding: 32px 20px 64px;
+    }
+
+    h1,h2,h3{margin:0}
+    h2{
+      margin: 40px 0 18px;
+      font-size:20px;
+      font-weight:600;
     }
 
     /* ---------- HEADER ---------- */
@@ -39,85 +48,70 @@
       background: linear-gradient(180deg, var(--card), transparent);
       border-radius: 20px;
     }
+
     .logo{
       width:52px;
       height:52px;
       border-radius:14px;
       object-fit:contain;
-      background: rgba(255,255,255,.05);
-      border: 1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--border);
       padding:6px;
     }
-    h1{
-      margin:0;
-      font-size:24px;
-      font-weight:700;
-    }
+
     .sub{
       margin-top:6px;
       font-size:13px;
-      color: var(--muted);
+      color:var(--muted);
     }
 
-    h2{
-      margin: 40px 0 16px;
-      font-size:20px;
-      font-weight:700;
-    }
-
-    /* ---------- GRID ---------- */
-    .grid{
+    /* ---------- HERO ---------- */
+    .hero{
+      margin-top:28px;
       display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-      gap:16px;
+      grid-template-columns: 340px 1fr;
+      gap:28px;
+      align-items:start;
     }
-    .thumb{
-      display:block;
-      border-radius:16px;
+
+    .hero-qr{
+      border-radius:22px;
       overflow:hidden;
       border:1px solid var(--border);
       background:var(--card);
-      cursor:pointer;
-      transition:transform .15s ease, background .15s ease;
-      text-decoration:none;
-      color:inherit;
     }
-    .thumb:hover{
-      transform:translateY(-2px);
-      background:var(--card2);
-    }
-    .thumb img{
+    .hero-qr img{
       width:100%;
-      height:auto;
       display:block;
     }
 
-    /* ---------- DOC LINKS ---------- */
-    ol{
-      margin: 24px 0 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 14px;
+    .hero-links{
+      display:grid;
+      gap:14px;
     }
+
     a.doc{
       display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:14px;
-      padding: 16px 18px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--text);
-      text-decoration:none;
-    }
-    a.doc:hover{ background:var(--card2); }
-    .left{
-      display:flex;
       flex-direction:column;
-      gap:4px;
+      gap:6px;
+      padding:16px 18px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background:var(--card);
+      color:var(--text);
+      text-decoration:none;
+      transition:.15s ease;
     }
+    a.doc:hover{
+      background:var(--card2);
+      transform:translateY(-1px);
+    }
+
+    a.doc.main{
+      border-color: rgba(168,139,255,.6);
+      background: linear-gradient(135deg, rgba(168,139,255,.28), rgba(168,139,255,.06));
+    }
+
     .title{
       font-size:15px;
       font-weight:600;
@@ -126,13 +120,51 @@
       font-size:12px;
       color:var(--muted);
     }
-    .badge{
-      font-size:12px;
-      padding:6px 12px;
-      border-radius:999px;
+
+    /* ---------- GRIDS ---------- */
+
+    /* Свободный формат */
+    .grid-free{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap:18px;
+    }
+
+    /* Квадраты */
+    .grid-square{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap:16px;
+    }
+
+    .thumb, .square{
+      border-radius:16px;
+      overflow:hidden;
       border:1px solid var(--border);
-      background:rgba(255,255,255,.04);
-      white-space:nowrap;
+      background:var(--card);
+      cursor:pointer;
+      transition:.15s ease;
+    }
+
+    .thumb:hover, .square:hover{
+      background:var(--card2);
+      transform:translateY(-2px);
+    }
+
+    .thumb img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .square{
+      aspect-ratio:1/1;
+    }
+    .square img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
     }
 
     footer{
@@ -160,6 +192,12 @@
       border:1px solid var(--border);
       background:#000;
     }
+
+    @media(max-width:900px){
+      .hero{
+        grid-template-columns:1fr;
+      }
+    }
   </style>
 </head>
 
@@ -171,63 +209,62 @@
     <img src="./logo.png" alt="ANIMO logo" class="logo" />
     <div>
       <h1>ANIMO</h1>
-      <div class="sub">Присутствие, которое остаётся · витрина проекта</div>
+      <div class="sub">Витрина материалов проекта</div>
     </div>
   </header>
 
-  <!-- MAIN PRESENTATION -->
+  <!-- HERO -->
   <h2>Основная презентация</h2>
-  <div class="grid">
-    <a class="thumb" href="./index-final.html" target="_blank">
-      <img src="./qrbk.png" alt="Открыть презентацию ANIMO">
-    </a>
-  </div>
-  <p class="sub">Интерактивная презентация: идея, смыслы, экономика, рынок</p>
+  <div class="hero">
+    <div class="hero-qr">
+      <img src="./qrbk.png" alt="QR ANIMO">
+    </div>
 
-  <!-- VIDEO -->
-  <h2>Видео (NotebookLM)</h2>
-  <ol>
-    <li>
+    <div class="hero-links">
+      <a class="doc main" href="./index.html" target="_blank">
+        <span class="title">Открыть основную презентацию</span>
+        <span class="hint">Интерактивная версия ANIMO</span>
+      </a>
+
       <a class="doc" href="https://disk.yandex.ru/i/Igmv31iQlChoBA" target="_blank">
-        <span class="left">
-          <span class="title">Короткое видео</span>
-          <span class="hint">Эмоциональный обзор концепции</span>
-        </span>
-        <span class="badge">VIDEO</span>
+        <span class="title">Видео · коротко</span>
+        <span class="hint">NotebookLM · 1–2 минуты</span>
       </a>
-    </li>
-    <li>
-      <a class="doc" href="https://disk.yandex.ru/i/Z9xdkbIXDhFzbQ" target="_blank">
-        <span class="left">
-          <span class="title">Полная версия</span>
-          <span class="hint">Для инвесторов</span>
-        </span>
-        <span class="badge">VIDEO</span>
-      </a>
-    </li>
-  </ol>
 
-  <!-- INFOGRAPHICS -->
-  <h2>Инфографика</h2>
-  <div class="grid">
-    <div class="thumb"><img src="./image-1.png"></div>
-    <div class="thumb"><img src="./image-2.png"></div>
-    <div class="thumb"><img src="./image-3.png"></div>
-    <div class="thumb"><img src="./image-4.png"></div>
-    <div class="thumb"><img src="./image-5.png"></div>
+      <a class="doc" href="https://disk.yandex.ru/i/Z9xdkbIXDhFzbQ" target="_blank">
+        <span class="title">Видео · для инвестора</span>
+        <span class="hint">Полная версия</span>
+      </a>
+      <a class="doc" href="https://disk.yandex.ru/i/ZxU41VAe_4Lw-g" target="_blank">
+        <span class="title">Видео · рассуждения</span>
+        <span class="hint">Полная версия</span>
+      </a>
+      <a class="doc" href="./ANIMO_Присутствие_которое_остается.pdf" target="_blank">
+        <span class="title">Презентация PDF</span>
+        <span class="hint">Для пересылки и печати</span>
+      </a>
+    </div>
   </div>
 
-  <!-- LOGOS -->
-  <h2>Логотипы ANIMO</h2>
-  <div class="grid">
-    <div class="thumb"><img src="./logo1.png"></div>
-    <div class="thumb"><img src="./logo2.png"></div>
-    <div class="thumb"><img src="./logo3.png"></div>
-    <div class="thumb"><img src="./logo4.png"></div>
+  <!-- INFOGRAPHICS FREE -->
+  <h2>Инфографика · обзор</h2>
+  <div class="grid-free">
+    <div class="thumb"><img src="./image-1.png" alt=""></div>
+    <div class="thumb"><img src="./image-2.png" alt=""></div>
+    <div class="thumb"><img src="./image-3.png" alt=""></div>
+  </div>
+
+  <!-- INFOGRAPHICS SQUARE -->
+  <h2>Инфографика · кейсы</h2>
+  <div class="grid-square">
+    <div class="square"><img src="./image-4.png" alt=""></div>
+    <div class="square"><img src="./image-5.png" alt=""></div>
+    <div class="square"><img src="./image-6.png" alt=""></div>
+    <div class="square"><img src="./image-7.png" alt=""></div>
   </div>
 
   <footer>
-    © ANIMO · все материалы проекта
+    Все материалы проекта ANIMO собраны на одной странице
   </footer>
 </div>
 
@@ -238,18 +275,18 @@
 
 <script>
   const lightbox = document.getElementById('lightbox');
-  const lightboxImg = lightbox.querySelector('img');
+  const img = lightbox.querySelector('img');
 
-  document.querySelectorAll('.thumb img').forEach(img=>{
-    img.addEventListener('click',()=>{
-      lightboxImg.src = img.src;
+  document.querySelectorAll('.thumb img, .square img').forEach(el=>{
+    el.addEventListener('click',()=>{
+      img.src = el.src;
       lightbox.style.display = 'flex';
     });
   });
 
   lightbox.addEventListener('click',()=>{
     lightbox.style.display = 'none';
-    lightboxImg.src = '';
+    img.src = '';
   });
 </script>
 
