@@ -3,51 +3,55 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Коллекция документов Анимо</title>
+  <title>ANIMO — витрина проекта</title>
 
   <style>
     :root{
-      --bg:#000;
-      --text:#fff;
+      --bg:#050506;
+      --text:#ffffff;
       --muted:rgba(255,255,255,.7);
       --card:rgba(255,255,255,.06);
-      --card2:rgba(255,255,255,.10);
+      --card2:rgba(255,255,255,.1);
       --border:rgba(255,255,255,.14);
+      --accent:#a88bff;
     }
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
+      background: radial-gradient(1200px 600px at 50% -200px, rgba(168,139,255,.12), transparent),
+                  var(--bg);
       color: var(--text);
     }
     .wrap{
-      max-width: 900px;
+      max-width: 980px;
       margin: 0 auto;
-      padding: 28px 18px 48px;
+      padding: 32px 20px 60px;
     }
 
+    /* ---------- HEADER ---------- */
     header{
       display:flex;
-      gap:14px;
+      gap:16px;
       align-items:center;
-      padding: 18px;
+      padding: 20px;
       border: 1px solid var(--border);
       background: linear-gradient(180deg, var(--card), transparent);
-      border-radius: 18px;
+      border-radius: 20px;
     }
     .logo{
-      width:48px;
-      height:48px;
-      border-radius: 12px;
-      object-fit: contain;
-      background: rgba(255,255,255,.04);
+      width:52px;
+      height:52px;
+      border-radius:14px;
+      object-fit:contain;
+      background: rgba(255,255,255,.05);
       border: 1px solid var(--border);
-      padding: 6px;
+      padding:6px;
     }
     h1{
       margin:0;
-      font-size: 22px;
+      font-size:24px;
+      font-weight:700;
     }
     .sub{
       margin-top:6px;
@@ -56,24 +60,27 @@
     }
 
     h2{
-      margin: 28px 0 14px;
-      font-size:18px;
-      font-weight:600;
+      margin: 40px 0 16px;
+      font-size:20px;
+      font-weight:700;
     }
 
-    /* ---------- IMAGE GRIDS ---------- */
+    /* ---------- GRID ---------- */
     .grid{
       display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px,1fr));
-      gap:14px;
+      grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+      gap:16px;
     }
     .thumb{
-      border-radius:14px;
+      display:block;
+      border-radius:16px;
       overflow:hidden;
       border:1px solid var(--border);
       background:var(--card);
       cursor:pointer;
       transition:transform .15s ease, background .15s ease;
+      text-decoration:none;
+      color:inherit;
     }
     .thumb:hover{
       transform:translateY(-2px);
@@ -85,40 +92,51 @@
       display:block;
     }
 
-    /* ---------- LINKS ---------- */
+    /* ---------- DOC LINKS ---------- */
     ol{
-      margin: 22px 0 0;
+      margin: 24px 0 0;
       padding: 0;
       list-style: none;
       display: grid;
-      gap: 12px;
+      gap: 14px;
     }
     a.doc{
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:12px;
-      padding: 14px 16px;
-      border-radius: 14px;
+      gap:14px;
+      padding: 16px 18px;
+      border-radius: 16px;
       border: 1px solid var(--border);
       background: var(--card);
       color: var(--text);
       text-decoration:none;
     }
     a.doc:hover{ background:var(--card2); }
-    .left{ display:flex; flex-direction:column; gap:4px; }
-    .title{ font-size:15px; font-weight:600; }
-    .hint{ font-size:12px; color:var(--muted); }
+    .left{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .title{
+      font-size:15px;
+      font-weight:600;
+    }
+    .hint{
+      font-size:12px;
+      color:var(--muted);
+    }
     .badge{
       font-size:12px;
-      padding:6px 10px;
+      padding:6px 12px;
       border-radius:999px;
       border:1px solid var(--border);
       background:rgba(255,255,255,.04);
+      white-space:nowrap;
     }
 
     footer{
-      margin-top:28px;
+      margin-top:48px;
       text-align:center;
       font-size:12px;
       color:var(--muted);
@@ -152,29 +170,28 @@
   <header>
     <img src="./logo.png" alt="ANIMO logo" class="logo" />
     <div>
-      <h1>Коллекция документов Анимо</h1>
-      <div class="sub">Материалы проекта</div>
+      <h1>ANIMO</h1>
+      <div class="sub">Присутствие, которое остаётся · витрина проекта</div>
     </div>
   </header>
-  
-  <!-- EXAMPLES -->
-<h2>Основная презентация</h2>
-<div class="grid">
-  <a class="thumb" href="./index.html" target="_blank">
-    <img src="./qrbk.png" alt="Открыть презентацию">
-  </a>
-</div>
 
-  
+  <!-- MAIN PRESENTATION -->
+  <h2>Основная презентация</h2>
+  <div class="grid">
+    <a class="thumb" href="./index-final.html" target="_blank">
+      <img src="./qrbk.png" alt="Открыть презентацию ANIMO">
+    </a>
+  </div>
+  <p class="sub">Интерактивная презентация: идея, смыслы, экономика, рынок</p>
 
-
-  <!-- LINKS -->
+  <!-- VIDEO -->
+  <h2>Видео (NotebookLM)</h2>
   <ol>
     <li>
       <a class="doc" href="https://disk.yandex.ru/i/Igmv31iQlChoBA" target="_blank">
         <span class="left">
-          <span class="title">1) Видео 1 </span>
-          <span class="hint">NotebookLM</span>
+          <span class="title">Короткое видео</span>
+          <span class="hint">Эмоциональный обзор концепции</span>
         </span>
         <span class="badge">VIDEO</span>
       </a>
@@ -182,44 +199,36 @@
     <li>
       <a class="doc" href="https://disk.yandex.ru/i/Z9xdkbIXDhFzbQ" target="_blank">
         <span class="left">
-          <span class="title">2) Видео 2 </span>
-          <span class="hint">NotebookLM</span>
+          <span class="title">Полная версия</span>
+          <span class="hint">Для инвесторов</span>
         </span>
         <span class="badge">VIDEO</span>
       </a>
     </li>
-    <li>
-      <a class="doc" href="https://disk.yandex.ru/i/d4EwQ8o6F8ed5g" target="_blank">
-        <span class="left">
-          <span class="title">3) Презентация (PDF)</span>
-          <span class="hint">ANIMO_Присутствие_которое_остается.pdf</span>
-        </span>
-        <span class="badge">PDF</span>
-      </a>
-    </li>
   </ol>
-  <!-- IMAGE EXAMPLES -->
-  <h2>Примеры инфографики от ЛМ</h2>
+
+  <!-- INFOGRAPHICS -->
+  <h2>Инфографика</h2>
   <div class="grid">
-    <div class="thumb"><img src="./image-1.png" alt="Image 1"></div>
-    <div class="thumb"><img src="./image-2.png" alt="Image 2"></div>
-    <div class="thumb"><img src="./image-3.png" alt="Image 3"></div>
-  </div>
-  <div class="grid">
-    <div class="thumb"><img src="./image-4.png" alt="Image 4"></div>
-    <div class="thumb"><img src="./image-5.png" alt="Image 5"></div>
+    <div class="thumb"><img src="./image-1.png"></div>
+    <div class="thumb"><img src="./image-2.png"></div>
+    <div class="thumb"><img src="./image-3.png"></div>
+    <div class="thumb"><img src="./image-4.png"></div>
+    <div class="thumb"><img src="./image-5.png"></div>
   </div>
 
-  <!-- LOGO EXAMPLES -->
-  <h2>Примеры логотипа</h2>
+  <!-- LOGOS -->
+  <h2>Логотипы ANIMO</h2>
   <div class="grid">
-    <div class="thumb"><img src="./logo1.png" alt="Logo 1"></div>
-    <div class="thumb"><img src="./logo4.png" alt="Logo 4"></div>
-  </div> 
-  <div class="grid">
-    <div class="thumb"><img src="./logo2.png" alt="Logo 2"></div>
-    <div class="thumb"><img src="./logo3.png" alt="Logo 3"></div>
+    <div class="thumb"><img src="./logo1.png"></div>
+    <div class="thumb"><img src="./logo2.png"></div>
+    <div class="thumb"><img src="./logo3.png"></div>
+    <div class="thumb"><img src="./logo4.png"></div>
   </div>
+
+  <footer>
+    © ANIMO · все материалы проекта
+  </footer>
 </div>
 
 <!-- LIGHTBOX -->
