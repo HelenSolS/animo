@@ -172,16 +172,23 @@
       display:flex; align-items:center; gap:16px;
       margin-bottom: 18px;
     }
-    .logo{
-      width: 64px;
-      height: 64px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: transparent;
+  .logo{
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 8px solid #EFEEF6;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      box-sizing: border-box;
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+
+    .logo img{
+      width: 65%;
+      height: auto;
+      object-fit: contain;
     }
     
     .logo img{
