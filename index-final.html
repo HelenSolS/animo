@@ -27,7 +27,6 @@
       padding: 28px 18px 48px;
     }
 
-    /* ---------- Header ---------- */
     header{
       display:flex;
       gap:14px;
@@ -49,7 +48,6 @@
     h1{
       margin:0;
       font-size: 22px;
-      letter-spacing:.2px;
     }
     .sub{
       margin-top:6px;
@@ -57,27 +55,37 @@
       color: var(--muted);
     }
 
-    /* ---------- Image blocks ---------- */
-    .images{
-      margin-top: 22px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    .image-card{
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--card);
-    }
-    .image-card img{
-      display:block;
-      width:100%;
-      height:auto;
-      background:#000;
+    h2{
+      margin: 28px 0 14px;
+      font-size:18px;
+      font-weight:600;
     }
 
-    /* ---------- Links ---------- */
+    /* ---------- IMAGE GRIDS ---------- */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px,1fr));
+      gap:14px;
+    }
+    .thumb{
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:var(--card);
+      cursor:pointer;
+      transition:transform .15s ease, background .15s ease;
+    }
+    .thumb:hover{
+      transform:translateY(-2px);
+      background:var(--card2);
+    }
+    .thumb img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    /* ---------- LINKS ---------- */
     ol{
       margin: 22px 0 0;
       padding: 0;
@@ -96,109 +104,134 @@
       background: var(--card);
       color: var(--text);
       text-decoration:none;
-      transition: background .15s ease, transform .08s ease;
     }
-    a.doc:hover{
-      background: var(--card2);
-      transform: translateY(-1px);
-    }
-    .left{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-      min-width:0;
-    }
-    .title{
-      font-size:15px;
-      font-weight:600;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .hint{
-      font-size:12px;
-      color: var(--muted);
-    }
+    a.doc:hover{ background:var(--card2); }
+    .left{ display:flex; flex-direction:column; gap:4px; }
+    .title{ font-size:15px; font-weight:600; }
+    .hint{ font-size:12px; color:var(--muted); }
     .badge{
       font-size:12px;
       padding:6px 10px;
       border-radius:999px;
       border:1px solid var(--border);
       background:rgba(255,255,255,.04);
-      color:rgba(255,255,255,.85);
-      flex-shrink:0;
     }
 
     footer{
-      margin-top: 22px;
+      margin-top:28px;
       text-align:center;
       font-size:12px;
-      color: var(--muted);
+      color:var(--muted);
+    }
+
+    /* ---------- LIGHTBOX ---------- */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.9);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:1000;
+      cursor:zoom-out;
+    }
+    .lightbox img{
+      max-width:92%;
+      max-height:92%;
+      border-radius:18px;
+      border:1px solid var(--border);
+      background:#000;
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
+<div class="wrap">
 
-    <!-- HEADER -->
-    <header>
-      <!-- логотип лежит рядом -->
-      <img src="./logo.png" alt="ANIMO logo" class="logo" />
-      <div>
-        <h1>Коллекция документов Анимо</h1>
-        <div class="sub">Материалы проекта. Все файлы лежат в корне.</div>
-      </div>
-    </header>
+  <!-- HEADER -->
+  <header>
+    <img src="./logo.png" alt="ANIMO logo" class="logo" />
+    <div>
+      <h1>Коллекция документов Анимо</h1>
+      <div class="sub">Материалы проекта</div>
+    </div>
+  </header>
 
-    <!-- IMAGE BLOCKS -->
-    <section class="images">
-      <!-- замени имена файлов при необходимости -->
-      <div class="image-card">
-        <img src="./image-1.jpg" alt="ANIMO image 1">
-      </div>
-      <div class="image-card">
-        <img src="./image-2.jpg" alt="ANIMO image 2">
-      </div>
-    </section>
-
-    <!-- LINKS -->
-    <ol>
-      <li>
-        <a class="doc" href="./video1.mp4" target="_blank">
-          <span class="left">
-            <span class="title">1) Видео 1</span>
-            <span class="hint">https://notebooklm.google.com/notebook/4cfe30ee-1276-4b55-a8ca-409b01588493?artifactId=639ae0d7-0064-4a88-ad7c-51de6aa6787d</span>
-          </span>
-          <span class="badge">VIDEO</span>
-        </a>
-      </li>
-
-      <li>
-        <a class="doc" href="./video2.mp4" target="_blank">
-          <span class="left">
-            <span class="title">2) Видео 2</span>
-            <span class="hint">https://notebooklm.google.com/notebook/4cfe30ee-1276-4b55-a8ca-409b01588493?artifactId=5fd6bc50-21e8-4da5-b40a-1a2d3bac95ca</span>
-          </span>
-          <span class="badge">VIDEO</span>
-        </a>
-      </li>
-
-      <li>
-        <a class="doc" href="./presentation.pdf" target="_blank">
-          <span class="left">
-            <span class="title">3) Презентация (PDF)</span>
-            <span class="hint">ANIMO_Присутствие_которое_остаётся.pdf</span>
-          </span>
-          <span class="badge">PDF</span>
-        </a>
-      </li>
-    </ol>
-
-    <footer>
-      Имена файлов можно менять — главное, чтобы они лежали рядом со страницей.
-    </footer>
-
+  <!-- IMAGE EXAMPLES -->
+  <h2>Примеры инфографики от ЛМ</h2>
+  <div class="grid">
+    <div class="thumb"><img src="./image-1.png" alt="Image 1"></div>
+    <div class="thumb"><img src="./image-2.png" alt="Image 2"></div>
+    
+    <div class="thumb"><img src="./image-3.png" alt="Image 3"></div>
   </div>
+
+  <!-- LOGO EXAMPLES -->
+  <h2>Примеры логотипа</h2>
+  <div class="grid">
+    <div class="thumb"><img src="./logo1.png" alt="Logo 1"></div>
+    <div class="thumb"><img src="./logo2.png" alt="Logo 2"></div>
+    <div class="thumb"><img src="./logo3.png" alt="Logo 3"></div>
+    <div class="thumb"><img src="./logo4.png" alt="Logo 4"></div>
+  </div>
+
+  <!-- LINKS -->
+  <ol>
+    <li>
+      <a class="doc" href="./video1.mp4" target="_blank">
+        <span class="left">
+          <span class="title">1) Видео 1</span>
+          <span class="hint">NotebookLM</span>
+        </span>
+        <span class="badge">VIDEO</span>
+      </a>
+    </li>
+    <li>
+      <a class="doc" href="./video2.mp4" target="_blank">
+        <span class="left">
+          <span class="title">2) Видео 2</span>
+          <span class="hint">NotebookLM</span>
+        </span>
+        <span class="badge">VIDEO</span>
+      </a>
+    </li>
+    <li>
+      <a class="doc" href="./presentation.pdf" target="_blank">
+        <span class="left">
+          <span class="title">3) Презентация (PDF)</span>
+          <span class="hint">ANIMO_Присутствие_которое_остается.pdf</span>
+        </span>
+        <span class="badge">PDF</span>
+      </a>
+    </li>
+  </ol>
+
+  <footer>
+    Все изображения и файлы лежат рядом со страницей
+  </footer>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <img src="" alt="">
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = lightbox.querySelector('img');
+
+  document.querySelectorAll('.thumb img').forEach(img=>{
+    img.addEventListener('click',()=>{
+      lightboxImg.src = img.src;
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  lightbox.addEventListener('click',()=>{
+    lightbox.style.display = 'none';
+    lightboxImg.src = '';
+  });
+</script>
+
 </body>
 </html>
