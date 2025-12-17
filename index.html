@@ -172,17 +172,24 @@
       display:flex; align-items:center; gap:16px;
       margin-bottom: 18px;
     }
-.logo{
-  width: auto;
-  height: auto;
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,.16);
-  background: transparent; /* важно */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+    .logo{
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .logo img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 18px;
+    }
     /* Lists */
     .bullets{
       display:flex; flex-direction:column; gap:12px;
@@ -512,7 +519,7 @@
       <div class="frame">
         <div class="logoRow">
         <div class="logo" aria-label="ANIMO logo">
-          <img src="logo.png" alt="ANIMO logo">
+          <img src="logo1.png" alt="ANIMO">
         </div>
           <div>
             <div class="kicker">ANIMO</div>
