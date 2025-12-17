@@ -172,15 +172,16 @@
       display:flex; align-items:center; gap:16px;
       margin-bottom: 18px;
     }
-    .logo{
-      width: 64px; height: 64px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: linear-gradient(180deg, rgba(88,28,135,.3), rgba(233,30,99,.3));
-      display:grid; place-items:center;
-      box-shadow: 0 12px 30px rgba(0,0,0,.35);
-    }
-    .logo svg{ width: 48px; height: 48px; }
+.logo{
+  width: auto;
+  height: auto;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: transparent; /* важно */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
     /* Lists */
     .bullets{
