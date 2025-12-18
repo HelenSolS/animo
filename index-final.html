@@ -65,24 +65,167 @@
       color:var(--muted);
     }
 
+    /* ---------- DOCUMENTS TABLE ---------- */
+    .docs-section {
+      margin-top: 32px;
+    }
+
+    .docs-section h2 {
+      margin-bottom: 24px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .docs-section h2::before {
+      content: '';
+      width: 4px;
+      height: 20px;
+      background: linear-gradient(135deg, var(--accent), #ff6b9d);
+      border-radius: 2px;
+    }
+
+    .docs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .docs-table th {
+      background: var(--card);
+      padding: 16px;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .docs-table td {
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      min-height: 120px;
+    }
+
+    .docs-table tbody tr:hover {
+      background: var(--card2);
+    }
+
+    .docs-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .doc-content {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .doc-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .doc-hint {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .doc-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: .15s ease;
+    }
+
+    .doc-link:hover {
+      background: rgba(168,139,255,.2);
+      text-decoration: none;
+    }
+
+    .doc-btn {
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: .15s ease;
+      font-size: 13px;
+      margin-top: 8px;
+      color: white;
+    }
+
+    .doc-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .doc-btn-presentation {
+      background: linear-gradient(135deg, #4a90e2, #357abd);
+    }
+
+    .doc-btn-presentation:hover {
+      background: linear-gradient(135deg, #5ba0f2, #458acd);
+    }
+
+    .doc-btn-video {
+      background: linear-gradient(135deg, #ff6b9d, #c44dff);
+    }
+
+    .doc-btn-video:hover {
+      background: linear-gradient(135deg, #ff8bb3, #d363ff);
+    }
+
+    .doc-btn-presentation::before {
+      content: "📄 ";
+      font-size: 12px;
+    }
+
+    .doc-btn-video::before {
+      content: "🎥 ";
+      font-size: 12px;
+    }
+
+    .cases-table {
+      border: 2px solid var(--accent);
+    }
+
+    .cases-table th {
+      background: linear-gradient(135deg, var(--accent), rgba(168,139,255,.3));
+      color: white;
+    }
+
+    .case-content h4 {
+      margin: 0 0 16px 0;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .case-image {
+      border: 2px solid var(--accent);
+      box-shadow: 0 4px 12px rgba(168,139,255,.2);
+    }
+
+    .info-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
     /* ---------- HERO ---------- */
     .hero{
       margin-top:28px;
       display:grid;
-      grid-template-columns: 340px 1fr;
+      grid-template-columns: 1fr;
       gap:28px;
       align-items:start;
-    }
-
-    .hero-qr{
-      border-radius:22px;
-      overflow:hidden;
-      border:1px solid var(--border);
-      background:var(--card);
-    }
-    .hero-qr img{
-      width:100%;
-      display:block;
     }
 
     .hero-links{
@@ -194,60 +337,11 @@
     }
 
     @media(max-width:900px){
-      .hero{
-        grid-template-columns:1fr;
+      .docs-table {
+        font-size: 14px;
       }
     }
-  </style>   <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            margin: 20px;
-            background-color: #f5f5f5;
-        }
-        
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        th {
-            background-color: #f8f9fa;
-            font-weight: 600;
-            color: #333;
-        }
-        
-        .doc-link {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .doc-link:hover {
-            text-decoration: underline;
-        }
-        
-        .hint {
-            font-size: 0.9em;
-            color: #666;
-            font-weight: normal;
-        }
-        
-
-    </style>
+  </style>
 </head>
 
 <body>
@@ -262,151 +356,181 @@
     </div>
   </header>
 
-  <div class="container">
-        <h2>Документы и видео</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Документ/Видео</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <strong>Открыть основную презентацию</strong><br>
-                        <span class="hint">Интерактивная версия ANIMO</span><br>
-                        <a href="./index.html" target="_blank" class="doc-link">Открыть</a>
-                    </td>
-                    <td></td>
-                    <td> <span class="hint">Альтернативная презентация от Нотебук ЛМ (слайды горизонтальные)</span><br>
-                      <span>
-                      <a href="https://disk.yandex.ru/i/i4xJZjghR4JQ_w" target="_blank" class="doc-link">Открыть</a>
-                      </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>Видео · версия1 (исправленная)</strong><br>
-                        <span class="hint">NotebookLM + QR и лого Анимо</span><br>
-                        <a href="https://disk.yandex.ru/i/S3q-Q3SdB_qTLQ" target="_blank" class="doc-link">Открыть</a>
-                    </td>
-                    <td>язык: русский<br> стиль  anime</td>
-                    <td> <strong>Видео · версия1(оригинал)</strong><br>
-                        <span class="hint">NotebookLM</span><br>
-                        <a href="https://disk.yandex.ru/i/Igmv31iQlChoBA" target="_blank" class="doc-link">Открыть</a></td>
-                </tr>
-                <tr>
-                    <td>
-                      <strong>Видео · версия2 новая стиль абстрактный, длинна 1.5 язык русский</strong><br>
-                        <span class="hint">NotebookLM</span><br>
-                        <a href="https://disk.yandex.ru/i/Z7xGXiRYCUXogw" target="_blank" class="doc-link">Открыть</a></td>
-                       
-                    </td>
-                    <td><strong>Видео · версия3 новая стиль деловой, длинна 4.5 язык английский</strong><br>
-                        <span class="hint">NotebookLM</span><br>
-                        <a href="https://disk.yandex.ru/i/puf7SYAwUn8vFQ" target="_blank" class="doc-link">Открыть</a></td>
-                       </td>
-                    <td></td>
-                </tr>
+  <!-- DOCUMENTS TABLE -->
+  <section class="docs-section">
+    <h2>Документы и видео</h2>
+    <table class="docs-table">
+      <thead>
+        <tr>
+          <th>Презентации</th>
+          <th>Видео · новые версии</th>
+          <th>Видео · от 17.12</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="doc-content">
+              <strong>Основная презентация</strong>
+              <span class="doc-hint">Интерактивная версия ANIMO</span>
+              <button onclick="openFullWindow('./index.html')" class="doc-btn doc-btn-presentation">Открыть презентацию</button>
+            </div>
+          </td>
+          <td>
+            <div class="doc-content">
+              <strong>Видео · версия2 новая </strong>
+              <span class="doc-hint">Стиль абстрактный, длина 1.5, язык русский</span>
+              <button onclick="openFullWindow('https://disk.yandex.ru/i/Z7xGXiRYCUXogw')" class="doc-btn doc-btn-video">Открыть видео</button>
+            </div>
+          </td>
+          <td>
+            <div class="doc-content">
+              <strong>Видео · версия2 🏛️💖 (от 17/12)</strong>
+              <span class="doc-hint">NotebookLM, стиль классика</span>
+              <button onclick="openFullWindow('https://disk.yandex.ru/i/ZxU41VAe_4Lw-g')" class="doc-btn doc-btn-video">Открыть видео</button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="doc-content">
+              <strong>Альтернативная презентация</strong>
+              <span class="doc-hint">NotebookLM (слайды горизонтальные)</span>
+              <button onclick="openFullWindow('https://disk.yandex.ru/i/i4xJZjghR4JQ_w')" class="doc-btn doc-btn-presentation">Открыть презентацию</button>
+            </div>
+          </td>
+          <td>
+            <div class="doc-content">
+              <strong>Видео · версия3 новая 🌍🇬🇧</strong>
+              <span class="doc-hint">Стиль деловой, длина 4.5, язык английский</span>
+              <button onclick="openFullWindow('https://disk.yandex.ru/i/puf7SYAwUn8vFQ')" class="doc-btn doc-btn-video">Открыть видео</button>
+            </div>
+          </td>
+          <td>
+            <div class="doc-content">
+              <strong>Видео · версия3 (от 17.12)</strong>
+              <span class="doc-hint">NotebookLM</span>
+              <button onclick="openFullWindow('https://disk.yandex.ru/i/Z9xdkbIXDhFzbQ')" class="doc-btn doc-btn-video">Открыть видео</button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="doc-content">
+              <strong>Презентация PDF</strong>
+              <span class="doc-hint">Альтернативная</span>
+              <button onclick="openFullWindow('https://disk.yandex.ru/i/x8fruKDCKWiWFA')" class="doc-btn doc-btn-presentation">Открыть презентацию</button>
+            </div>
+          </td>
+          <td>
+            <div class="doc-content">
+              <strong>Видео · версия1 (исправленная) 🐕✨</strong>
+              <span class="doc-hint">NotebookLM + QR и лого Анимо, стиль anime</span>
+              <button onclick="openFullWindow('https://disk.yandex.ru/i/S3q-Q3SdB_qTLQ')" class="doc-btn doc-btn-video">Открыть видео</button>
+            </div>
+          </td>
+          <td>
+            <div class="doc-content">
+              <strong>Видео · версия1 (оригинал) 🐕</strong>
+              <span class="doc-hint">NotebookLM</span>
+              <button onclick="openFullWindow('https://disk.yandex.ru/i/Igmv31iQlChoBA')" class="doc-btn doc-btn-video">Открыть видео</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
-                <tr>
-                    <td>
-                        <strong>Видео · версия2(от 17/12)</strong><br>
-                        <span class="hint">NotebookLM</span><br>
-                        <a href="https://disk.yandex.ru/i/ZxU41VAe_4Lw-g" target="_blank" class="doc-link">Открыть</a>
-                    </td>
-                    <td>язык: русский<br> стиль  классика</td>
-                    <td></td>
-                </tr>
-                <tr>
-                  <td>
-                        <strong>Видео · версия3<(от 17.12)/strong><br>
-                        <span class="hint">NotebookLM</span><br>
-                        <a href="https://disk.yandex.ru/i/Z9xdkbIXDhFzbQ" target="_blank" class="doc-link">Открыть</a>
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td> <h2>Инфографика · кейсы</h2></td>
-                  <td> 
-  <div class="grid-square">
-    <div class="square"><img src="./image-7.png" alt=""></div
-  </div>
-                    </td>
-                    <td>  <div class="grid-square">
-    <div class="square"><img src="./image-8.png" alt=""></div>
-  </div></td>
-                    
-                </tr>
-            </tbody>
-        </table>
-    </div>
-  
-  
-  <!-- HERO -->
-  <h2>Основная презентация</h2>
-  <div class="hero">
+  <!-- INFOGRAPHICS CASES TABLE -->
+  <section class="docs-section">
+    <h2>Инфографика · кейсы</h2>
+    <table class="docs-table cases-table">
+      <thead>
+        <tr>
+          <th>Кейс 1</th>
+          <th>Кейс 2</th>
+          <th>Кейс 3</th>
+          <th>Кейс 4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="case-content">
+              <h4>Визуальный кейс проекта</h4>
+              <div class="grid-square">
+                <div class="square case-image"><img src="./image-7.png" alt=""></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="case-content">
+              <h4>Пример применения</h4>
+              <div class="grid-square">
+                <div class="square case-image"><img src="./image-8.png" alt=""></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="case-content">
+              <h4>Дизайн кейс 1</h4>
+              <div class="grid-square">
+                <div class="square case-image"><img src="./image-4.png" alt=""></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="case-content">
+              <h4>Дизайн кейс 2</h4>
+              <div class="grid-square">
+                <div class="square case-image"><img src="./image-5.png" alt=""></div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
-
-    <div class="hero-links">
-      <a class="doc main" href="./index.html" target="_blank">
-        <span class="title">Открыть основную презентацию</span>
-        <span class="hint">Интерактивная версия ANIMO</span>
-      </a>
-
-      <a class="doc" href="https://disk.yandex.ru/i/S3q-Q3SdB_qTLQ" target="_blank">
-        <span class="title">Видео · версия1 (исправленная)</span>
-        <span class="hint">NotebookLM + QR и лого Анимо </span>
-      </a>
-      <a class="doc" href="https://disk.yandex.ru/i/Igmv31iQlChoBA" target="_blank">
-        <span class="title">Видео · версия1</span>
-        <span class="hint">NotebookLM </span>
-      </a>
-
-      <a class="doc" href="https://disk.yandex.ru/i/Z9xdkbIXDhFzbQ" target="_blank">
-        <span class="title">Видео · версия2</span>
-        <span class="hint">NotebookLM </span>
-      </a>
-      <a class="doc" href="https://disk.yandex.ru/i/ZxU41VAe_4Lw-g" target="_blank">
-        <span class="title">Видео · версия3</span>
-        <span class="hint">NotebookLM </span>
-      </a>
-      <a class="doc" href="https://disk.yandex.ru/i/x8fruKDCKWiWFA" target="_blank">
-        <span class="title">Презентация PDF</span>
-        <span class="hint">Альтернативная</span>
-      </a>
-    </div>
-  </div>
-  
-<h2>Логотипы ANIMO</h2>
-
-<div class="grid-free">
-  <div class="thumb"><img src="./logo1.png"></div>
-  <div class="thumb"><img src="./logo2.png"></div>
-  <div class="thumb"><img src="./logo3.png"></div>
-  <div class="thumb"><img src="./logo4.png"></div>
-    <div class="thumb">
-      <img src="./qrbk.png" alt="QR ANIMO">
-  </div>
-</div>
-
-  <!-- INFOGRAPHICS FREE -->
-  <h2>Инфографика · обзор</h2>
-  <div class="grid-free">
-    <div class="thumb"><img src="./image-1.png" alt=""></div>
-    <div class="thumb"><img src="./image-2.png" alt=""></div>
-    <div class="thumb"><img src="./image-3.png" alt=""></div>
-  </div>
-
-  <!-- INFOGRAPHICS SQUARE -->
-  <h2>Инфографика · кейсы</h2>
-  <div class="grid-square">
-    <div class="square"><img src="./image-4.png" alt=""></div>
-    <div class="square"><img src="./image-5.png" alt=""></div>
-  </div>
+  <!-- OTHER EXAMPLES TABLE -->
+  <section class="docs-section">
+    <h2>Прочие примеры</h2>
+    <table class="docs-table">
+      <thead>
+        <tr>
+          <th>Обзор инфографики</th>
+          <th>Логотипы и брендинг</th>
+          <th>QR коды</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="grid-free">
+              <div class="thumb"><img src="./image-1.png" alt=""></div>
+              <div class="thumb"><img src="./image-2.png" alt=""></div>
+              <div class="thumb"><img src="./image-3.png" alt=""></div>
+            </div>
+          </td>
+          <td>
+            <div class="grid-free">
+              <div class="thumb"><img src="./logo1.png"></div>
+              <div class="thumb"><img src="./logo2.png"></div>
+              <div class="thumb"><img src="./logo3.png"></div>
+              <div class="thumb"><img src="./logo4.png"></div>
+            </div>
+          </td>
+          <td>
+            <div class="grid-free">
+              <div class="thumb">
+                <img src="./qrbk.png" alt="QR ANIMO">
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
   <footer>
     Все материалы проекта ANIMO собраны на одной странице
@@ -433,6 +557,10 @@
     lightbox.style.display = 'none';
     img.src = '';
   });
+
+  function openFullWindow(url) {
+    window.open(url, '_blank', 'fullscreen=yes,scrollbars=yes,menubar=no,toolbar=no,location=no,status=no,resizable=yes');
+  }
 </script>
 
 </body>
