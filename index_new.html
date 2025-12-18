@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ANIMO — витрина проекта</title>
+
+  <style>
+    :root{
+      --bg:#000;
+      --text:#fff;
+      --muted:rgba(255,255,255,.7);
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.10);
+      --border:rgba(255,255,255,.14);
+      --accent:#a88bff;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .wrap{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    h1,h2,h3{margin:0}
+    h2{
+      margin: 40px 0 18px;
+      font-size:20px;
+      font-weight:600;
+    }
+
+    /* ---------- HEADER ---------- */
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      padding: 20px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--card), transparent);
+      border-radius: 20px;
+    }
+
+    .logo{
+      width:52px;
+      height:52px;
+      border-radius:14px;
+      object-fit:contain;
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--border);
+      padding:6px;
+    }
+
+    .sub{
+      margin-top:6px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* ---------- DOCUMENTS TABLE ---------- */
+    .docs-section {
+      margin-top: 32px;
+    }
+
+    .docs-section h2 {
+      margin-bottom: 24px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .docs-section h2::before {
+      content: '';
+      width: 4px;
+      height: 20px;
+      background: linear-gradient(135deg, var(--accent), #ff6b9d);
+      border-radius: 2px;
+    }
+
+    .docs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .docs-table th {
+      background: var(--card);
+      padding: 16px;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .docs-table td {
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      min-height: 120px;
+    }
+
+    .docs-table tbody tr:hover {
+      background: var(--card2);
+    }
+
+    .docs-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .doc-content {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .doc-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .doc-hint {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .doc-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: .15s ease;
+    }
+
+    .doc-link:hover {
+      background: rgba(168,139,255,.2);
+      text-decoration: none;
+    }
+
+    .doc-btn {
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: .15s ease;
+      font-size: 13px;
+      margin-top: 8px;
+      color: white;
+    }
+
+    .doc-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .doc-btn-presentation {
+      background: linear-gradient(135deg, #4a90e2, #357abd);
+    }
+
+    .doc-btn-presentation:hover {
+      background: linear-gradient(135deg, #5ba0f2, #458acd);
+    }
+
+    .doc-btn-video {
+      background: linear-gradient(135deg, #ff6b9d, #c44dff);
+    }
+
+    .doc-btn-video:hover {
+      background: linear-gradient(135deg, #ff8bb3, #d363ff);
+    }
+
+    .doc-btn-presentation::before {
+      content: "📄 ";
+      font-size: 12px;
+    }
+
+    .doc-btn-video::before {
+      content: "🎥 ";
+      font-size: 12px;
+    }
+
+    .cases-table {
+      border: 2px solid var(--accent);
+    }
+
+    .cases-table th {
+      background: linear-gradient(135deg, var(--accent), rgba(168,139,255,.3));
+      color: white;
+    }
+
+    .case-content h4 {
+      margin: 0 0 16px 0;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .case-image {
+      border: 2px solid var(--accent);
+      box-shadow: 0 4px 12px rgba(168,139,255,.2);
+    }
+
+    .info-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:28px;
+      align-items:start;
+    }
+
+    .hero-links{
+      display:grid;
+      gap:14px;
+    }
+
+    a.doc{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      padding:16px 18px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background:var(--card);
+      color:var(--text);
+      text-decoration:none;
+      transition:.15s ease;
+    }
+    a.doc:hover{
+      background:var(--card2);
+      transform:translateY(-1px);
+    }
+
+    a.doc.main{
+      border-color: rgba(168,139,255,.6);
+      background: linear-gradient(135deg, rgba(168,139,255,.28), rgba(168,139,255,.06));
+    }
+
+    .title{
+      font-size:15px;
+      font-weight:600;
+    }
+    .hint{
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    /* ---------- GRIDS ---------- */
+
+    /* Свободный формат */
+    .grid-free{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap:18px;
+    }
+
+    /* Квадраты */
+    .grid-square{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap:16px;
+    }
+
+    .thumb, .square{
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:var(--card);
+      cursor:pointer;
+      transition:.15s ease;
+    }
+
+    .thumb:hover, .square:hover{
+      background:var(--card2);
+      transform:translateY(-2px);
+    }
+
+    .thumb img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .square{
+      aspect-ratio:1/1;
+    }
+    .square img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    footer{
+      margin-top:48px;
+      text-align:center;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    /* ---------- LIGHTBOX ---------- */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.9);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:1000;
+      cursor:zoom-out;
+    }
+    .lightbox img{
+      max-width:92%;
+      max-height:92%;
+      border-radius:18px;
+      border:1px solid var(--border);
+      background:#000;
+    }
+
+    @media(max-width:900px){
+      .docs-table {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <header>
+    <img src="./logo.png" alt="ANIMO logo" class="logo" />
+    <div>
+      <h1>ANIMO</h1>
+      <div class="sub">Витрина материалов проекта</div>
+    </div>
+  </header>
+
+  <!-- DOCUMENTS TABLE -->
+  <section class="docs-section">
+    <h2>Документы и видео</h2>
+    <table class="docs-table">
+      <thead>
+        <tr>
+          <th>Презентации</th>
+          <th>Видео · новые версии</th>
+          <th>Видео · от 17.12</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="doc-content">
+              <strong>Основная презентация</strong>
+              <span class="doc-hint">Интерактивная версия ANIMO</span>
+              <button onclick="openFullWindow('./index.html')" class="doc-btn doc-btn-presentation">Открыть презентацию</button>
+            </div>
+          </td>
+          <td>
+            <div class="doc-content">
+              <strong>Видео · версия2 новая</strong>
+              <span class="doc-hint">Стиль абстрактный, длина 1.5, язык русский</span>
+              <button onclick="openFullWindow('https://disk.yandex.ru/i/Z7xGXiRYCUXogw')" class="doc-btn doc-btn-video">Открыть видео</button>
+            </div>
+          </td>
+          <td>
+            <div class="doc-content">
+              <strong>Видео · версия2 (от 17/12)</strong>
+              <span class="doc-hint">NotebookLM, стиль классика</span>
+              <button onclick="openFullWindow('https://disk.yandex.ru/i/ZxU41VAe_4Lw-g')" class="doc-btn doc-btn-video">Открыть видео</button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="doc-content">
+              <strong>Альтернативная презентация</strong>
+              <span class="doc-hint">NotebookLM (слайды горизонтальные)</span>
+              <button onclick="openFullWindow('https://disk.yandex.ru/i/i4xJZjghR4JQ_w')" class="doc-btn doc-btn-presentation">Открыть презентацию</button>
+            </div>
+          </td>
+          <td>
+            <div class="doc-content">
+              <strong>Видео · версия3 новая</strong>
+              <span class="doc-hint">Стиль деловой, длина 4.5, язык английский</span>
+              <button onclick="openFullWindow('https://disk.yandex.ru/i/puf7SYAwUn8vFQ')" class="doc-btn doc-btn-video">Открыть видео</button>
+            </div>
+          </td>
+          <td>
+            <div class="doc-content">
+              <strong>Видео · версия3 (от 17.12)</strong>
+              <span class="doc-hint">NotebookLM</span>
+              <button onclick="openFullWindow('https://disk.yandex.ru/i/Z9xdkbIXDhFzbQ')" class="doc-btn doc-btn-video">Открыть видео</button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="doc-content">
+              <strong>Презентация PDF</strong>
+              <span class="doc-hint">Альтернативная</span>
+              <button onclick="openFullWindow('https://disk.yandex.ru/i/x8fruKDCKWiWFA')" class="doc-btn doc-btn-presentation">Открыть презентацию</button>
+            </div>
+          </td>
+          <td>
+            <div class="doc-content">
+              <strong>Видео · версия1 (исправленная)</strong>
+              <span class="doc-hint">NotebookLM + QR и лого Анимо, стиль anime</span>
+              <button onclick="openFullWindow('https://disk.yandex.ru/i/S3q-Q3SdB_qTLQ')" class="doc-btn doc-btn-video">Открыть видео</button>
+            </div>
+          </td>
+          <td>
+            <div class="doc-content">
+              <strong>Видео · версия1 (оригинал)</strong>
+              <span class="doc-hint">NotebookLM</span>
+              <button onclick="openFullWindow('https://disk.yandex.ru/i/Igmv31iQlChoBA')" class="doc-btn doc-btn-video">Открыть видео</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- INFOGRAPHICS CASES TABLE -->
+  <section class="docs-section">
+    <h2>Инфографика · кейсы</h2>
+    <table class="docs-table cases-table">
+      <thead>
+        <tr>
+          <th>Кейс 1</th>
+          <th>Кейс 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="case-content">
+              <h4>Визуальный кейс проекта</h4>
+              <div class="grid-square">
+                <div class="square case-image"><img src="./image-7.png" alt=""></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="case-content">
+              <h4>Пример применения</h4>
+              <div class="grid-square">
+                <div class="square case-image"><img src="./image-8.png" alt=""></div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- OTHER EXAMPLES TABLE -->
+  <section class="docs-section">
+    <h2>Прочие примеры</h2>
+    <table class="docs-table">
+      <thead>
+        <tr>
+          <th>Обзор инфографики</th>
+          <th>Логотипы и брендинг</th>
+          <th>QR коды</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="grid-free">
+              <div class="thumb"><img src="./image-1.png" alt=""></div>
+              <div class="thumb"><img src="./image-2.png" alt=""></div>
+              <div class="thumb"><img src="./image-3.png" alt=""></div>
+            </div>
+          </td>
+          <td>
+            <div class="grid-free">
+              <div class="thumb"><img src="./logo1.png"></div>
+              <div class="thumb"><img src="./logo2.png"></div>
+              <div class="thumb"><img src="./logo3.png"></div>
+              <div class="thumb"><img src="./logo4.png"></div>
+            </div>
+          </td>
+          <td>
+            <div class="grid-free">
+              <div class="thumb">
+                <img src="./qrbk.png" alt="QR ANIMO">
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    Все материалы проекта ANIMO собраны на одной странице
+  </footer>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <img src="" alt="">
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const img = lightbox.querySelector('img');
+
+  document.querySelectorAll('.thumb img, .square img').forEach(el=>{
+    el.addEventListener('click',()=>{
+      img.src = el.src;
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  lightbox.addEventListener('click',()=>{
+    lightbox.style.display = 'none';
+    img.src = '';
+  });
+
+  function openFullWindow(url) {
+    window.open(url, '_blank', 'fullscreen=yes,scrollbars=yes,menubar=no,toolbar=no,location=no,status=no,resizable=yes');
+  }
+</script>
+
+</body>
+</html>
